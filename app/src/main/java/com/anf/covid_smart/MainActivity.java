@@ -80,8 +80,10 @@ public class MainActivity extends AppCompatActivity {
         String nric = nricInput.getText().toString();
         String password = passwordInput.getText().toString();
 
+        // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
 
+        // Parameters need to be in JSON format
         JSONObject postData = new JSONObject();
         try {
             postData.put("nric", nric);
@@ -90,6 +92,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        // Tag is to differentiate the response inside the callback method.
         apiService.postMethod("auth","/authentication/login.php", postData);
     }
 
@@ -120,6 +124,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // Callback method for api calls. Response will be inside here.
     void initAPICallback(){
         mResponseCallback = new IResponse() {
             @Override

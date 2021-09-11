@@ -13,9 +13,6 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
-/**
- * Created by rohitp on 2/25/2016.
- */
 public class APIService {
     final String url ="http://10.0.2.2:8080/FYP-Backend/api";
 
