@@ -63,11 +63,13 @@ public class MainActivity extends AppCompatActivity {
                     login();
                     break;
                 case R.id.registerbtnMain:
-                    AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                    Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
+                    startActivity(registerIntent);
+                    /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
                     builder.setCancelable(true);
                     builder.setTitle("Attempting to register");
                     builder.setMessage("Register Complete");
-                    builder.show();
+                    builder.show();*/
                     //break;
                     break;
                 default:
@@ -123,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
             }, 100);
         }
     }
-
     // Callback method for api calls. Response will be inside here.
     void initAPICallback(){
         mResponseCallback = new IResponse() {
