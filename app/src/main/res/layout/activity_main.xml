@@ -6,30 +6,15 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/welcomeMain"
-        android:layout_width="289dp"
-        android:layout_height="46dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Welcome"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.081" />
-
     <ImageView
         android:id="@+id/imgMain"
         android:layout_width="202dp"
         android:layout_height="226dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/welcomeMain"
-        app:layout_constraintStart_toStartOf="@+id/welcomeMain"
-        app:layout_constraintTop_toBottomOf="@+id/welcomeMain"
+        android:layout_marginTop="68dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@android:drawable/btn_star_big_off" />
 
     <EditText
@@ -63,13 +48,12 @@
         android:id="@+id/loginbtnMain"
         android:layout_width="296dp"
         android:layout_height="45dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/aldrich"
         android:text="Login"
-        app:layout_constraintEnd_toEndOf="@+id/passwordMain"
-        app:layout_constraintHorizontal_bias="0.516"
-        app:layout_constraintStart_toStartOf="@+id/passwordMain"
-        app:layout_constraintTop_toBottomOf="@+id/passwordMain" />
+        app:layout_constraintEnd_toEndOf="@+id/usertypeMain"
+        app:layout_constraintStart_toStartOf="@+id/usertypeMain"
+        app:layout_constraintTop_toBottomOf="@+id/usertypeMain" />
 
     <Button
         android:id="@+id/registerbtnMain"
@@ -82,5 +66,15 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/loginbtnMain"
         app:layout_constraintTop_toBottomOf="@+id/loginbtnMain" />
+
+    <Spinner
+        android:id="@+id/usertypeMain"
+        android:layout_width="222dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="12dp"
+        android:fontFamily="@font/aldrich"
+        app:layout_constraintEnd_toEndOf="@+id/passwordMain"
+        app:layout_constraintStart_toStartOf="@+id/passwordMain"
+        app:layout_constraintTop_toBottomOf="@+id/passwordMain" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

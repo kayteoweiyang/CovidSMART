@@ -14,20 +14,19 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-import com.karumi.dexter.Dexter;
-import com.karumi.dexter.PermissionToken;
-import com.karumi.dexter.listener.PermissionDeniedResponse;
-import com.karumi.dexter.listener.PermissionGrantedResponse;
-import com.karumi.dexter.listener.PermissionRequest;
-import com.karumi.dexter.listener.single.PermissionListener;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.Arrays;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final String MY_PREFS_NAME = "AUTH_TOKEN";
@@ -51,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         nricInput = (EditText) findViewById(R.id.nricMain);
         passwordInput = (EditText) findViewById(R.id.passwordMain);
 
+        final List<String> types = Arrays.asList("Public User", "Healthcare User");
+        Spinner spinner = (Spinner) findViewById(R.id.usertypeMain);
+        // Create an ArrayAdapter using the string array and a default spinner layout
+        ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.user_type_selected, types);
+        // Specify the layout to use when the list of choices appears
+        adapter.setDropDownViewResource(R.layout.user_type_dropdown);
+        // Apply the adapter to the spinner
+        spinner.setAdapter(adapter);
+
         registerBtn.setOnClickListener(buttonsOnClickListener);
         loginBtn.setOnClickListener(buttonsOnClickListener);
     }
@@ -65,11 +73,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.registerbtnMain:
                     Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
                     startActivity(registerIntent);
-                    /*AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                    builder.setCancelable(true);
-                    builder.setTitle("Attempting to register");
-                    builder.setMessage("Register Complete");
-                    builder.show();*/
                     //break;
                     break;
                 default:

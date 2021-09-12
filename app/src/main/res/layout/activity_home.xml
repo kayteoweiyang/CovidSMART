@@ -6,52 +6,150 @@
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-    <TextView
-        android:id="@+id/locationHome"
-        android:layout_width="307dp"
-        android:layout_height="53dp"
-        android:layout_marginTop="20dp"
-        android:fontFamily="@font/aldrich"
-        android:textAlignment="center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkInImage" />
 
-    <TextView
-        android:id="@+id/latlongHome"
-        android:layout_width="307dp"
-        android:layout_height="53dp"
-        android:fontFamily="@font/aldrich"
-        android:textAlignment="center"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/locationHome"
-        app:layout_constraintVertical_bias="0.089" />
-
-    <TextView
-        android:id="@+id/resultHome"
-        android:layout_width="308dp"
-        android:layout_height="38dp"
+    <Button
+        android:id="@+id/registerbtnReg2"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/aldrich"
-        android:textAlignment="center"
+        android:text="Register For Vaccination"
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+
+    <Button
+        android:id="@+id/registerbtnReg5"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Check Out"
+        app:layout_constraintEnd_toEndOf="@+id/headerHome2"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/registerbtnReg4"
+        app:layout_constraintTop_toBottomOf="@+id/headerHome2" />
+
+    <Button
+        android:id="@+id/registerbtnReg7"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="27dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Globally"
+        app:layout_constraintEnd_toEndOf="@+id/headerHome3"
+        app:layout_constraintStart_toEndOf="@+id/registerbtnReg6"
+        app:layout_constraintTop_toBottomOf="@+id/headerHome3" />
+
+    <Button
+        android:id="@+id/registerbtnReg4"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Check In"
+        app:layout_constraintStart_toStartOf="@+id/headerHome2"
+        app:layout_constraintTop_toBottomOf="@+id/headerHome2" />
+
+    <Button
+        android:id="@+id/registerbtnReg6"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Near Me"
+        app:layout_constraintStart_toStartOf="@+id/headerHome3"
+        app:layout_constraintTop_toBottomOf="@+id/headerHome3" />
+
+    <Button
+        android:id="@+id/registerbtnReg3"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Book for COVID Test"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/registerbtnReg2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+
+    <TextView
+        android:id="@+id/headerHome1"
+        android:layout_width="327dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="84dp"
+        android:fontFamily="@font/aldrich"
+        android:shadowColor="@color/black"
+        android:text="Your COVID Health Status"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.535"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headerHome2"
+        android:layout_width="327dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="252dp"
+        android:fontFamily="@font/aldrich"
+        android:shadowColor="@color/black"
+        android:text="Check In/Out Location"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/headerHome1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/headerHome1"
+        app:layout_constraintTop_toBottomOf="@+id/headerHome1" />
+
+    <TextView
+        android:id="@+id/headerHome3"
+        android:layout_width="327dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="384dp"
+        android:layout_marginEnd="38dp"
+        android:fontFamily="@font/aldrich"
+        android:shadowColor="@color/black"
+        android:text="View Active Cases"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/headerHome1"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/headerHome1"
+        app:layout_constraintTop_toBottomOf="@+id/headerHome1" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="414dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:background="@color/white"
+        app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/latlongHome"
-        app:layout_constraintVertical_bias="0.0" />
+        app:menu="@menu/menu_navigation" />
 
     <ImageView
-        android:id="@+id/checkInImage"
-        android:layout_width="227dp"
-        android:layout_height="208dp"
-        android:layout_marginTop="124dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_mylocation" />
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintStart_toStartOf="@+id/headerHome1"
+        app:layout_constraintTop_toBottomOf="@+id/headerHome1"
+        app:srcCompat="@android:drawable/checkbox_on_background" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="150dp"
+        android:layout_height="127dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toEndOf="@+id/headerHome1"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/headerHome1"
+        app:srcCompat="@android:drawable/checkbox_on_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
