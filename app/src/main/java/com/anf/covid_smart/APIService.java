@@ -14,7 +14,9 @@ import com.android.volley.toolbox.Volley;
 import org.json.JSONObject;
 
 public class APIService {
-    final String url ="http://10.0.2.2:8080/FYP-Backend/api";
+    //Mervyn
+    //final String url ="http://10.0.2.2:8080/FYP-Backend/api";
+    final String url ="http://192.168.50.27:8080/FYP-Backend/api";
 
     IResponse mResponseCallback = null;
     Context mContext;
