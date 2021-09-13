@@ -102,7 +102,7 @@ public class MainActivity extends AppCompatActivity {
         apiService.postMethod("auth","/authentication/login.php", postData);
     }
 
-    private void loginSuccess(JSONObject response) {
+    private void responseSuccess(JSONObject response) {
         Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
             public void notifySuccess(String tag, JSONObject response) {
                 switch (tag) {
                     case "auth":
-                        loginSuccess(response);
+                        responseSuccess(response);
                 }
             }
 

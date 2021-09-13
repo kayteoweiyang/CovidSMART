@@ -91,8 +91,7 @@ public class RegisterActivity extends AppCompatActivity {
             public void notifySuccess(String tag, JSONObject response) {
                 switch (tag) {
                     case "auth":
-                        registerSuccess(response);
-                        Toast.makeText(RegisterActivity.this, "Registered successfully", Toast.LENGTH_LONG).show();
+                        responseSuccess(response);
                 }
             }
             @Override
@@ -103,7 +102,7 @@ public class RegisterActivity extends AppCompatActivity {
         };
     }
 
-    private void registerSuccess(JSONObject response) {
+    private void responseSuccess(JSONObject response) {
         Intent homeIntent = new Intent(RegisterActivity.this, MainActivity.class);
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
