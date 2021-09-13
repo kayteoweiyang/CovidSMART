@@ -7,16 +7,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity{
 
+    Button register, booking, checkin, checkout, nearme, global;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        register = findViewById(R.id.registervaccineHome);
+        booking = findViewById(R.id.booktestingHome);
+        checkin = findViewById(R.id.checkinHome);
+        checkout = findViewById(R.id.checkoutHome);
+        nearme = findViewById(R.id.nearmeHome);
+        global = findViewById(R.id.globalHome);
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -25,7 +35,6 @@ public class HomeActivity extends AppCompatActivity{
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
-
                     case R.id.nav_home:
                         return true;
                     case R.id.nav_ci:
@@ -46,7 +55,27 @@ public class HomeActivity extends AppCompatActivity{
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.checkInImage:
+                case R.id.registervaccineHome:
+                    Toast.makeText(HomeActivity.this, "Register Vaccine", Toast.LENGTH_LONG).show();
+                    break;
+                case R.id.booktestingHome:
+                    Toast.makeText(HomeActivity.this, "Booking COVID Test", Toast.LENGTH_LONG).show();
+                    break;
+                case R.id.checkinHome:
+                    Toast.makeText(HomeActivity.this, "Check IN", Toast.LENGTH_LONG).show();
+                    Intent checkinIntent = new Intent(HomeActivity.this, CheckIn.class);
+                    startActivity(checkinIntent);
+                    break;
+                case R.id.checkoutHome:
+                    Toast.makeText(HomeActivity.this, "Check OUT", Toast.LENGTH_LONG).show();
+                    Intent checkoutIntent = new Intent(HomeActivity.this, CheckOut.class);
+                    startActivity(checkoutIntent);
+                    break;
+                case R.id.nearmeHome:
+                    Toast.makeText(HomeActivity.this, "Near Me", Toast.LENGTH_LONG).show();
+                    break;
+                case R.id.globalHome:
+                    Toast.makeText(HomeActivity.this, "Globally", Toast.LENGTH_LONG).show();
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());

@@ -9,6 +9,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
@@ -21,6 +22,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.skyfishjy.library.RippleBackground;
 
 import java.util.List;
 import java.util.Locale;
@@ -33,18 +35,34 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
     TextView latlongTV;
     TextView resultTV;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in);
 
         checkinImg = findViewById(R.id.checkInImage);
-        addressTV = findViewById(R.id.locationCI);
-        latlongTV = findViewById(R.id.latlongCI);
-        resultTV = findViewById(R.id.resultCI);
+        //addressTV = findViewById(R.id.locationCI);
+        //latlongTV = findViewById(R.id.latlongCI);
+        //resultTV = findViewById(R.id.resultCI);
         checkinImg.setOnClickListener(buttonsOnClickListener);
 
+        final RippleBackground rippleBackground = findViewById(R.id.ripple);
+
+        if(rippleBackground.isRippleAnimationRunning())
+        {
+            checkinImg.setColorFilter(Color.argb(255, 255,255,255));
+            rippleBackground.startRippleAnimation();
+        }
+
+        checkinImg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(rippleBackground.isRippleAnimationRunning()) {
+                    checkinImg.setColorFilter(null);
+                    rippleBackground.stopRippleAnimation();
+                }
+            }
+        });
         checkMyPermission();
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -111,9 +129,9 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
             String address = addresses.get(0).getAddressLine(0);
 
-            addressTV.setText(address);
-            latlongTV.setText("Latitude: "+location.getLatitude()+" , Longitude : "+location.getLongitude());
-            resultTV.setText("Check in Successfully");
+            //addressTV.setText(address);
+            //latlongTV.setText("Latitude: "+location.getLatitude()+" , Longitude : "+location.getLongitude());
+            //resultTV.setText("Check in Successfully");
 
         }catch (Exception e) {
             e.printStackTrace();

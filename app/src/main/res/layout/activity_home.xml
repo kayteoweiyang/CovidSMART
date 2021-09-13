@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/registerbtnReg2"
+        android:id="@+id/registervaccineHome"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -18,7 +18,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
     <Button
-        android:id="@+id/registerbtnReg5"
+        android:id="@+id/checkoutHome"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -26,11 +26,11 @@
         android:text="Check Out"
         app:layout_constraintEnd_toEndOf="@+id/headerHome2"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/registerbtnReg4"
+        app:layout_constraintStart_toEndOf="@+id/checkinHome"
         app:layout_constraintTop_toBottomOf="@+id/headerHome2" />
 
     <Button
-        android:id="@+id/registerbtnReg7"
+        android:id="@+id/globalHome"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginStart="27dp"
@@ -38,11 +38,11 @@
         android:fontFamily="@font/aldrich"
         android:text="Globally"
         app:layout_constraintEnd_toEndOf="@+id/headerHome3"
-        app:layout_constraintStart_toEndOf="@+id/registerbtnReg6"
+        app:layout_constraintStart_toEndOf="@+id/nearmeHome"
         app:layout_constraintTop_toBottomOf="@+id/headerHome3" />
 
     <Button
-        android:id="@+id/registerbtnReg4"
+        android:id="@+id/checkinHome"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -52,7 +52,7 @@
         app:layout_constraintTop_toBottomOf="@+id/headerHome2" />
 
     <Button
-        android:id="@+id/registerbtnReg6"
+        android:id="@+id/nearmeHome"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -62,7 +62,7 @@
         app:layout_constraintTop_toBottomOf="@+id/headerHome3" />
 
     <Button
-        android:id="@+id/registerbtnReg3"
+        android:id="@+id/booktestingHome"
         android:layout_width="150dp"
         android:layout_height="60dp"
         android:layout_marginTop="16dp"
@@ -70,7 +70,7 @@
         android:text="Book for COVID Test"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/registerbtnReg2"
+        app:layout_constraintStart_toEndOf="@+id/registervaccineHome"
         app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <TextView
