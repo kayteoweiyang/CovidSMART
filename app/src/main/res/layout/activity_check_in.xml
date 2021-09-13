@@ -21,11 +21,11 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/headerCI"
-        app:layout_constraintTop_toBottomOf="@+id/headerCI" />
+        app:layout_constraintStart_toStartOf="@+id/headerCO"
+        app:layout_constraintTop_toBottomOf="@+id/headerCO" />
 
     <TextView
-        android:id="@+id/headerCI"
+        android:id="@+id/headerCO"
         android:layout_width="327dp"
         android:layout_height="38dp"
         android:layout_marginTop="84dp"
@@ -49,36 +49,37 @@
         android:text="Check In by Current Location : "
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/headerCI"
+        app:layout_constraintEnd_toEndOf="@+id/headerCO"
         app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="@+id/headerCI"
-        app:layout_constraintTop_toBottomOf="@+id/headerCI" />
+        app:layout_constraintStart_toStartOf="@+id/headerCO"
+        app:layout_constraintTop_toBottomOf="@+id/headerCO" />
 
 
     <com.skyfishjy.library.RippleBackground
         android:id="@+id/ripple"
-        android:layout_width="232dp"
-        android:layout_height="229dp"
-        android:layout_marginTop="35dp"
+        android:layout_width="278dp"
+        android:layout_height="183dp"
+        android:layout_marginTop="60dp"
         app:layout_constraintEnd_toEndOf="@+id/header2CI"
+        app:layout_constraintHorizontal_bias="0.428"
         app:layout_constraintStart_toStartOf="@+id/header2CI"
         app:layout_constraintTop_toBottomOf="@+id/header2CI"
-        app:rb_color="#0099CC"
+        app:rb_color="#009900"
         app:rb_duration="3000"
-        app:rb_radius="32dp"
-        app:rb_rippleAmount="4"
-        app:rb_scale="6">
+        app:rb_radius="30dp"
+        app:rb_rippleAmount="3"
+        app:rb_scale="3">
 
         <ImageView
             android:id="@+id/checkInImage"
-            android:layout_width="90dp"
-            android:layout_height="81dp"
-            android:layout_centerInParent="true"
+            android:layout_width="106dp"
+            android:layout_height="105dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="91dp"
             android:background="@drawable/ic_location"
-            tools:layout_conversion_absoluteHeight="98dp"
-            tools:layout_conversion_absoluteWidth="111dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="192dp" />
+            android:backgroundTint="@color/white"
+            app:srcCompat="@drawable/ic_location" />
+
     </com.skyfishjy.library.RippleBackground>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -100,9 +101,9 @@
         android:layout_height="50dp"
         android:layout_marginStart="17dp"
         android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="@+id/headerCI"
+        app:layout_constraintEnd_toEndOf="@+id/headerCO"
         app:layout_constraintStart_toEndOf="@+id/addressCI"
-        app:layout_constraintTop_toBottomOf="@+id/headerCI"
+        app:layout_constraintTop_toBottomOf="@+id/headerCO"
         app:srcCompat="@drawable/ic_search" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

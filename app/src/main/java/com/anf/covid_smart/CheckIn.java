@@ -20,6 +20,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skyfishjy.library.RippleBackground;
@@ -47,22 +48,11 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
         checkinImg.setOnClickListener(buttonsOnClickListener);
 
         final RippleBackground rippleBackground = findViewById(R.id.ripple);
+        checkinImg.setColorFilter(Color.argb(0, 0,0,0));
 
-        if(rippleBackground.isRippleAnimationRunning())
-        {
-            checkinImg.setColorFilter(Color.argb(255, 255,255,255));
-            rippleBackground.startRippleAnimation();
-        }
+        rippleBackground.startRippleAnimation();
 
-        checkinImg.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if(rippleBackground.isRippleAnimationRunning()) {
-                    checkinImg.setColorFilter(null);
-                    rippleBackground.stopRippleAnimation();
-                }
-            }
-        });
+
         checkMyPermission();
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -93,6 +83,8 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.checkInImage:
+                    checkinImg.setColorFilter(null);
+                    Toast.makeText(CheckIn.this, "Get Current Location", Toast.LENGTH_LONG).show();
                     getLocation();
                     break;
                 default:

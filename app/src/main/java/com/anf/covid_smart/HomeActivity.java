@@ -14,22 +14,30 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity{
 
-    Button register, booking, checkin, checkout, nearme, global;
+    Button registerbtn, bookingbtn, checkinbtn, checkoutbtn, nearmebtn, globalbtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        register = findViewById(R.id.registervaccineHome);
-        booking = findViewById(R.id.booktestingHome);
-        checkin = findViewById(R.id.checkinHome);
-        checkout = findViewById(R.id.checkoutHome);
-        nearme = findViewById(R.id.nearmeHome);
-        global = findViewById(R.id.globalHome);
+        registerbtn = findViewById(R.id.registervaccineHome);
+        bookingbtn = findViewById(R.id.booktestingHome);
+        checkinbtn = findViewById(R.id.checkinHome);
+        checkoutbtn = findViewById(R.id.checkoutHome);
+        nearmebtn = findViewById(R.id.nearmeHome);
+        globalbtn = findViewById(R.id.globalHome);
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
+
+        registerbtn.setOnClickListener(buttonsOnClickListener);
+        bookingbtn.setOnClickListener(buttonsOnClickListener);
+        checkinbtn.setOnClickListener(buttonsOnClickListener);
+        checkoutbtn.setOnClickListener(buttonsOnClickListener);
+        nearmebtn.setOnClickListener(buttonsOnClickListener);
+        globalbtn.setOnClickListener(buttonsOnClickListener);
+
 
         btmNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override

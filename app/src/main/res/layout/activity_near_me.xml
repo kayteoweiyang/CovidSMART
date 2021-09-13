@@ -4,23 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CheckOut">
-
-    <TextView
-        android:id="@+id/headerCO"
-        android:layout_width="327dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="84dp"
-        android:fontFamily="@font/aldrich"
-        android:shadowColor="@color/black"
-        android:text="Check Out"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    tools:context=".NearMe">
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

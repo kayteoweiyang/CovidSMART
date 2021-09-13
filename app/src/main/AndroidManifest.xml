@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CheckOut"></activity>
+        <activity android:name=".GlobalActivity"></activity>
+        <activity android:name=".NearMe" />
+        <activity android:name=".ProfileActivity" />
+        <activity android:name=".CheckOut" />
         <activity android:name=".CheckIn" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".HomeActivity" />
