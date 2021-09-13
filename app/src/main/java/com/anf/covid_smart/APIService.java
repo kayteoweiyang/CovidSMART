@@ -15,8 +15,9 @@ import org.json.JSONObject;
 
 public class APIService {
     //Mervyn
-    //final String url ="http://10.0.2.2:3306/FYP-Backend/api";
-    final String url ="http://192.168.50.27:3306/FYP-Backend/api";
+//    final String url ="http://10.0.2.2:3306/FYP-Backend/api";
+//    final String url ="http://192.168.50.27:3306/FYP-Backend/api";
+    final String url = "https://covid-smartapp-backend.herokuapp.com/api";
 
     IResponse mResponseCallback = null;
     Context mContext;
