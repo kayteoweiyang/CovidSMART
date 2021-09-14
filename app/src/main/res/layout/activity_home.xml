@@ -37,9 +37,12 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/aldrich"
         android:text="Globally"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/headerHome3"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/nearmeHome"
-        app:layout_constraintTop_toBottomOf="@+id/headerHome3" />
+        app:layout_constraintTop_toBottomOf="@+id/headerHome3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/checkinHome"
@@ -58,8 +61,10 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/aldrich"
         android:text="Near Me"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/headerHome3"
-        app:layout_constraintTop_toBottomOf="@+id/headerHome3" />
+        app:layout_constraintTop_toBottomOf="@+id/headerHome3"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/booktestingHome"
