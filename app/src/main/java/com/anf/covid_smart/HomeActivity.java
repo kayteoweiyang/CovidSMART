@@ -45,13 +45,17 @@ public class HomeActivity extends AppCompatActivity{
                 switch(menuItem.getItemId()){
                     case R.id.nav_home:
                         return true;
-                    case R.id.nav_ci:
-                        startActivity(new Intent(getApplicationContext(),CheckIn.class));
+                    case R.id.nav_alert:
+                        return true;
+                    case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.nav_logout:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
                 }
                 return false;

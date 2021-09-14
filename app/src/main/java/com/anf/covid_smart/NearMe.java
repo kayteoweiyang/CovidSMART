@@ -27,8 +27,11 @@ public class NearMe extends AppCompatActivity {
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
-                    case R.id.nav_ci:
+                    case R.id.nav_alert:
+                        return true;
+                    case R.id.nav_profile:
                         return true;
                     case R.id.nav_logout:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));

@@ -17,7 +17,7 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
-        btmNavView.setSelectedItemId(R.id.nav_home);
+        btmNavView.setSelectedItemId(R.id.nav_profile);
 
         btmNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -27,8 +27,11 @@ public class ProfileActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         startActivity(new Intent(getApplicationContext(),HomeActivity.class));
                         overridePendingTransition(0,0);
+                        finish();
                         return true;
-                    case R.id.nav_ci:
+                    case R.id.nav_alert:
+                        return true;
+                    case R.id.nav_profile:
                         return true;
                     case R.id.nav_logout:
                         startActivity(new Intent(getApplicationContext(),MainActivity.class));
