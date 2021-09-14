@@ -6,7 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
-    <EditText
+    <ImageView
+        android:id="@+id/editmobilebtnProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="11dp"
+        app:layout_constraintEnd_toEndOf="@+id/genderProfile"
+        app:layout_constraintStart_toEndOf="@+id/mobileProfile"
+        app:layout_constraintTop_toBottomOf="@+id/genderProfile"
+        app:srcCompat="@drawable/ic_edit" />
+
+    <TextView
         android:id="@+id/addressProfile"
         android:layout_width="166dp"
         android:layout_height="40dp"
@@ -14,12 +25,28 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/emailProfile"
+        app:layout_constraintTop_toBottomOf="@+id/emailProfile" />
+
+    <EditText
+        android:id="@+id/editaddressProfile"
+        android:layout_width="166dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="9dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/emailProfile"
         app:layout_constraintTop_toBottomOf="@+id/emailProfile" />
 
@@ -39,7 +66,7 @@
         app:layout_constraintStart_toStartOf="@+id/title7Profile"
         app:layout_constraintTop_toBottomOf="@+id/title7Profile" />
 
-    <EditText
+    <TextView
         android:id="@+id/emailProfile"
         android:layout_width="166dp"
         android:layout_height="40dp"
@@ -47,12 +74,29 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:inputType="text|textEmailAddress"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/mobileProfile"
+        app:layout_constraintTop_toBottomOf="@+id/mobileProfile" />
+
+    <EditText
+        android:id="@+id/editemailProfile"
+        android:layout_width="166dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:inputType="textEmailAddress"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/mobileProfile"
         app:layout_constraintTop_toBottomOf="@+id/mobileProfile" />
 
@@ -72,8 +116,25 @@
         app:layout_constraintStart_toStartOf="@+id/title6Profile"
         app:layout_constraintTop_toBottomOf="@+id/title6Profile" />
 
-    <EditText
+    <TextView
         android:id="@+id/mobileProfile"
+        android:layout_width="166dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="11dp"
+        android:layout_marginEnd="43dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="@+id/genderProfile"
+        app:layout_constraintTop_toBottomOf="@+id/genderProfile" />
+
+    <EditText
+        android:id="@+id/editmobileProfile"
         android:layout_width="166dp"
         android:layout_height="40dp"
         android:layout_marginTop="11dp"
@@ -87,6 +148,7 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
+        android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/genderProfile"
         app:layout_constraintTop_toBottomOf="@+id/genderProfile" />
 
@@ -106,7 +168,7 @@
         app:layout_constraintStart_toStartOf="@+id/title5Profile"
         app:layout_constraintTop_toBottomOf="@+id/title5Profile" />
 
-    <EditText
+    <TextView
         android:id="@+id/dobProfile"
         android:layout_width="210dp"
         android:layout_height="40dp"
@@ -114,7 +176,6 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:inputType="date"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -123,7 +184,7 @@
         app:layout_constraintEnd_toEndOf="@+id/icProfile"
         app:layout_constraintTop_toBottomOf="@+id/icProfile" />
 
-    <EditText
+    <TextView
         android:id="@+id/genderProfile"
         android:layout_width="210dp"
         android:layout_height="40dp"
@@ -131,7 +192,6 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -172,7 +232,7 @@
         app:layout_constraintStart_toStartOf="@+id/title3Profile"
         app:layout_constraintTop_toBottomOf="@+id/title3Profile" />
 
-    <EditText
+    <TextView
         android:id="@+id/icProfile"
         android:layout_width="210dp"
         android:layout_height="40dp"
@@ -180,7 +240,6 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -205,7 +264,7 @@
         app:layout_constraintStart_toStartOf="@+id/title2Profile"
         app:layout_constraintTop_toBottomOf="@+id/title2Profile" />
 
-    <EditText
+    <TextView
         android:id="@+id/nameProfile"
         android:layout_width="210dp"
         android:layout_height="40dp"
@@ -213,7 +272,6 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -254,7 +312,7 @@
         app:layout_constraintStart_toStartOf="@+id/headerProfile"
         app:layout_constraintTop_toBottomOf="@+id/headerProfile" />
 
-    <EditText
+    <TextView
         android:id="@+id/userProfile"
         android:layout_width="210dp"
         android:layout_height="40dp"
@@ -262,7 +320,6 @@
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
@@ -310,5 +367,27 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
+
+    <ImageView
+        android:id="@+id/editemailbtnProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="@+id/editmobilebtnProfile"
+        app:layout_constraintStart_toEndOf="@+id/emailProfile"
+        app:layout_constraintTop_toBottomOf="@+id/editmobilebtnProfile"
+        app:srcCompat="@drawable/ic_edit" />
+
+    <ImageView
+        android:id="@+id/editaddbtnProfile"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="9dp"
+        app:layout_constraintEnd_toEndOf="@+id/editemailbtnProfile"
+        app:layout_constraintStart_toEndOf="@+id/addressProfile"
+        app:layout_constraintTop_toBottomOf="@+id/editemailbtnProfile"
+        app:srcCompat="@drawable/ic_edit" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
