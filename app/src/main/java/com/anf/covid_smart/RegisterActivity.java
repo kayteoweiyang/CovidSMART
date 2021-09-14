@@ -103,17 +103,12 @@ public class RegisterActivity extends AppCompatActivity {
     }
 
     private void responseSuccess(JSONObject response) {
-        Intent homeIntent = new Intent(RegisterActivity.this, MainActivity.class);
+        Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
-                String token = response.getString("token");
-                SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
-                editor.putString("authToken", token);
-                editor.apply();
                 Toast.makeText(RegisterActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();
-                startActivity(homeIntent);
-                finish();
+                startActivity(mainIntent);
             } else {
                 Toast.makeText(RegisterActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();
             }
