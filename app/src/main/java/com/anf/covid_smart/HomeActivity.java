@@ -96,6 +96,8 @@ public class HomeActivity extends AppCompatActivity{
                     Toast.makeText(HomeActivity.this, "Near Me", Toast.LENGTH_LONG).show();
                     break;
                 case R.id.globalHome:
+                    Intent globalIntent = new Intent(HomeActivity.this, GlobalActivity.class);
+                    startActivity(globalIntent);
                     Toast.makeText(HomeActivity.this, "Globally", Toast.LENGTH_LONG).show();
                     break;
                 default:

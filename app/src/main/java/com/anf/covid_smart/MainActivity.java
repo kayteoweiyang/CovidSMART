@@ -6,6 +6,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -31,6 +32,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final String MY_PREFS_NAME = "AUTH_TOKEN";
+    public static String authToken;
 
     IResponse mResponseCallback = null;
     APIService apiService;
@@ -41,6 +43,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
+        String token =  prefs.getString("authToken", "");
+        this.authToken = token;
+
+        if (!token.isEmpty()) {
+            Log.i("main", token);
+            redirectToHomePage();
+        }
 
         initAPICallback();
         checkMyPermission();
@@ -173,5 +184,10 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(MainActivity.this, "Something went wrong, please try again!", Toast.LENGTH_LONG).show();
             }
         };
+    }
+
+    private void redirectToHomePage() {
+        Intent intent = new Intent(MainActivity.this, HomeActivity.class);
+        startActivity(intent);
     }
 }
