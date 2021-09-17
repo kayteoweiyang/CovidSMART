@@ -54,7 +54,9 @@ public class HomeActivity extends AppCompatActivity{
                     case R.id.nav_alert:
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        Intent profileAct = new Intent(HomeActivity.this, ProfileActivity.class);
+                        profileAct.putExtra("token", token);
+                        startActivity(profileAct);
                         overridePendingTransition(0,0);
                         finish();
                         return true;
