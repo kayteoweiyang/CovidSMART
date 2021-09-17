@@ -1,8 +1,12 @@
 package com.anf.covid_smart;
 
+import static android.content.Context.MODE_PRIVATE;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.util.Log;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -13,11 +17,13 @@ import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class APIService {
-    //Mervyn
-//    final String url ="http://10.0.2.2:3306/FYP-Backend/api";
-//    final String url ="http://192.168.50.27:3306/FYP-Backend/api";
     final String url = "https://covid-smartapp-backend.herokuapp.com/api";
+    MainActivity mainActivity = new MainActivity();
+    String token = mainActivity.authToken;
 
     IResponse mResponseCallback = null;
     Context mContext;
@@ -28,6 +34,7 @@ public class APIService {
     }
 
     public void getMethod(String tag, String suffix){
+        String authToken = this.token;
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);
 
@@ -43,7 +50,14 @@ public class APIService {
                     if(mResponseCallback != null)
                         mResponseCallback.notifyError(tag, error);
                 }
-            });
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Authorization", "Bearer ".concat(authToken) );
+                    return params;
+                }
+            };
 
             queue.add(jsonObj);
 
@@ -53,6 +67,7 @@ public class APIService {
     }
 
     public void postMethod(String tag, String suffix,JSONObject sendObj){
+        String authToken = this.token;
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);
 
@@ -68,7 +83,16 @@ public class APIService {
                     if(mResponseCallback != null)
                         mResponseCallback.notifyError(tag, error);
                 }
-            });
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Authorization", "Bearer ".concat(authToken) );
+                    return params;
+                }
+            };
+
+
 
             queue.add(jsonObj);
 
