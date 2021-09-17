@@ -51,6 +51,7 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in);
 
+        initAPICallback();
         Bundle extras = getIntent().getExtras();
         if(extras != null)
         {
@@ -174,7 +175,7 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
             e.printStackTrace();
         }
         // Tag is to differentiate the response inside the callback method.
-        apiService.postMethod("auth", "/user/check.php", postData);
+        apiService.postMethod("auth", "/user/checkin.php", postData);
 
     }
 
