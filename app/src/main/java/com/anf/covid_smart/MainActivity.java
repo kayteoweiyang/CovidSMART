@@ -32,7 +32,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     public static final String MY_PREFS_NAME = "AUTH_TOKEN";
-    public static String authToken;
+    public static String authToken = "";
 
     IResponse mResponseCallback = null;
     APIService apiService;
@@ -44,9 +44,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-        String token =  prefs.getString("authToken", "");
-        this.authToken = token;
 
 //        if (!token.isEmpty()) {
 //            Log.i("main", token);
@@ -145,6 +142,7 @@ public class MainActivity extends AppCompatActivity {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
                 String token = response.getString("token");
+                MainActivity.authToken = token;
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.putString("authToken", token);
                 editor.apply();
