@@ -62,7 +62,7 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
         checkinImg = findViewById(R.id.checkInImage);
         searchImg = findViewById(R.id.searchCI);
         postal = findViewById(R.id.addressCI);
-        //addressTV = findViewById(R.id.locationCI);
+        addressTV = findViewById(R.id.textView);
         //latlongTV = findViewById(R.id.latlongCI);
         //resultTV = findViewById(R.id.resultCI);
         checkinImg.setOnClickListener(buttonsOnClickListener);
@@ -130,6 +130,7 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
     private void getaddress() {
         String postalcode = postal.getText().toString();
 
+
     }
     @SuppressLint("MissingPermission")
     private void getLocation() {
@@ -151,7 +152,7 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
             String address = addresses.get(0).getAddressLine(0);
 
             checkinLocation(address, location.getLatitude(), location.getLongitude());
-            //addressTV.setText(address);
+            addressTV.setText("Check in successfully at " + address);
             //latlongTV.setText("Latitude: "+location.getLatitude()+" , Longitude : "+location.getLongitude());
             //resultTV.setText("Check in Successfully");
 

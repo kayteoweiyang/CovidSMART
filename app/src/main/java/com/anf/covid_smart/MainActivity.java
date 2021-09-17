@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -58,6 +59,24 @@ public class MainActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(R.layout.user_type_dropdown);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                if(spinner.getSelectedItemId() == 0) {
+                    nricInput.setHint("NRIC");
+                }
+                else {
+                    nricInput.setHint("Company ID");
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                nricInput.setHint("NRIC");
+            }
+
+        });
 
         registerBtn.setOnClickListener(buttonsOnClickListener);
         loginBtn.setOnClickListener(buttonsOnClickListener);

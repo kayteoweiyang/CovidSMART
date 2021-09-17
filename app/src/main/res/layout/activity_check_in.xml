@@ -106,4 +106,13 @@
         app:layout_constraintTop_toBottomOf="@+id/headerCO"
         app:srcCompat="@drawable/ic_search" />
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="191dp"
+        android:layout_height="62dp"
+        android:layout_marginTop="36dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ripple" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
