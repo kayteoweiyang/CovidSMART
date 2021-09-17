@@ -48,10 +48,10 @@ public class MainActivity extends AppCompatActivity {
         String token =  prefs.getString("authToken", "");
         this.authToken = token;
 
-        if (!token.isEmpty()) {
-            Log.i("main", token);
-            redirectToHomePage();
-        }
+//        if (!token.isEmpty()) {
+//            Log.i("main", token);
+//            redirectToHomePage();
+//        }
 
         initAPICallback();
         checkMyPermission();

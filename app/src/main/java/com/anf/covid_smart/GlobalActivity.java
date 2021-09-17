@@ -23,7 +23,7 @@ import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 public class GlobalActivity extends AppCompatActivity {
-    TextView totalCasesTxt, totalDeathsTxt, txtView6, txtView8, txtView9;
+    TextView totalCasesTxt, totalDeathsTxt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +33,6 @@ public class GlobalActivity extends AppCompatActivity {
 
         totalCasesTxt = findViewById(R.id.totalCasesTxt);
         totalDeathsTxt = findViewById(R.id.totalDeathsTxt);
-        txtView6 = findViewById(R.id.textView6);
-        txtView8 = findViewById(R.id.textView8);
-        txtView9 = findViewById(R.id.textView9);
 
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
