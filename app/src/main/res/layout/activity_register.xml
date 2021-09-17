@@ -8,6 +8,28 @@
 
 
     <EditText
+        android:id="@+id/firstnameReg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleReg" />
+
+    <EditText
         android:id="@+id/icReg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -40,19 +62,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.13" />
+        app:layout_constraintVertical_bias="0.085" />
 
     <EditText
-        android:id="@+id/nameReg"
+        android:id="@+id/lastnameReg"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="15dp"
         android:layout_marginEnd="32dp"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:hint="Username"
+        android:hint="Last Name"
         android:inputType="textPersonName"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
@@ -60,8 +82,9 @@
         android:paddingBottom="10dp"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleReg" />
+        app:layout_constraintTop_toBottomOf="@+id/firstnameReg" />
 
     <EditText
         android:id="@+id/emailReg"
@@ -78,9 +101,9 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/nameReg"
-        app:layout_constraintStart_toStartOf="@+id/nameReg"
-        app:layout_constraintTop_toBottomOf="@+id/nameReg" />
+        app:layout_constraintEnd_toEndOf="@+id/lastnameReg"
+        app:layout_constraintStart_toStartOf="@+id/lastnameReg"
+        app:layout_constraintTop_toBottomOf="@+id/lastnameReg" />
 
     <EditText
         android:id="@+id/passwordReg"
@@ -125,7 +148,7 @@
         android:id="@+id/registerbtnReg"
         android:layout_width="208dp"
         android:layout_height="52dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="76dp"
         android:fontFamily="@font/aldrich"
         android:text="Register"
         app:layout_constraintEnd_toEndOf="@+id/cpasswordReg"
@@ -143,6 +166,7 @@
         android:text="Already Have an Account?"
         android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="@+id/registerbtnReg"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintStart_toStartOf="@+id/registerbtnReg"
         app:layout_constraintTop_toBottomOf="@+id/registerbtnReg" />
 

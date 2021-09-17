@@ -144,7 +144,7 @@
         android:layout_marginTop="28dp"
         app:layout_constraintStart_toStartOf="@+id/headerHome1"
         app:layout_constraintTop_toBottomOf="@+id/headerHome1"
-        app:srcCompat="@android:drawable/checkbox_on_background" />
+        app:srcCompat="@drawable/ic_vaccine_status_not" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -155,6 +155,6 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/headerHome1"
-        app:srcCompat="@android:drawable/checkbox_on_background" />
+        app:srcCompat="@drawable/ic_vaccine_status_not" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

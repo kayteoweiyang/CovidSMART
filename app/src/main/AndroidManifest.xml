@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".GlobalActivity"></activity>
+        <activity android:name=".OrgHomeActivity"></activity>
+        <activity android:name=".GlobalActivity" />
         <activity android:name=".NearMe" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".CheckOut" />

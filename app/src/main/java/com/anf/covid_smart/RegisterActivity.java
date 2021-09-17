@@ -3,7 +3,6 @@ package com.anf.covid_smart;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -35,7 +34,7 @@ public class RegisterActivity extends AppCompatActivity {
         registerBtn = findViewById(R.id.registerbtnReg);
         backtologin = findViewById(R.id.tologinbtnReg);
 
-        regName = findViewById(R.id.nameReg);
+        regName = findViewById(R.id.lastnameReg);
         regEmail = findViewById(R.id.emailReg);
         regIC = findViewById(R.id.icReg);
         regPw = findViewById(R.id.passwordReg);
@@ -69,6 +68,8 @@ public class RegisterActivity extends AppCompatActivity {
     private void checkRegister() {
         String nric = regIC.getText().toString();
         String password = regPw.getText().toString();
+        String cpw = regConfirmPw.getText().toString();
+
         // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
         // Parameters need to be in JSON format
@@ -81,7 +82,8 @@ public class RegisterActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         // Tag is to differentiate the response inside the callback method.
-        apiService.postMethod("auth","/authentication/register.php", postData);
+        apiService.postMethod("auth", "/authentication/register.php", postData);
+
     }
 
     // Callback method for api calls. Response will be inside here.

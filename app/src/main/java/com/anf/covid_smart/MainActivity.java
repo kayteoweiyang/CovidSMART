@@ -111,7 +111,10 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.putString("authToken", token);
                 editor.apply();
+
+                homeIntent.putExtra("token", token);
                 startActivity(homeIntent);
+
             } else {
                 Toast.makeText(MainActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();
             }

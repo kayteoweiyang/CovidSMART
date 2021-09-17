@@ -18,30 +18,49 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.skyfishjy.library.RippleBackground;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 import java.util.Locale;
 
 public class CheckIn extends AppCompatActivity implements LocationListener {
+    public static final String MY_PREFS_NAME = "AUTH_TOKEN";
 
-    ImageView checkinImg;
+    IResponse mResponseCallback = null;
+    APIService apiService;
+    ImageView checkinImg, searchImg;
     LocationManager locationManager;
+    EditText postal;
     TextView addressTV;
     TextView latlongTV;
     TextView resultTV;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check_in);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null)
+        {
+            token = extras.getString("token");
+            Toast.makeText(CheckIn.this, "Token exists", Toast.LENGTH_LONG).show();
+        }
+
         checkinImg = findViewById(R.id.checkInImage);
+        searchImg = findViewById(R.id.searchCI);
+        postal = findViewById(R.id.addressCI);
         //addressTV = findViewById(R.id.locationCI);
         //latlongTV = findViewById(R.id.latlongCI);
         //resultTV = findViewById(R.id.resultCI);
@@ -90,6 +109,8 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
                     Toast.makeText(CheckIn.this, "Get Current Location", Toast.LENGTH_LONG).show();
                     getLocation();
                     break;
+                case R.id.searchCI:
+                    getaddress();
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());
             }
@@ -105,6 +126,10 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
         }
     }
 
+    private void getaddress() {
+        String postalcode = postal.getText().toString();
+
+    }
     @SuppressLint("MissingPermission")
     private void getLocation() {
         try
@@ -124,6 +149,7 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
             String address = addresses.get(0).getAddressLine(0);
 
+            checkinLocation(address, location.getLatitude(), location.getLongitude());
             //addressTV.setText(address);
             //latlongTV.setText("Latitude: "+location.getLatitude()+" , Longitude : "+location.getLongitude());
             //resultTV.setText("Check in Successfully");
@@ -132,9 +158,58 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
             e.printStackTrace();
         }
     }
+
+    private void checkinLocation(String addr, Double lat, Double lng) {
+
+        // Init a new api service instance
+        apiService = new APIService(mResponseCallback, this);
+        // Parameters need to be in JSON format
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("address", addr);
+            postData.put("lat", lat);
+            postData.put("lng", lng);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        // Tag is to differentiate the response inside the callback method.
+        apiService.postMethod("auth", "/user/check.php", postData);
+
+    }
+
+    // Callback method for api calls. Response will be inside here.
+    void initAPICallback(){
+        mResponseCallback = new IResponse() {
+            @Override
+            public void notifySuccess(String tag, JSONObject response) {
+                switch (tag) {
+                    case "auth":
+                        responseSuccess(response);
+                }
+            }
+            @Override
+            public void notifyError(String tag, VolleyError error) {
+                //Toast.makeText(RegisterActivity.this, "Something went wrong, please try again!", Toast.LENGTH_LONG).show();
+                Toast.makeText(CheckIn.this, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        };
+    }
+
+    private void responseSuccess(JSONObject response) {
+        try {
+            Boolean isSuccessful = response.getBoolean(("success"));
+            if (isSuccessful) {
+                Toast.makeText(CheckIn.this, response.getString(("message")), Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(CheckIn.this, response.getString(("message")), Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
     @Override
     public void onStatusChanged(String provider, int status, Bundle extras) {
-
     }
 
     @Override

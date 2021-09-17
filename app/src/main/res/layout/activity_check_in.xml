@@ -96,7 +96,7 @@
         app:menu="@menu/menu_navigation" />
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/searchCI"
         android:layout_width="53dp"
         android:layout_height="50dp"
         android:layout_marginStart="17dp"

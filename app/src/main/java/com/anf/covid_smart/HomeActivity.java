@@ -15,12 +15,18 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeActivity extends AppCompatActivity{
 
     Button registerbtn, bookingbtn, checkinbtn, checkoutbtn, nearmebtn, globalbtn;
-
+    String token;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        Bundle extras = getIntent().getExtras();
+        if(extras != null)
+        {
+            token = extras.getString("token");
+            Toast.makeText(HomeActivity.this, "Token exists", Toast.LENGTH_LONG).show();
+        }
         registerbtn = findViewById(R.id.registervaccineHome);
         bookingbtn = findViewById(R.id.booktestingHome);
         checkinbtn = findViewById(R.id.checkinHome);
@@ -76,6 +82,7 @@ public class HomeActivity extends AppCompatActivity{
                 case R.id.checkinHome:
                     Toast.makeText(HomeActivity.this, "Check IN", Toast.LENGTH_LONG).show();
                     Intent checkinIntent = new Intent(HomeActivity.this, CheckIn.class);
+                    checkinIntent.putExtra("token", token);
                     startActivity(checkinIntent);
                     break;
                 case R.id.checkoutHome:
