@@ -21,11 +21,11 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/headerCO"
-        app:layout_constraintTop_toBottomOf="@+id/headerCO" />
+        app:layout_constraintStart_toStartOf="@+id/headerCI"
+        app:layout_constraintTop_toBottomOf="@+id/headerCI" />
 
     <TextView
-        android:id="@+id/headerCO"
+        android:id="@+id/headerCI"
         android:layout_width="327dp"
         android:layout_height="38dp"
         android:layout_marginTop="84dp"
@@ -49,10 +49,10 @@
         android:text="Check In by Current Location : "
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/headerCO"
+        app:layout_constraintEnd_toEndOf="@+id/headerCI"
         app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="@+id/headerCO"
-        app:layout_constraintTop_toBottomOf="@+id/headerCO" />
+        app:layout_constraintStart_toStartOf="@+id/headerCI"
+        app:layout_constraintTop_toBottomOf="@+id/headerCI" />
 
 
     <com.skyfishjy.library.RippleBackground
@@ -103,7 +103,7 @@
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="@+id/headerCO"
         app:layout_constraintStart_toEndOf="@+id/addressCI"
-        app:layout_constraintTop_toBottomOf="@+id/headerCO"
+        app:layout_constraintTop_toBottomOf="@+id/headerCI"
         app:srcCompat="@drawable/ic_search" />
 
     <TextView
