@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     APIService apiService;
     Button loginBtn, registerBtn;
     EditText nricInput, passwordInput;
-
+    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         passwordInput = (EditText) findViewById(R.id.passwordMain);
 
         final List<String> types = Arrays.asList("Public User", "Healthcare User");
-        Spinner spinner = (Spinner) findViewById(R.id.usertypeMain);
+        spinner = findViewById(R.id.usertypeMain);
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.user_type_selected, types);
         // Specify the layout to use when the list of choices appears
@@ -103,22 +103,29 @@ public class MainActivity extends AppCompatActivity {
     private void login() {
         String nric = nricInput.getText().toString();
         String password = passwordInput.getText().toString();
+        Long ut = spinner.getSelectedItemId();
+        if(ut == 0) {
+            // Init a new api service instance
+            apiService = new APIService(mResponseCallback, this);
 
-        // Init a new api service instance
-        apiService = new APIService(mResponseCallback, this);
+            // Parameters need to be in JSON format
+            JSONObject postData = new JSONObject();
+            try {
+                postData.put("nric", nric);
+                postData.put("password", password);
 
-        // Parameters need to be in JSON format
-        JSONObject postData = new JSONObject();
-        try {
-            postData.put("nric", nric);
-            postData.put("password", password);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
 
-        } catch (JSONException e) {
-            e.printStackTrace();
+            // Tag is to differentiate the response inside the callback method.
+            apiService.postMethod("auth", "/authentication/login.php", postData);
         }
-
-        // Tag is to differentiate the response inside the callback method.
-        apiService.postMethod("auth","/authentication/login.php", postData);
+        else
+        {
+            Intent orgIntent = new Intent(MainActivity.this, OrgHomeActivity.class);
+            startActivity(orgIntent);
+        }
     }
 
     private void responseSuccess(JSONObject response) {

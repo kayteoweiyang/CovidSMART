@@ -22,7 +22,7 @@ public class RegisterActivity extends AppCompatActivity {
     APIService apiService;
     Button registerBtn;
     TextView backtologin;
-    EditText regName, regEmail, regIC, regPw, regConfirmPw;
+    EditText reglName, regfName, regEmail, regIC, regPw, regConfirmPw, regPhone, regAdd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,11 +34,14 @@ public class RegisterActivity extends AppCompatActivity {
         registerBtn = findViewById(R.id.registerbtnReg);
         backtologin = findViewById(R.id.tologinbtnReg);
 
-        regName = findViewById(R.id.lastnameReg);
+        regfName = findViewById(R.id.firstnameReg);
+        reglName = findViewById(R.id.lastnameReg);
         regEmail = findViewById(R.id.emailReg);
         regIC = findViewById(R.id.icReg);
         regPw = findViewById(R.id.passwordReg);
         regConfirmPw = findViewById(R.id.cpasswordReg);
+        regAdd = findViewById(R.id.addressReg);
+        regPhone = findViewById(R.id.phoneReg);
 
         registerBtn.setOnClickListener(buttonsOnClickListener);
         backtologin.setOnClickListener(buttonsOnClickListener);
@@ -68,7 +71,12 @@ public class RegisterActivity extends AppCompatActivity {
     private void checkRegister() {
         String nric = regIC.getText().toString();
         String password = regPw.getText().toString();
-        String cpw = regConfirmPw.getText().toString();
+        //String cpw = regConfirmPw.getText().toString();
+        String fname = regfName.getText().toString();
+        String lname = reglName.getText().toString();
+        String addr = regAdd.getText().toString();
+        String phone = regPhone.getText().toString();
+        String email = regEmail.getText().toString();
 
         // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
@@ -77,6 +85,11 @@ public class RegisterActivity extends AppCompatActivity {
         try {
             postData.put("nric", nric);
             postData.put("password", password);
+            postData.put("firstName", fname);
+            postData.put("lastName", lname);
+            postData.put("email", email);
+            postData.put("phone", phone);
+            postData.put("address", addr);
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -119,13 +132,13 @@ public class RegisterActivity extends AppCompatActivity {
         }
     }
     private Boolean validateName() {
-        String val = regName.getText().toString();
+        String val = reglName.getText().toString();
         if(val.isEmpty()) {
-            regName.setError("Field cannot be empty");
+            reglName.setError("Field cannot be empty");
             return false;
         }
         else {
-            regName.setError(null);
+            reglName.setError(null);
             return true;
         }
     }
