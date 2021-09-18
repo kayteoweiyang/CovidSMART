@@ -18,12 +18,13 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.w3c.dom.Text;
 
 public class GlobalActivity extends AppCompatActivity {
-    TextView totalCasesTxt, totalDeathsTxt;
+    TextView totalCasesTxt, totalDeathsTxt, sgActive, myActive, sgNew, myNew;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,11 @@ public class GlobalActivity extends AppCompatActivity {
 
         totalCasesTxt = findViewById(R.id.totalCasesTxt);
         totalDeathsTxt = findViewById(R.id.totalDeathsTxt);
-        
+        sgActive = findViewById(R.id.sg_active);
+        sgNew = findViewById(R.id.sg_new);
+        myActive = findViewById(R.id.my_active);
+        myNew = findViewById(R.id.my_new);
+
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
 
@@ -75,6 +80,24 @@ public class GlobalActivity extends AppCompatActivity {
                 try {
                     String resActiveCases = response.getJSONObject("Global").getString("TotalConfirmed");
                     String resClosedCases = response.getJSONObject("Global").getString("TotalDeaths");
+                    JSONArray countries = response.getJSONArray("Countries");
+                    for (int i = 0; i < countries.length(); i++)
+                    {
+                        JSONObject country = countries.getJSONObject(i);
+                        String C = country.getString("Country");
+                        String TC = country.getString("TotalConfirmed");
+                        String NC = country.getString("NewConfirmed");
+                        if(C.equals("Singapore"))
+                        {
+                            sgActive.setText(TC);
+                            sgNew.setText(NC);
+                        }
+                        else if (C.equals("Malaysia"))
+                        {
+                            myActive.setText(TC);
+                            myNew.setText(NC);
+                        }
+                    }
                     totalCasesTxt.setText(resActiveCases);
                     totalDeathsTxt.setText(resClosedCases);
 

@@ -57,7 +57,6 @@ public class RegisterActivity extends AppCompatActivity {
 
                     break;
                 case R.id.tologinbtnReg:
-                    Toast.makeText(RegisterActivity.this, "Back to Login", Toast.LENGTH_LONG).show();
                     Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                     startActivity(mainIntent);
                     finish();
