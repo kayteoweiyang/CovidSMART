@@ -24,7 +24,6 @@ public class ProfileActivity extends AppCompatActivity {
 
     IResponse mResponseCallback = null;
     APIService apiService;
-    String token;
     TextView fname, lname, addr, email, mobile, ic;
 
     @Override
@@ -33,12 +32,6 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         initAPICallback();
-        Bundle extras = getIntent().getExtras();
-        if(extras != null)
-        {
-            token = extras.getString("token");
-            Toast.makeText(ProfileActivity.this, "Token exists", Toast.LENGTH_LONG).show();
-        }
 
         fname = findViewById(R.id.fnameProfile);
         lname = findViewById(R.id.lnameProfile);
@@ -56,17 +49,16 @@ public class ProfileActivity extends AppCompatActivity {
                 switch(menuItem.getItemId()){
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                        overridePendingTransition(0,0);
-                        finish();
+                        Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
+                        homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeintent);
                         return true;
                     case R.id.nav_alert:
                         return true;
                     case R.id.nav_logout:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
+                        Intent logout = new Intent(getApplicationContext(), MainActivity.class);
+                        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(logout);
                 }
                 return false;
             }
@@ -92,7 +84,6 @@ public class ProfileActivity extends AppCompatActivity {
                 email.setText(userinfo.getString("email"));
                 mobile.setText(userinfo.getString("phone"));
                 addr.setText(userinfo.getString("address"));
-
             }
             else {
                 Toast.makeText(ProfileActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();

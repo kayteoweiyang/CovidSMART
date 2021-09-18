@@ -44,7 +44,6 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
     TextView addressTV;
     TextView latlongTV;
     TextView resultTV;
-    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,12 +51,6 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
         setContentView(R.layout.activity_check_in);
 
         initAPICallback();
-        Bundle extras = getIntent().getExtras();
-        if(extras != null)
-        {
-            token = extras.getString("token");
-            Toast.makeText(CheckIn.this, "Token exists", Toast.LENGTH_LONG).show();
-        }
 
         checkinImg = findViewById(R.id.checkInImage);
         searchImg = findViewById(R.id.searchCI);
@@ -83,17 +76,21 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
                 switch(menuItem.getItemId()){
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                        overridePendingTransition(0,0);
-                        finish();
+                        Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
+                        homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeintent);
                         return true;
                     case R.id.nav_alert:
                         return true;
                     case R.id.nav_profile:
+                        Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(profile);
+                        finish();
                         return true;
                     case R.id.nav_logout:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        Intent logout = new Intent(getApplicationContext(), MainActivity.class);
+                        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(logout);
                         return true;
                 }
                 return false;

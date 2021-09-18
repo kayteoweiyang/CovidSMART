@@ -24,22 +24,22 @@ public class OrgHomeActivity extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
 
-                    case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                        overridePendingTransition(0,0);
-                        finish();
-                        return true;
                     case R.id.nav_alert:
                         return true;
                     case R.id.nav_profile:
                         return true;
                     case R.id.nav_logout:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        Intent logout = new Intent(getApplicationContext(), MainActivity.class);
+                        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(logout);
                         return true;
                 }
                 return false;
             }
         });
+    }
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
     }
 }

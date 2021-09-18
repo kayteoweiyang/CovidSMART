@@ -90,6 +90,19 @@ public class MainActivity extends AppCompatActivity {
         loginBtn.setOnClickListener(buttonsOnClickListener);
     }
 
+    int counter = 0;
+    @Override
+    public void onBackPressed() {
+        counter++;
+        if(counter == 1)
+        {
+            Toast.makeText(MainActivity.this, "Press back button twice to exit the app", Toast.LENGTH_LONG).show();
+        }
+        if(counter == 2)
+        {
+            super.onBackPressed();
+        }
+    }
     private View.OnClickListener buttonsOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -100,7 +113,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.registerbtnMain:
                     Intent registerIntent = new Intent(MainActivity.this, RegisterActivity.class);
                     startActivity(registerIntent);
-                    //break;
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());
@@ -147,7 +159,6 @@ public class MainActivity extends AppCompatActivity {
                 editor.putString("authToken", token);
                 editor.apply();
 
-                homeIntent.putExtra("token", token);
                 startActivity(homeIntent);
 
             } else {

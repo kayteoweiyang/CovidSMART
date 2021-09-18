@@ -30,11 +30,9 @@ public class GlobalActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_global);
 
-
         totalCasesTxt = findViewById(R.id.totalCasesTxt);
         totalDeathsTxt = findViewById(R.id.totalDeathsTxt);
-
-
+        
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
 
@@ -44,17 +42,21 @@ public class GlobalActivity extends AppCompatActivity {
                 switch(menuItem.getItemId()){
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                        overridePendingTransition(0,0);
-                        finish();
+                        Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
+                        homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeintent);
                         return true;
                     case R.id.nav_alert:
                         return true;
                     case R.id.nav_profile:
+                        Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(profile);
+                        finish();
                         return true;
                     case R.id.nav_logout:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        Intent logout = new Intent(getApplicationContext(), MainActivity.class);
+                        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(logout);
                         return true;
                 }
                 return false;
