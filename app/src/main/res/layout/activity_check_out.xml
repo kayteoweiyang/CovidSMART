@@ -83,10 +83,12 @@
         android:layout_width="106dp"
         android:layout_height="105dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="108dp"
         android:background="@drawable/ic_location"
         android:backgroundTint="@color/white"
-        app:srcCompat="@drawable/ic_checkout"
-        tools:layout_editor_absoluteX="152dp"
-        tools:layout_editor_absoluteY="350dp" />
+        app:layout_constraintEnd_toEndOf="@+id/header2CO"
+        app:layout_constraintStart_toStartOf="@+id/header2CO"
+        app:layout_constraintTop_toBottomOf="@+id/header2CO"
+        app:srcCompat="@drawable/ic_checkout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

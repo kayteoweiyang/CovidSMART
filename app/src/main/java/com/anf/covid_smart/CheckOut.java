@@ -31,11 +31,14 @@ public class CheckOut extends AppCompatActivity {
                     case R.id.nav_alert:
                         return true;
                     case R.id.nav_profile:
+                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
+                        overridePendingTransition(0,0);
+                        finish();
                         return true;
                     case R.id.nav_logout:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
-                        return true;
+                        Intent logout = new Intent(getApplicationContext(), MainActivity.class);
+                        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(logout);
                 }
                 return false;
             }

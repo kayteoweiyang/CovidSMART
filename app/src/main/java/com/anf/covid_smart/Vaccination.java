@@ -9,16 +9,15 @@ import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class NearMe extends AppCompatActivity {
+public class Vaccination extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_near_me);
+        setContentView(R.layout.activity_vaccination);
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
-
         btmNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -37,8 +36,9 @@ public class NearMe extends AppCompatActivity {
                         finish();
                         return true;
                     case R.id.nav_logout:
-                        startActivity(new Intent(getApplicationContext(),MainActivity.class));
-                        overridePendingTransition(0,0);
+                        Intent logout = new Intent(getApplicationContext(), MainActivity.class);
+                        logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(logout);
                         return true;
                 }
                 return false;
