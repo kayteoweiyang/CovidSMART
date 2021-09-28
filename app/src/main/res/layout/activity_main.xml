@@ -18,7 +18,7 @@
         app:srcCompat="@drawable/ic_coronavirus" />
 
     <EditText
-        android:id="@+id/nricMain"
+        android:id="@+id/nricUenMain"
         android:layout_width="236dp"
         android:layout_height="43dp"
         android:layout_marginTop="16dp"
@@ -39,10 +39,10 @@
         android:fontFamily="@font/aldrich"
         android:hint="Password"
         android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="@+id/nricMain"
+        app:layout_constraintEnd_toEndOf="@+id/nricUenMain"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/nricMain"
-        app:layout_constraintTop_toBottomOf="@+id/nricMain" />
+        app:layout_constraintStart_toStartOf="@+id/nricUenMain"
+        app:layout_constraintTop_toBottomOf="@+id/nricUenMain" />
 
     <Button
         android:id="@+id/loginbtnMain"

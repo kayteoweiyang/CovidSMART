@@ -1,18 +1,14 @@
 package com.anf.covid_smart;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,13 +33,12 @@ public class MainActivity extends AppCompatActivity {
     IResponse mResponseCallback = null;
     APIService apiService;
     Button loginBtn, registerBtn;
-    EditText nricInput, passwordInput;
+    EditText userInput, passwordInput;
     Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 //        if (!token.isEmpty()) {
 //            Log.i("main", token);
@@ -56,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         registerBtn = findViewById(R.id.registerbtnMain);
         loginBtn = findViewById(R.id.loginbtnMain);
 
-        nricInput = (EditText) findViewById(R.id.nricMain);
+        userInput = (EditText) findViewById(R.id.nricUenMain);
         passwordInput = (EditText) findViewById(R.id.passwordMain);
 
         final List<String> types = Arrays.asList("Public User", "Healthcare User");
@@ -72,16 +67,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if(spinner.getSelectedItemId() == 0) {
-                    nricInput.setHint("NRIC");
+                    userInput.setHint("NRIC");
                 }
                 else {
-                    nricInput.setHint("Company ID");
+                    userInput.setHint("UEN");
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {
-                nricInput.setHint("NRIC");
+                userInput.setHint("NRIC");
             }
 
         });
@@ -121,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
     };
 
     private void login() {
-        String nric = nricInput.getText().toString();
+        String user = userInput.getText().toString();
         String password = passwordInput.getText().toString();
         Long ut = spinner.getSelectedItemId();
         if(ut == 0) {
@@ -131,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
             // Parameters need to be in JSON format
             JSONObject postData = new JSONObject();
             try {
-                postData.put("nric", nric);
+                postData.put("nric", user);
                 postData.put("password", password);
 
             } catch (JSONException e) {
@@ -143,13 +138,30 @@ public class MainActivity extends AppCompatActivity {
         }
         else
         {
-            Intent orgIntent = new Intent(MainActivity.this, OrgHomeActivity.class);
-            startActivity(orgIntent);
+            // Init a new api service instance
+            apiService = new APIService(mResponseCallback, this);
+
+            // Parameters need to be in JSON format
+            JSONObject postData = new JSONObject();
+            try {
+                postData.put("uenNumber", user);
+                postData.put("password", password);
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            // Tag is to differentiate the response inside the callback method.
+            apiService.postMethod("auth", "/admin/login.php", postData);
+            //Intent orgIntent = new Intent(MainActivity.this, OrgHomeActivity.class);
+            //startActivity(orgIntent);
         }
     }
 
     private void responseSuccess(JSONObject response) {
+        Long ut = spinner.getSelectedItemId();
         Intent homeIntent = new Intent(MainActivity.this, HomeActivity.class);
+        Intent orgIntent = new Intent(MainActivity.this, OrgHomeActivity.class);
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
@@ -158,8 +170,13 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
                 editor.putString("authToken", token);
                 editor.apply();
-
-                startActivity(homeIntent);
+                if(ut == 0) {
+                    startActivity(homeIntent);
+                }
+                else
+                {
+                    startActivity(orgIntent);
+                }
 
             } else {
                 Toast.makeText(MainActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();

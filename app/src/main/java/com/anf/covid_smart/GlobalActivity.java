@@ -102,7 +102,6 @@ public class GlobalActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Log.i("response", response.toString());
 
             }
         }, new Response.ErrorListener() {
@@ -140,7 +139,6 @@ public class GlobalActivity extends AppCompatActivity {
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                Log.i("response", response.toString());
 
             }
         }, new Response.ErrorListener() {
