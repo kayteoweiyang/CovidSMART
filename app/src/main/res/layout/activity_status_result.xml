@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".StatusResult">
+
+    <ImageView
+        android:id="@+id/imgTestResult"
+        android:layout_width="78dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="125dp"
+        android:foregroundTint="#FFFFFF"
+        app:tint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/headerResult"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/headerResult"
+        app:layout_constraintTop_toBottomOf="@+id/headerResult"
+        app:srcCompat="@drawable/ic_test" />
+
+    <TextView
+        android:id="@+id/headerStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Vaccination Status"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.14"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/headerResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Overall Test Result"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.139"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/divider" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_navigation"
+        android:layout_width="414dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:background="@color/white"
+        app:itemTextColor="@drawable/selector"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/menu_navigation" />
+
+    <ImageView
+        android:id="@+id/imgVaccineStatus"
+        android:layout_width="78dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="22dp"
+        android:layout_marginEnd="125dp"
+        android:foregroundTint="#FFFFFF"
+        app:tint="@color/grey"
+        app:layout_constraintEnd_toEndOf="@+id/headerStatus"
+        app:layout_constraintStart_toStartOf="@+id/headerStatus"
+        app:layout_constraintTop_toBottomOf="@+id/headerStatus"
+        app:srcCompat="@drawable/ic_vaccines" />
+
+    <View
+        android:id="@+id/divider"
+        android:layout_width="404dp"
+        android:layout_height="1dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

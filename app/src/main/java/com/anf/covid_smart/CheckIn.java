@@ -88,9 +88,10 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
                         finish();
                         return true;
                     case R.id.nav_logout:
-                        Intent logout = new Intent(getApplicationContext(), MainActivity.class);
+                        Intent logout = new Intent(getApplicationContext(), Logout.class);
                         logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(logout);
+                        finish();
                         return true;
                 }
                 return false;

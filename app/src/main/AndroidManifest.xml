@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Logout"></activity>
+        <activity android:name=".StatusResult"></activity>
+        <activity android:name=".Logout" />
         <activity android:name=".Vaccination" />
         <activity android:name=".OrgHomeActivity" />
         <activity android:name=".GlobalActivity" />
