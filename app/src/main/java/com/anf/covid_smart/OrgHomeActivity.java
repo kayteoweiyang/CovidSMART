@@ -43,9 +43,9 @@ public class OrgHomeActivity extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
-                    case R.id.nav_alert:
+                    case R.id.nav_home:
                         return true;
-                    case R.id.nav_profile:
+                    case R.id.nav_alert:
                         return true;
                     case R.id.nav_logout:
                         Intent logout = new Intent(getApplicationContext(), Logout.class);
@@ -67,9 +67,21 @@ public class OrgHomeActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
+                case R.id.checkVaccineOrg:
+                    break;
+                case R.id.checkTestOrg:
+                    break;
+                case R.id.generateproofOrg:
+                    break;
+                case R.id.uploadResultOrg:
+                    break;
+                case R.id.activeStatusOrg:
+                    break;
                 case R.id.activeStatus2Org:
-                    Intent globalIntent = new Intent(OrgHomeActivity.this, GlobalActivity.class);
+                    Intent globalIntent = new Intent(OrgHomeActivity.this, GlobalActivityOrg.class);
                     startActivity(globalIntent);
+                    break;
+                case R.id.visitHistoryOrg:
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());

@@ -7,10 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.android.volley.RequestQueue;
@@ -23,22 +20,22 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
-public class GlobalActivity extends AppCompatActivity {
-    TextView totalCasesTxt, totalDeathsTxt;
+public class GlobalActivityOrg extends AppCompatActivity {
+
+    TextView totalCasesOrg, totalDeathsOrg;
     ListView listview;
     ArrayList<Country> countryList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_global);
+        setContentView(R.layout.activity_global_org);
 
-        totalCasesTxt = findViewById(R.id.totalCasesTxt);
-        totalDeathsTxt = findViewById(R.id.totalDeathsTxt);
-        listview = findViewById(R.id.countries_list);
+        totalCasesOrg = findViewById(R.id.totalCasesOrg);
+        totalDeathsOrg = findViewById(R.id.totalDeathsOrg);
+        listview = findViewById(R.id.countries_list_org);
 
 
 
@@ -51,16 +48,11 @@ public class GlobalActivity extends AppCompatActivity {
                 switch(menuItem.getItemId()){
 
                     case R.id.nav_home:
-                        Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
+                        Intent homeintent = new Intent(getApplicationContext(), OrgHomeActivity.class);
                         homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(homeintent);
                         return true;
                     case R.id.nav_alert:
-                        return true;
-                    case R.id.nav_profile:
-                        Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
-                        startActivity(profile);
-                        finish();
                         return true;
                     case R.id.nav_logout:
                         Intent logout = new Intent(getApplicationContext(), Logout.class);
@@ -94,9 +86,9 @@ public class GlobalActivity extends AppCompatActivity {
                         String NC = country.getString("NewConfirmed");
                         countryList.add(new Country(C,TC,NC));
                     }
-                    totalCasesTxt.setText(resActiveCases);
-                    totalDeathsTxt.setText(resClosedCases);
-                    CountryAdapter countryAdapter = new CountryAdapter(GlobalActivity.this, R.layout.countries_case, countryList);
+                    totalCasesOrg.setText(resActiveCases);
+                    totalDeathsOrg.setText(resClosedCases);
+                    CountryAdapter countryAdapter = new CountryAdapter(GlobalActivityOrg.this, R.layout.countries_case, countryList);
                     listview.setAdapter(countryAdapter);
 
                 } catch (JSONException e) {
@@ -133,7 +125,7 @@ public class GlobalActivity extends AppCompatActivity {
                         countryList.add(new Country(C,TC,NC));
                     }
 
-                    CountryAdapter countryAdapter = new CountryAdapter(GlobalActivity.this, R.layout.countries_case, countryList);
+                    CountryAdapter countryAdapter = new CountryAdapter(GlobalActivityOrg.this, R.layout.countries_case, countryList);
                     listview.setAdapter(countryAdapter);
 
                 } catch (JSONException e) {
