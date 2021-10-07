@@ -53,8 +53,6 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
         initAPICallback();
 
         checkinImg = findViewById(R.id.checkInImage);
-        searchImg = findViewById(R.id.searchCI);
-        postal = findViewById(R.id.addressCI);
         addressTV = findViewById(R.id.textView);
         //latlongTV = findViewById(R.id.latlongCI);
         //resultTV = findViewById(R.id.resultCI);
@@ -108,8 +106,6 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
                     Toast.makeText(CheckIn.this, "Get Current Location", Toast.LENGTH_LONG).show();
                     getLocation();
                     break;
-                case R.id.searchCI:
-                    getaddress();
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());
             }

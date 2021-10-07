@@ -68,9 +68,11 @@ public class MainActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 if(spinner.getSelectedItemId() == 0) {
                     userInput.setHint("NRIC");
+                    registerBtn.setEnabled(true);
                 }
                 else {
                     userInput.setHint("UEN");
+                    registerBtn.setEnabled(false);
                 }
             }
 
