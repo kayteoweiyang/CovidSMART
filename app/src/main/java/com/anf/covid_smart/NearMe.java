@@ -37,6 +37,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
     APIService apiService;
     ImageView refresh;
     LocationManager locationManager;
+    double getLat, getLong;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,6 +121,8 @@ public class NearMe extends AppCompatActivity implements LocationListener {
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
             String address = addresses.get(0).getAddressLine(0);
 
+            getLat = location.getLatitude();
+            getLong = location.getLongitude();
             //addressTV.setText("Check in successfully at " + address);
             //latlongTV.setText("Latitude: "+location.getLatitude()+" , Longitude : "+location.getLongitude());
             //resultTV.setText("Check in Successfully");
@@ -134,8 +137,17 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
 
+        JSONObject getData = new JSONObject();
+        try {
+            getData.put("lat", getLat);
+            getData.put("long", getLong);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         // Tag is to differentiate the response inside the callback method.
-        apiService.getMethod("auth", "/user/profile.php");
+        apiService.getMethod("auth", "/cases/nearby.php");
     }
 
     private void responseSuccess(JSONObject response) {
