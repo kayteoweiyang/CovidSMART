@@ -6,6 +6,34 @@
     android:layout_height="match_parent"
     tools:context=".CheckOut">
 
+    <com.skyfishjy.library.RippleBackground
+        android:id="@+id/ripple1"
+        android:layout_width="312dp"
+        android:layout_height="244dp"
+        android:layout_marginTop="72dp"
+        app:layout_constraintEnd_toEndOf="@+id/header2CO"
+        app:layout_constraintHorizontal_bias="0.466"
+        app:layout_constraintStart_toStartOf="@+id/header2CO"
+        app:layout_constraintTop_toBottomOf="@+id/header2CO"
+        app:rb_color="#009900"
+        app:rb_duration="3000"
+        app:rb_radius="40dp"
+        app:rb_rippleAmount="4"
+        app:rb_scale="3">
+
+        <ImageView
+            android:layout_marginTop="40sp"
+            android:id="@+id/checkOutImage"
+            android:layout_width="106dp"
+            android:layout_height="105dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginEnd="91dp"
+            android:background="@drawable/ic_checkout"
+            android:backgroundTint="@color/white"
+            app:srcCompat="@drawable/ic_checkout" />
+
+    </com.skyfishjy.library.RippleBackground>
+
     <TextView
         android:id="@+id/header2CO"
         android:layout_width="327dp"
@@ -32,19 +60,5 @@
         app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
-
-    <ImageView
-        android:id="@+id/checkInImage"
-        android:layout_width="106dp"
-        android:layout_height="105dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="104dp"
-        android:background="@drawable/ic_location"
-        android:backgroundTint="@color/white"
-        app:layout_constraintEnd_toEndOf="@+id/header2CO"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="@+id/header2CO"
-        app:layout_constraintTop_toBottomOf="@+id/header2CO"
-        app:srcCompat="@drawable/ic_checkout" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

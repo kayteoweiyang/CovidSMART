@@ -24,20 +24,21 @@
 
     <com.skyfishjy.library.RippleBackground
         android:id="@+id/ripple"
-        android:layout_width="278dp"
-        android:layout_height="183dp"
-        android:layout_marginTop="60dp"
+        android:layout_width="315dp"
+        android:layout_height="234dp"
+        android:layout_marginTop="72dp"
         app:layout_constraintEnd_toEndOf="@+id/header2CI"
         app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="@+id/header2CI"
         app:layout_constraintTop_toBottomOf="@+id/header2CI"
         app:rb_color="#009900"
         app:rb_duration="3000"
-        app:rb_radius="30dp"
-        app:rb_rippleAmount="3"
+        app:rb_radius="40dp"
+        app:rb_rippleAmount="4"
         app:rb_scale="3">
 
         <ImageView
+            android:layout_marginTop="40sp"
             android:id="@+id/checkInImage"
             android:layout_width="106dp"
             android:layout_height="105dp"

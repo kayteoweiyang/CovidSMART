@@ -38,7 +38,7 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
 
     IResponse mResponseCallback = null;
     APIService apiService;
-    ImageView checkinImg, searchImg;
+    ImageView checkinImg;
     LocationManager locationManager;
     EditText postal;
     TextView addressTV;
