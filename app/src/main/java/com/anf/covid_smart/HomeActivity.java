@@ -83,7 +83,8 @@ public class HomeActivity extends AppCompatActivity{
                     startActivity(checkoutIntent);
                     break;
                 case R.id.nearmeHome:
-                    //Toast.makeText(HomeActivity.this, "Near Me", Toast.LENGTH_LONG).show();
+                    Intent nearmeIntent = new Intent(HomeActivity.this, NearMe.class);
+                    startActivity(nearmeIntent);
                     break;
                 case R.id.globalHome:
                     Intent globalIntent = new Intent(HomeActivity.this, GlobalActivity.class);
