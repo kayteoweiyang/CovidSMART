@@ -98,11 +98,11 @@ public class ProfileActivity extends AppCompatActivity {
         // Parameters need to be in JSON format
         JSONObject postData = new JSONObject();
         try {
-            postData.put("firstName", fname);
-            postData.put("lastName", lname);
-            postData.put("email", email);
-            postData.put("phone", mobile);
-            postData.put("address", addr);
+            postData.put("firstName", fname.getText());
+            postData.put("lastName", lname.getText());
+            postData.put("email", email.getText());
+            postData.put("phone", mobile.getText());
+            postData.put("address", addr.getText());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -127,6 +127,13 @@ public class ProfileActivity extends AppCompatActivity {
             else {
                 Toast.makeText(ProfileActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();
             }
+            
+            if (response.getString("message") == "Profile updated successfully")
+            {
+                Toast.makeText(ProfileActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();
+            }
+
+
         } catch (JSONException e) {
             e.printStackTrace();
         }

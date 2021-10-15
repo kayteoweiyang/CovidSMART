@@ -66,7 +66,7 @@ public class APIService {
         }
     }
 
-    public void getMethod(String tag, String suffix, JSONObject sendObj){
+    public void getMethodwData(String tag, String suffix, JSONObject sendObj){
         String authToken = this.token;
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);
@@ -139,7 +139,7 @@ public class APIService {
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);
 
-            JsonObjectRequest jsonObj = new JsonObjectRequest(Request.Method.POST ,this.url.concat(suffix),sendObj, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObj = new JsonObjectRequest(Request.Method.PUT ,this.url.concat(suffix),sendObj, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     if(mResponseCallback != null)
