@@ -1,9 +1,7 @@
 package com.anf.covid_smart;
 
-import static android.content.Context.MODE_PRIVATE;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.util.Log;
 
 import com.android.volley.AuthFailureError;
@@ -12,7 +10,6 @@ import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.json.JSONObject;
@@ -66,12 +63,12 @@ public class APIService {
         }
     }
 
-    public void getMethodwData(String tag, String suffix, JSONObject sendObj){
+    public void getMethodwData(String tag, String suffix, String params){
         String authToken = this.token;
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);
 
-            JsonObjectRequest jsonObj = new JsonObjectRequest(this.url.concat(suffix), sendObj, new Response.Listener<JSONObject>() {
+            JsonObjectRequest jsonObj = new JsonObjectRequest(this.url.concat(suffix)+"?"+params, null, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     if(mResponseCallback != null)
@@ -136,6 +133,7 @@ public class APIService {
 
     public void putMethod(String tag, String suffix,JSONObject sendObj){
         String authToken = this.token;
+        Log.i("haha", sendObj.toString());
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);
 

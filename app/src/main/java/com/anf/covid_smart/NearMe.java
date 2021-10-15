@@ -28,8 +28,10 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
 
 public class NearMe extends AppCompatActivity implements LocationListener {
     public static final String MY_PREFS_NAME = "AUTH_TOKEN";
@@ -80,7 +82,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
             }
         });
         getLocation();
-        //getLocationAffected();
+        getLocationAffected();
     }
 
     private View.OnClickListener buttonsOnClickListener = new View.OnClickListener() {
@@ -141,19 +143,10 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
 
-        JSONObject getData = new JSONObject();
-        try {
-            Log.i("lat", String.valueOf(getLat));
-            Log.i("lat", String.valueOf(getLong));
-            getData.put("lat", getLat);
-            getData.put("lng", getLong);
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        String params = String.format("lat=%s&lng=%s", getLat, getLong);
 
         // Tag is to differentiate the response inside the callback method.
-        apiService.getMethodwData("auth", "/cases/nearby.php", getData);
+        apiService.getMethodwData("auth", "/cases/nearby.php", params);
     }
 
     private void responseSuccess(JSONObject response) {
@@ -183,7 +176,8 @@ public class NearMe extends AppCompatActivity implements LocationListener {
 
             @Override
             public void notifyError(String tag, VolleyError error) {
-                Toast.makeText(NearMe.this, "Something went wrong, please try again!", Toast.LENGTH_LONG).show();
+                Log.i("error", error.toString());
+                Toast.makeText(NearMe.this, error.toString(), Toast.LENGTH_LONG).show();
             }
         };
     }
