@@ -108,7 +108,7 @@ public class ProfileActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         // Tag is to differentiate the response inside the callback method.
-        apiService.postMethod("auth", "/user/profile.php", postData);
+        apiService.putMethod("auth", "/user/profile.php", postData);
 
     }
 

@@ -153,7 +153,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         }
 
         // Tag is to differentiate the response inside the callback method.
-        apiService.getMethodwData("auth", "/cases/nearby.php", getData);
+        apiService.getMethod("auth", "/cases/nearby.php", getData);
     }
 
     private void responseSuccess(JSONObject response) {

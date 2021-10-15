@@ -66,7 +66,7 @@ public class APIService {
         }
     }
 
-    public void getMethodwData(String tag, String suffix, JSONObject sendObj){
+    public void getMethod(String tag, String suffix, JSONObject sendObj){
         String authToken = this.token;
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);
@@ -100,6 +100,41 @@ public class APIService {
     }
 
     public void postMethod(String tag, String suffix,JSONObject sendObj){
+        String authToken = this.token;
+        try {
+            RequestQueue queue = Volley.newRequestQueue(mContext);
+
+            JsonObjectRequest jsonObj = new JsonObjectRequest(Request.Method.POST ,this.url.concat(suffix),sendObj, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    if(mResponseCallback != null)
+                        mResponseCallback.notifySuccess(tag, response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    if(mResponseCallback != null)
+                        mResponseCallback.notifyError(tag, error);
+                }
+            }) {
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("Authorization", "Bearer ".concat(authToken) );
+                    return params;
+                }
+            };
+
+
+
+            queue.add(jsonObj);
+
+        }catch(Exception e){
+
+        }
+    }
+
+    public void putMethod(String tag, String suffix,JSONObject sendObj){
         String authToken = this.token;
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);
