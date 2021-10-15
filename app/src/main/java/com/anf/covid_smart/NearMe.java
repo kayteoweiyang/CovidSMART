@@ -32,6 +32,7 @@ import java.util.List;
 import java.util.Locale;
 
 public class NearMe extends AppCompatActivity implements LocationListener {
+    public static final String MY_PREFS_NAME = "AUTH_TOKEN";
 
     IResponse mResponseCallback = null;
     APIService apiService;
@@ -45,7 +46,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         setContentView(R.layout.activity_near_me);
 
         initAPICallback();
-
+        checkMyPermission();
         refresh = findViewById(R.id.refreshNearme);
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -78,8 +79,8 @@ public class NearMe extends AppCompatActivity implements LocationListener {
                 return false;
             }
         });
-
-        getLocationAffected();
+        getLocation();
+        //getLocationAffected();
     }
 
     private View.OnClickListener buttonsOnClickListener = new View.OnClickListener() {
@@ -87,7 +88,8 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.refreshNearme:
-                    Toast.makeText(NearMe.this, "Getting current location", Toast.LENGTH_LONG).show();
+                    Toast.makeText(NearMe.this, String.valueOf(getLat), Toast.LENGTH_LONG).show();
+                    getLocationAffected();
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());
@@ -131,7 +133,9 @@ public class NearMe extends AppCompatActivity implements LocationListener {
             e.printStackTrace();
         }
     }
-
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+    }
     private void getLocationAffected()
     {
         // Init a new api service instance
@@ -139,22 +143,25 @@ public class NearMe extends AppCompatActivity implements LocationListener {
 
         JSONObject getData = new JSONObject();
         try {
+            Log.i("lat", String.valueOf(getLat));
+            Log.i("lat", String.valueOf(getLong));
             getData.put("lat", getLat);
-            getData.put("long", getLong);
+            getData.put("lng", getLong);
 
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
         // Tag is to differentiate the response inside the callback method.
-        apiService.getMethod("auth", "/cases/nearby.php");
+        apiService.getMethodwData("auth", "/cases/nearby.php", getData);
     }
 
     private void responseSuccess(JSONObject response) {
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
-                Log.i("Testing", "Test");
+                JSONObject caseinfo = response.getJSONObject("cases");
+                Log.i("ci", caseinfo.getString("address"));
             }
             else {
                 Toast.makeText(NearMe.this, response.getString(("message")), Toast.LENGTH_LONG).show();

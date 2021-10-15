@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,7 @@ public class ProfileActivity extends AppCompatActivity {
     IResponse mResponseCallback = null;
     APIService apiService;
     TextView fname, lname, addr, email, mobile, ic;
+    Button btnupdate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +35,9 @@ public class ProfileActivity extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         initAPICallback();
+
+        btnupdate = findViewById(R.id.updatebtnProfile);
+        btnupdate.setOnClickListener(buttonsOnClickListener);
 
         fname = findViewById(R.id.fnameProfile);
         lname = findViewById(R.id.lnameProfile);
@@ -65,12 +71,45 @@ public class ProfileActivity extends AppCompatActivity {
         });
     }
 
+    private View.OnClickListener buttonsOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.updatebtnProfile:
+                    Toast.makeText(ProfileActivity.this, "Update Profile", Toast.LENGTH_LONG).show();
+                    updateProfile();
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + v.getId());
+            }
+        }
+    };
     private void setProfileInformation() {
         // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
 
         // Tag is to differentiate the response inside the callback method.
         apiService.getMethod("auth", "/user/profile.php");
+    }
+
+    private void updateProfile() {
+        // Init a new api service instance
+        apiService = new APIService(mResponseCallback, this);
+        // Parameters need to be in JSON format
+        JSONObject postData = new JSONObject();
+        try {
+            postData.put("firstName", fname);
+            postData.put("lastName", lname);
+            postData.put("email", email);
+            postData.put("phone", mobile);
+            postData.put("address", addr);
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        // Tag is to differentiate the response inside the callback method.
+        apiService.postMethod("auth", "/user/profile.php", postData);
+
     }
 
     private void responseSuccess(JSONObject response) {

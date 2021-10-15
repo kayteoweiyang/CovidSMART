@@ -66,7 +66,7 @@ public class APIService {
         }
     }
 
-    public void getMethod(String tag, String suffix, JSONObject sendObj){
+    public void getMethodwData(String tag, String suffix, JSONObject sendObj){
         String authToken = this.token;
         try {
             RequestQueue queue = Volley.newRequestQueue(mContext);

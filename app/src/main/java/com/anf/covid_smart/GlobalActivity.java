@@ -77,7 +77,6 @@ public class GlobalActivity extends AppCompatActivity {
         //getGlobalCases();
     }
     private void getTotalCases() {
-        Log.i("inside","inside");
         RequestQueue queue = Volley.newRequestQueue(this);
         JsonObjectRequest jsonObj = new JsonObjectRequest("https://api.covid19api.com/summary", null, new Response.Listener<JSONObject>() {
             @Override

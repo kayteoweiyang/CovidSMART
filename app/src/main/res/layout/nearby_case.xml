@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+        <TextView
+            android:id="@+id/n_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Hello"
+            android:textSize="20dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/n_active_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/n_name"
+            android:layout_marginLeft="10dp"
+            android:text="Active Cases : "
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/n_active_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/n_name"
+            android:layout_toRightOf="@+id/n_active_title"
+            android:text=" 10000 "
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/n_new_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/n_active_title"
+            android:layout_marginLeft="10dp"
+            android:text="New Cases : "
+            android:textSize="12dp"/>
+
+        <TextView
+            android:id="@+id/n_new_num"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/n_new_title"
+            android:layout_below="@+id/n_active_num"
+            android:text=" 10000 "
+            android:textSize="12dp"/>
+    </RelativeLayout>
+</LinearLayout>

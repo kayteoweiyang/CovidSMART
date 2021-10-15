@@ -44,6 +44,8 @@ public class HomeActivity extends AppCompatActivity{
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.nav_alert:
+                        Intent alertAct = new Intent(HomeActivity.this, AlertActivity.class);
+                        startActivity(alertAct);
                         return true;
                     case R.id.nav_profile:
                         Intent profileAct = new Intent(HomeActivity.this, ProfileActivity.class);
