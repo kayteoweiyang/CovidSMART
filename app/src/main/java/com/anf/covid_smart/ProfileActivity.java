@@ -137,6 +137,16 @@ public class ProfileActivity extends AppCompatActivity {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        try {
+            Log.i("message", response.getString("message"));
+            if (response.getString("message").equalsIgnoreCase("Profile updated successfully")) {
+                Toast.makeText(ProfileActivity.this, response.getString("message"), Toast.LENGTH_LONG).show();
+            }
+        }
+        catch(JSONException e){
+
+        }
     }
     // Callback method for api calls. Response will be inside here.
     void initAPICallback(){
