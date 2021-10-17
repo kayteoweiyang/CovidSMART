@@ -46,6 +46,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
     LocationManager locationManager;
     ListView listView;
     double getLat, getLong;
+    String getAddr;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,7 +98,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.refreshNearme:
-                    Toast.makeText(NearMe.this, String.valueOf(getLat), Toast.LENGTH_LONG).show();
+                    Toast.makeText(NearMe.this, String.valueOf(getAddr), Toast.LENGTH_LONG).show();
                     getLocationAffected();
                     break;
                 default:
@@ -130,10 +131,10 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         try {
             Geocoder geocoder = new Geocoder(NearMe.this, Locale.getDefault());
             List<Address> addresses = geocoder.getFromLocation(location.getLatitude(), location.getLongitude(), 1);
-            String address = addresses.get(0).getAddressLine(0);
 
             getLat = location.getLatitude();
             getLong = location.getLongitude();
+            getAddr = addresses.get(0).getAddressLine(0);
             //addressTV.setText("Check in successfully at " + address);
             //latlongTV.setText("Latitude: "+location.getLatitude()+" , Longitude : "+location.getLongitude());
             //resultTV.setText("Check in Successfully");
@@ -150,11 +151,11 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
 
-        //String params = String.format("lat=%s&lng=%s", getLat, getLong);
+        String params = String.format("lat=%s&lng=%s", getLat, getLong);
 
-        double lt = 1.3399695429738987;
-        double lg = 103.70668678294591;
-        String params = String.format("lat=%s&lng=%s", lt, lg);
+        //double lt = 1.3399695429738987;
+        //double lg = 103.70668678294591;
+        //String params = String.format("lat=%s&lng=%s", lt, lg);
 
         // Tag is to differentiate the response inside the callback method.
         apiService.getMethodwData("auth", "/cases/nearby.php", params);
@@ -166,8 +167,9 @@ public class NearMe extends AppCompatActivity implements LocationListener {
             if (isSuccessful) {
                 ArrayList<String> addr = new ArrayList<String>();
                 JSONArray caseinfo = response.getJSONArray("nearbyCases");
+                Log.i("count", String.valueOf(caseinfo));
                 for (int i = 0; i < caseinfo.length(); i++) {
-                    JSONObject info = caseinfo.getJSONObject(1);
+                    JSONObject info = caseinfo.getJSONObject(i);
                     addr.add(info.getString("address"));
                 }
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(NearMe.this, android.R.layout.simple_list_item_1, addr);
