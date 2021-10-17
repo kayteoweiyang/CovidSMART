@@ -46,6 +46,10 @@ public class OrgHomeActivity extends AppCompatActivity {
                     case R.id.nav_home:
                         return true;
                     case R.id.nav_alert:
+                        Intent alert = new Intent(getApplicationContext(), AlertActivityOrg.class);
+                        alert.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(alert);
+                        finish();
                         return true;
                     case R.id.nav_logout:
                         Intent logout = new Intent(getApplicationContext(), Logout.class);

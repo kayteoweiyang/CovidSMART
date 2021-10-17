@@ -58,8 +58,13 @@ public class ProfileActivity extends AppCompatActivity {
                         Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
                         homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(homeintent);
+                        finish();
                         return true;
                     case R.id.nav_alert:
+                        Intent alertIntent = new Intent(getApplicationContext(), AlertActivity.class);
+                        alertIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(alertIntent);
+                        finish();
                         return true;
                     case R.id.nav_logout:
                         Intent logout = new Intent(getApplicationContext(), MainActivity.class);
