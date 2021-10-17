@@ -42,8 +42,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AlertActivity extends AppCompatActivity {
     ListView sg_rss, int_rss;
-    ArrayList<String> titles;
-    ArrayList<String> links;
+    ArrayList<String> titles, titles_i;
+    ArrayList<String> links, links_i;
     TabHost tabhost;
     AsyncTask mtask;
     @Override
@@ -55,7 +55,9 @@ public class AlertActivity extends AppCompatActivity {
         int_rss = findViewById(R.id.tab2_list);
 
         titles = new ArrayList<String>();
+        titles_i = new ArrayList<String>();
         links = new ArrayList<String>();
+        links_i  = new ArrayList<String>();
 
         tabhost = findViewById(R.id.tabhostAlert);
         tabhost.setup();
@@ -69,7 +71,6 @@ public class AlertActivity extends AppCompatActivity {
         tab2.setContent(R.id.tab_alert2);
         tab2.setIndicator("International");
         tabhost.addTab(tab2);
-
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_alert);
@@ -106,14 +107,24 @@ public class AlertActivity extends AppCompatActivity {
                 return false;
             }
         });
-        sg_rss.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        /*sg_rss.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Uri uri = Uri.parse(links.get(position));
                 Intent uriIntent = new Intent(Intent.ACTION_VIEW, uri);
                 startActivity(uriIntent);
             }
+        });*/
+        int_rss.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Uri uri = Uri.parse(links_i.get(position));
+                Intent uriIntent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(uriIntent);
+            }
         });
+
+
         mtask = new ProcessinBackground().execute();
 
     }
@@ -129,12 +140,12 @@ public class AlertActivity extends AppCompatActivity {
 
     public class ProcessinBackground extends AsyncTask<Integer, Void, Exception> {
         Exception exception = null;
-
+        //by singapore
         @Override
         protected Exception doInBackground(Integer... integers) {
             Log.i("RSS", "In Background...");
             try {
-                URL url = new URL("https://www.travel-advisory.info/rss");
+                URL url = new URL("https://www.mfa.gov.sg/rss/travel-advisories");
 
                 XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
                 factory.setNamespaceAware(true);
@@ -174,9 +185,48 @@ public class AlertActivity extends AppCompatActivity {
                 exception = e;
                 Log.i("RSS", String.valueOf(exception));
             }
+            //for international
+            try {
+                URL url_i = new URL("https://www.travel-advisory.info/rss");
 
+                XmlPullParserFactory i_factory = XmlPullParserFactory.newInstance();
+                i_factory.setNamespaceAware(true);
+                XmlPullParser xpp1 = i_factory.newPullParser();
+                xpp1.setInput(getInputStream(url_i), "UTF_8");
 
+                boolean insideItem = false;
+                int eventType = xpp1.getEventType();
 
+                while (eventType != XmlPullParser.END_DOCUMENT) {
+                    Log.i("Item", String.valueOf(xpp1.getName()));
+                    if (eventType == XmlPullParser.START_TAG) {
+                        Log.i("StartTag", String.valueOf(xpp1.getName()));
+                        if (xpp1.getName().equalsIgnoreCase("item")) {
+                            insideItem = true;
+                        } else if (xpp1.getName().equalsIgnoreCase("title")) {
+                            if (insideItem == true) {
+                                titles_i.add(xpp1.nextText());
+                            }
+                        } else if (xpp1.getName().equalsIgnoreCase("link")) {
+                            if (insideItem == true) {
+                                links_i.add(xpp1.nextText());
+                            }
+                        }
+                    } else if (eventType == XmlPullParser.END_TAG && xpp1.getName().equalsIgnoreCase("item")) {
+                        insideItem = false;
+                    }
+                    eventType = xpp1.nextToken();
+                }
+            } catch (MalformedURLException e) {
+                exception = e;
+                Log.i("RSS", String.valueOf(exception));
+            } catch (IOException e) {
+                exception = e;
+                Log.i("RSS", String.valueOf(exception));
+            } catch (XmlPullParserException e) {
+                exception = e;
+                Log.i("RSS", String.valueOf(exception));
+            }
 
             return exception;
         }
@@ -186,7 +236,9 @@ public class AlertActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(AlertActivity.this, android.R.layout.simple_list_item_1, titles);
-            int_rss.setAdapter(adapter);
+            sg_rss.setAdapter(adapter);
+            ArrayAdapter<String> adapter_i = new ArrayAdapter<String>(AlertActivity.this, android.R.layout.simple_list_item_1, titles_i);
+            int_rss.setAdapter(adapter_i);
             Log.i("RSS", "Done");
         }
     }
