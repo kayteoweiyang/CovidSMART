@@ -113,7 +113,6 @@ public class AlertActivity extends AppCompatActivity {
                 startActivity(uriIntent);
             }
         });
-
         mtask = new ProcessinBackground().execute();
 
     }
@@ -126,15 +125,9 @@ public class AlertActivity extends AppCompatActivity {
             return null;
         }
     }
-    public class ProcessinBackground extends AsyncTask<Integer, Void, Exception> {
-        ProgressDialog progressDialog = new ProgressDialog(AlertActivity.this);
-        Exception exception = null;
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            Log.i("RSS", "Loading Rss...");
-        }
+    public class ProcessinBackground extends AsyncTask<Integer, Void, Exception> {
+        Exception exception = null;
 
         @Override
         protected Exception doInBackground(Integer... integers) {
@@ -150,6 +143,7 @@ public class AlertActivity extends AppCompatActivity {
                 boolean insideItem = false;
                 int eventType = xpp.getEventType();
                 Log.i("RSS", String.valueOf(eventType));
+
                 while (eventType != XmlPullParser.END_DOCUMENT) {
                     Log.i("Item", String.valueOf(xpp.getName()));
                     if (eventType == XmlPullParser.START_TAG) {
@@ -168,7 +162,6 @@ public class AlertActivity extends AppCompatActivity {
                     } else if (eventType == XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item")) {
                         insideItem = false;
                     }
-                    xpp.next();
                 }
             } catch (MalformedURLException e) {
                 exception = e;
