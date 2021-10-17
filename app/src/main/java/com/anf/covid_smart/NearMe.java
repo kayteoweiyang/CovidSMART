@@ -143,7 +143,11 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
 
-        String params = String.format("lat=%s&lng=%s", getLat, getLong);
+        //String params = String.format("lat=%s&lng=%s", getLat, getLong);
+
+        double lt = 1.3399695429738987;
+        double lg = 103.70668678294591;
+        String params = String.format("lat=%s&lng=%s", lt, lg);
 
         // Tag is to differentiate the response inside the callback method.
         apiService.getMethodwData("auth", "/cases/nearby.php", params);
