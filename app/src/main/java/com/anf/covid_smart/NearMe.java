@@ -60,15 +60,15 @@ public class NearMe extends AppCompatActivity implements LocationListener {
                 switch (menuItem.getItemId()) {
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(), HomeActivity.class));
-                        overridePendingTransition(0, 0);
-                        finish();
+                        Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
+                        homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeintent);
                         return true;
                     case R.id.nav_alert:
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
-                        overridePendingTransition(0, 0);
+                        Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        startActivity(profile);
                         finish();
                         return true;
                     case R.id.nav_logout:
@@ -157,7 +157,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
-                JSONObject caseinfo = response.getJSONObject("cases");
+                JSONObject caseinfo = response.getJSONObject("nearbyCases");
                 Log.i("ci", caseinfo.getString("address"));
             }
             else {

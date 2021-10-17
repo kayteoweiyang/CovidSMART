@@ -28,7 +28,6 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
 
-
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
@@ -46,6 +45,7 @@ public class AlertActivity extends AppCompatActivity {
     ArrayList<String> titles;
     ArrayList<String> links;
     TabHost tabhost;
+    AsyncTask mtask;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,6 +82,8 @@ public class AlertActivity extends AppCompatActivity {
                         Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
                         homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(homeintent);
+                        mtask.cancel(true);
+                        finish();
                         return true;
                     case R.id.nav_alert:
                         return true;
@@ -108,6 +110,9 @@ public class AlertActivity extends AppCompatActivity {
                 startActivity(uriIntent);
             }
         });
+
+        mtask = new ProcessinBackground().execute();
+
     }
     public InputStream getInputStream (URL url)
     {
@@ -135,7 +140,7 @@ public class AlertActivity extends AppCompatActivity {
                 URL url = new URL("https://www.travel-advisory.info/rss");
 
                 XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-                factory.setNamespaceAware(true);
+                factory.setNamespaceAware(false);
                 XmlPullParser xpp = factory.newPullParser();
                 xpp.setInput(getInputStream(url), "UTF_8");
 
@@ -143,7 +148,9 @@ public class AlertActivity extends AppCompatActivity {
                 int eventType = xpp.getEventType();
                 Log.i("RSS", String.valueOf(eventType));
                 while (eventType != XmlPullParser.END_DOCUMENT) {
+                    Log.i("Item", String.valueOf(xpp.getName()));
                     if (eventType == XmlPullParser.START_TAG) {
+                        Log.i("StartTag", String.valueOf(xpp.getName()));
                         if (xpp.getName().equalsIgnoreCase("item")) {
                             insideItem = true;
                         } else if (xpp.getName().equalsIgnoreCase("title")) {
@@ -160,7 +167,6 @@ public class AlertActivity extends AppCompatActivity {
                     }
                     xpp.next();
                 }
-                Log.i("RSS", String.valueOf(titles.size()));
             } catch (MalformedURLException e) {
                 exception = e;
                 Log.i("RSS", String.valueOf(exception));
@@ -182,6 +188,7 @@ public class AlertActivity extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(AlertActivity.this, android.R.layout.simple_list_item_1, titles);
             sg_rss.setAdapter(adapter);
 
+            Log.i("RSS", String.valueOf(titles.size()));
 
             Log.i("RSS", "Done");
         }
