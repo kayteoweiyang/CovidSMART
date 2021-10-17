@@ -15,7 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".AlertActivityOrg"></activity>
+        <activity android:name=".ActiveStatus"></activity>
+        <activity android:name=".PublicUserHistory" />
+        <activity android:name=".AlertActivityOrg" />
         <activity android:name=".AlertActivity" />
         <activity android:name=".GlobalActivityOrg" />
         <activity android:name=".StatusResult" />

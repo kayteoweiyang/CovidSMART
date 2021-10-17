@@ -80,12 +80,16 @@ public class OrgHomeActivity extends AppCompatActivity {
                 case R.id.uploadResultOrg:
                     break;
                 case R.id.activeStatusOrg:
+                    Intent asIntent = new Intent(OrgHomeActivity.this, ActiveStatus.class);
+                    startActivity(asIntent);
                     break;
                 case R.id.activeStatus2Org:
                     Intent globalIntent = new Intent(OrgHomeActivity.this, GlobalActivityOrg.class);
                     startActivity(globalIntent);
                     break;
                 case R.id.visitHistoryOrg:
+                    Intent visitIntent = new Intent(OrgHomeActivity.this, PublicUserHistory.class);
+                    startActivity(visitIntent);
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());
