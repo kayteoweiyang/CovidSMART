@@ -41,7 +41,7 @@ import java.util.ArrayList;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class AlertActivity extends AppCompatActivity {
-    ListView sg_rss;
+    ListView sg_rss, int_rss;
     ArrayList<String> titles;
     ArrayList<String> links;
     TabHost tabhost;
@@ -52,6 +52,7 @@ public class AlertActivity extends AppCompatActivity {
         setContentView(R.layout.activity_alert);
 
         sg_rss = findViewById(R.id.tab1_list);
+        int_rss = findViewById(R.id.tab2_list);
 
         titles = new ArrayList<String>();
         links = new ArrayList<String>();
@@ -136,13 +137,12 @@ public class AlertActivity extends AppCompatActivity {
                 URL url = new URL("https://www.travel-advisory.info/rss");
 
                 XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-                factory.setNamespaceAware(false);
+                factory.setNamespaceAware(true);
                 XmlPullParser xpp = factory.newPullParser();
                 xpp.setInput(getInputStream(url), "UTF_8");
 
                 boolean insideItem = false;
                 int eventType = xpp.getEventType();
-                Log.i("RSS", String.valueOf(eventType));
 
                 while (eventType != XmlPullParser.END_DOCUMENT) {
                     Log.i("Item", String.valueOf(xpp.getName()));
@@ -162,6 +162,7 @@ public class AlertActivity extends AppCompatActivity {
                     } else if (eventType == XmlPullParser.END_TAG && xpp.getName().equalsIgnoreCase("item")) {
                         insideItem = false;
                     }
+                    eventType = xpp.nextToken();
                 }
             } catch (MalformedURLException e) {
                 exception = e;
@@ -174,6 +175,9 @@ public class AlertActivity extends AppCompatActivity {
                 Log.i("RSS", String.valueOf(exception));
             }
 
+
+
+
             return exception;
         }
 
@@ -182,10 +186,7 @@ public class AlertActivity extends AppCompatActivity {
             super.onPostExecute(s);
 
             ArrayAdapter<String> adapter = new ArrayAdapter<String>(AlertActivity.this, android.R.layout.simple_list_item_1, titles);
-            sg_rss.setAdapter(adapter);
-
-            Log.i("RSS", String.valueOf(titles.size()));
-
+            int_rss.setAdapter(adapter);
             Log.i("RSS", "Done");
         }
     }

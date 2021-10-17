@@ -82,16 +82,9 @@
                     android:orientation="vertical">
 
                     <ListView
-                        android:id="@+id/inter_alert_list"
-                        android:layout_width="408dp"
-                        android:layout_height="440dp"
-                        android:layout_marginStart="18dp"
-                        android:layout_marginBottom="24dp"
-                        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-                        app:layout_constraintEnd_toEndOf="@+id/headerGlobal3"
-                        app:layout_constraintHorizontal_bias="0.614"
-                        app:layout_constraintStart_toStartOf="@+id/headerGlobal3"
-                        tools:listitem="@layout/countries_case" />
+                        android:id="@+id/tab2_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
 
                 </LinearLayout>
 
