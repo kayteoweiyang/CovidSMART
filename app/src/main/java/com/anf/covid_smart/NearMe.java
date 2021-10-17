@@ -18,16 +18,20 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -40,6 +44,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
     APIService apiService;
     ImageView refresh;
     LocationManager locationManager;
+    ListView listView;
     double getLat, getLong;
 
     @Override
@@ -50,6 +55,8 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         initAPICallback();
         checkMyPermission();
         refresh = findViewById(R.id.refreshNearme);
+        listView = findViewById(R.id.location_list);
+
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
 
@@ -157,8 +164,14 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
-                JSONObject caseinfo = response.getJSONObject("nearbyCases");
-                Log.i("ci", caseinfo.getString("address"));
+                ArrayList<String> addr = new ArrayList<String>();
+                JSONArray caseinfo = response.getJSONArray("nearbyCases");
+                for (int i = 0; i < caseinfo.length(); i++) {
+                    JSONObject info = caseinfo.getJSONObject(1);
+                    addr.add(info.getString("address"));
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(NearMe.this, android.R.layout.simple_list_item_1, addr);
+                listView.setAdapter(adapter);
             }
             else {
                 Toast.makeText(NearMe.this, response.getString(("message")), Toast.LENGTH_LONG).show();

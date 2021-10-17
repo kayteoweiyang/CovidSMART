@@ -82,7 +82,10 @@ public class AlertActivity extends AppCompatActivity {
                         Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
                         homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(homeintent);
-                        mtask.cancel(true);
+                        if(!mtask.isCancelled()) {
+                            Log.i("cancellation", "true");
+                            mtask.cancel(true);
+                        }
                         finish();
                         return true;
                     case R.id.nav_alert:
