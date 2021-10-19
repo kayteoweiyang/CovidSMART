@@ -108,15 +108,21 @@ public class PublicUserHistory extends AppCompatActivity {
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
-                ArrayList<String> addr = new ArrayList<String>();
+                ArrayList<Records> rec = new ArrayList<>();
                 JSONArray records = response.getJSONArray("records");
-                Log.i("count", String.valueOf(records));
                 for (int i = 0; i < records.length(); i++) {
-                    JSONObject info = records.getJSONObject(i);
-                    addr.add(info.getString("address"));
+                    JSONObject record = records.getJSONObject(i);
+                    String A = record.getString("address");
+                    String D = record.getString("DATE(datetime)");
+                    String T = record.getString("TIME(datetime)");
+                    rec.add(new Records(A,D,T));
+
+
+                    //JSONObject info = records.getJSONObject(i);
+                    //addr.add(info.getString("address"));
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(PublicUserHistory.this, android.R.layout.simple_list_item_1, addr);
-                listView.setAdapter(adapter);
+                RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
+                listView.setAdapter(recordAdapter);
             }
             else {
                 Toast.makeText(PublicUserHistory.this, response.getString(("message")), Toast.LENGTH_LONG).show();
