@@ -42,7 +42,7 @@
         android:ems="10"
         android:fontFamily="@font/aldrich"
         android:hint="NRIC"
-        android:inputType="textPersonName"
+        android:inputType="textShortMessage"
         app:layout_constraintEnd_toEndOf="@+id/headerPUH"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/headerPUH"
