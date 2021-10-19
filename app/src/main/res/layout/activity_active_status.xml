@@ -40,14 +40,14 @@
         android:layout_marginStart="56dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/aldrich"
-        android:text="Total Cases"
+        android:text="Total Location"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerAS" />
 
     <TextView
-        android:id="@+id/sgConfirmOrg"
+        android:id="@+id/sgLocOrg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"
@@ -63,14 +63,14 @@
         android:layout_marginTop="12dp"
         android:layout_marginEnd="56dp"
         android:fontFamily="@font/aldrich"
-        android:text=" Total Deaths"
+        android:text=" Total Count"
         android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerAS" />
 
     <TextView
-        android:id="@+id/sgDeathsOrg"
+        android:id="@+id/sgCountOrg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="13dp"

@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
@@ -20,16 +22,25 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.stream.IntStream;
+
 public class ActiveStatus extends AppCompatActivity {
 
-    TextView sgCasesOrg, sgDeathsOrg;
+    public static final String MY_PREFS_NAME = "AUTH_TOKEN";
+
+    IResponse mResponseCallback = null;
+    APIService apiService;
+
+    TextView sgLoc, sgCount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_status);
 
-        sgCasesOrg = findViewById(R.id.sgConfirmOrg);
-        sgDeathsOrg = findViewById(R.id.sgDeathsOrg);
+        initAPICallback();
+        sgLoc = findViewById(R.id.sgLocOrg);
+        sgCount = findViewById(R.id.sgCountOrg);
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -60,35 +71,63 @@ public class ActiveStatus extends AppCompatActivity {
                 return false;
             }
         });
-        getSGCases();
+        getActiveStatus();
     }
-    private void getSGCases() {
-        RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest jsonObj = new JsonObjectRequest("https://api.covid19api.com/summary", null, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                try {
-                    JSONArray countries = response.getJSONArray("Countries");
-                    for (int i = 0; i < countries.length(); i++)
-                    {
-                        JSONObject country = countries.getJSONObject(i);
-                        if(country.getString("Country").equalsIgnoreCase("Singapore")) {
-                            sgCasesOrg.setText(country.getString("TotalConfirmed"));
-                            sgDeathsOrg.setText(country.getString("TotalDeaths"));
-                        }
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+
+    private void getActiveStatus() {
+        // Init a new api service instance
+        apiService = new APIService(mResponseCallback, this);
+
+        // Tag is to differentiate the response inside the callback method.
+        apiService.getMethod("auth", "/cases/all.php");
+    }
+
+
+    private void responseSuccess(JSONObject response) {
+        try {
+            Boolean isSuccessful = response.getBoolean(("success"));
+            if (isSuccessful) {
+                ArrayList<String> addr = new ArrayList<String>();
+                ArrayList<Integer> count = new ArrayList<Integer>();
+                JSONArray records = response.getJSONArray("allCases");
+                for (int i = 0; i < records.length(); i++) {
+                    JSONObject record = records.getJSONObject(i);
+                    addr.add(record.getString("address"));
+                    count.add(Integer.valueOf(record.getString("COUNT(address)")));
                 }
-
+                Integer num = 0;
+                for(int i : count)
+                {
+                    num += i;
+                }
+                sgLoc.setText(String.valueOf(addr.size()));
+                sgCount.setText(String.valueOf(num));
+                //ArrayAdapter<String> adapter = new ArrayAdapter<String>(NearMe.this, android.R.layout.simple_list_item_1, addr);
+                //listView.setAdapter(adapter);
             }
-        }, new Response.ErrorListener() {
+            else {
+                Toast.makeText(ActiveStatus.this, response.getString(("message")), Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    // Callback method for api calls. Response will be inside here.
+    void initAPICallback(){
+        mResponseCallback = new IResponse() {
             @Override
-            public void onErrorResponse(VolleyError error) {
-                Log.i("error", error.toString());
-
+            public void notifySuccess(String tag, JSONObject response) {
+                switch (tag) {
+                    case "auth":
+                        responseSuccess(response);
+                }
             }
-        });
-        queue.add(jsonObj);
+
+            @Override
+            public void notifyError(String tag, VolleyError error) {
+                Log.i("error", error.toString());
+                Toast.makeText(ActiveStatus.this, error.toString(), Toast.LENGTH_LONG).show();
+            }
+        };
     }
 }

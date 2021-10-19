@@ -110,19 +110,24 @@ public class PublicUserHistory extends AppCompatActivity {
             if (isSuccessful) {
                 ArrayList<Records> rec = new ArrayList<>();
                 JSONArray records = response.getJSONArray("records");
-                for (int i = 0; i < records.length(); i++) {
-                    JSONObject record = records.getJSONObject(i);
-                    String A = record.getString("address");
-                    String D = record.getString("DATE(datetime)");
-                    String T = record.getString("TIME(datetime)");
-                    rec.add(new Records(A,D,T));
+                if(records.length() < 0) {
+                    for (int i = 0; i < records.length(); i++) {
+                        JSONObject record = records.getJSONObject(i);
+                        String A = record.getString("address");
+                        String D = record.getString("DATE(datetime)");
+                        String T = record.getString("TIME(datetime)");
+                        rec.add(new Records(A, D, T));
 
 
-                    //JSONObject info = records.getJSONObject(i);
-                    //addr.add(info.getString("address"));
+                        //JSONObject info = records.getJSONObject(i);
+                        //addr.add(info.getString("address"));
+                    }
+                    RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
+                    listView.setAdapter(recordAdapter);
                 }
-                RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
-                listView.setAdapter(recordAdapter);
+                else {
+                    Toast.makeText(PublicUserHistory.this, "No result found.", Toast.LENGTH_LONG).show();
+                }
             }
             else {
                 Toast.makeText(PublicUserHistory.this, response.getString(("message")), Toast.LENGTH_LONG).show();
