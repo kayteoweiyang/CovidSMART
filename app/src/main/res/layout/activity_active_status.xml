@@ -78,4 +78,13 @@
         app:layout_constraintEnd_toEndOf="@+id/subheader2"
         app:layout_constraintStart_toStartOf="@+id/subheader2"
         app:layout_constraintTop_toBottomOf="@+id/subheader2" />
+
+    <ListView
+        android:id="@+id/as_list"
+        android:layout_width="396dp"
+        android:layout_height="506dp"
+        android:layout_marginTop="83dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerAS" />
 </androidx.constraintlayout.widget.ConstraintLayout>

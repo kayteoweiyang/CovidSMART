@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -23,6 +25,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.IntStream;
 
 public class ActiveStatus extends AppCompatActivity {
@@ -31,7 +36,7 @@ public class ActiveStatus extends AppCompatActivity {
 
     IResponse mResponseCallback = null;
     APIService apiService;
-
+    ListView listView;
     TextView sgLoc, sgCount;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class ActiveStatus extends AppCompatActivity {
         initAPICallback();
         sgLoc = findViewById(R.id.sgLocOrg);
         sgCount = findViewById(R.id.sgCountOrg);
+        listView = findViewById(R.id.as_list);
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -87,23 +93,31 @@ public class ActiveStatus extends AppCompatActivity {
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
-                ArrayList<String> addr = new ArrayList<String>();
-                ArrayList<Integer> count = new ArrayList<Integer>();
+                List<Map<String, String>> data = new ArrayList<Map<String, String>>();
+                //ArrayList<String> addr = new ArrayList<String>();
+                ArrayList<String> count = new ArrayList<String>();
                 JSONArray records = response.getJSONArray("allCases");
                 for (int i = 0; i < records.length(); i++) {
                     JSONObject record = records.getJSONObject(i);
-                    addr.add(record.getString("address"));
-                    count.add(Integer.valueOf(record.getString("COUNT(address)")));
+                    Log.i("record",record.getString("address") );
+                    Map<String, String> datum = new HashMap<String, String>(2);
+                    datum.put("Address", "Address : " + record.getString("address"));
+                    datum.put("Count", "Number of Cases : " + record.getString("COUNT(address)"));
+                    data.add(datum);
+                    //addr.add(record.getString("address"));
+                    count.add(record.getString("COUNT(address)"));
                 }
                 Integer num = 0;
-                for(int i : count)
+                for(String i : count)
                 {
-                    num += i;
+                    num += Integer.valueOf(i);
                 }
-                sgLoc.setText(String.valueOf(addr.size()));
+                sgLoc.setText(String.valueOf(data.size()));
                 sgCount.setText(String.valueOf(num));
-                //ArrayAdapter<String> adapter = new ArrayAdapter<String>(NearMe.this, android.R.layout.simple_list_item_1, addr);
-                //listView.setAdapter(adapter);
+
+                SimpleAdapter adapter = new SimpleAdapter(ActiveStatus.this, data, android.R.layout.two_line_list_item, new String[] {"Address", "Count" },
+                        new int[] {android.R.id.text1, android.R.id.text2 });
+                listView.setAdapter(adapter);
             }
             else {
                 Toast.makeText(ActiveStatus.this, response.getString(("message")), Toast.LENGTH_LONG).show();
