@@ -3,6 +3,7 @@ package com.anf.covid_smart;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -10,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -24,6 +26,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class PublicUserHistory extends AppCompatActivity {
 
@@ -32,8 +35,13 @@ public class PublicUserHistory extends AppCompatActivity {
     IResponse mResponseCallback = null;
     APIService apiService;
     TextView et_nric, et_date;
-    ImageView btn_search;
+    ImageView btn_search, btn_calendar;
     ListView listView;
+    DatePickerDialog.OnDateSetListener setListener;
+    Calendar calendar = Calendar.getInstance();
+    final int year = calendar.get(Calendar.YEAR);
+    final int month = calendar.get(Calendar.MONTH);
+    final int day = calendar.get(Calendar.DAY_OF_MONTH);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +52,11 @@ public class PublicUserHistory extends AppCompatActivity {
         et_nric = findViewById(R.id.nricPUH);
         et_date = findViewById(R.id.datePUH);
         btn_search = findViewById(R.id.searchPUH);
+        btn_calendar = findViewById(R.id.calendarPUH);
         listView = findViewById(R.id.search_list);
+
+
+        btn_calendar.setOnClickListener(buttonsOnClickListener);
         btn_search.setOnClickListener(buttonsOnClickListener);
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -88,6 +100,18 @@ public class PublicUserHistory extends AppCompatActivity {
                     else {
                         Toast.makeText(PublicUserHistory.this, "Please key in a valid NRIC", Toast.LENGTH_LONG).show();
                     }
+                    break;
+                case R.id.calendarPUH:
+
+                    DatePickerDialog datePickerDialog = new DatePickerDialog(PublicUserHistory.this, new DatePickerDialog.OnDateSetListener() {
+                        @Override
+                        public void onDateSet(DatePicker view, int year, int month, int day) {
+                            month = month+1;
+                            String date = year + "-" + month + "-" + day;
+                            et_date.setText(date);
+                        }
+                    },year,month,day);
+                    datePickerDialog.show();
                     break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());

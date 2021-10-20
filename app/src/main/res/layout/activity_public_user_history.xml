@@ -7,6 +7,16 @@
     tools:context=".PublicUserHistory">
 
     <ImageView
+        android:id="@+id/calendarPUH"
+        android:layout_width="40dp"
+        android:layout_height="39dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toEndOf="@+id/datePUH"
+        app:layout_constraintTop_toBottomOf="@+id/nricPUH"
+        app:srcCompat="@drawable/ic_baseline_date_range_24" />
+
+    <ImageView
         android:id="@+id/searchPUH"
         android:layout_width="67dp"
         android:layout_height="61dp"
@@ -35,7 +45,7 @@
 
     <EditText
         android:id="@+id/datePUH"
-        android:layout_width="236dp"
+        android:layout_width="180dp"
         android:layout_height="43dp"
         android:layout_marginTop="80dp"
         android:layout_marginEnd="91dp"
