@@ -25,8 +25,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParsePosition;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 
 public class PublicUserHistory extends AppCompatActivity {
 
@@ -107,7 +110,7 @@ public class PublicUserHistory extends AppCompatActivity {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int day) {
                             month = month+1;
-                            String date = year + "-" + month + "-" + day;
+                            String date = year + "-" + String.format("%02d",month) + "-" + String.format("%02d",day);
                             et_date.setText(date);
                         }
                     },year,month,day);
@@ -134,17 +137,17 @@ public class PublicUserHistory extends AppCompatActivity {
             if (isSuccessful) {
                 ArrayList<Records> rec = new ArrayList<>();
                 JSONArray records = response.getJSONArray("records");
-                if(records.length() < 0) {
+                if(records.length() > 0) {
                     for (int i = 0; i < records.length(); i++) {
                         JSONObject record = records.getJSONObject(i);
                         String A = record.getString("address");
                         String D = record.getString("DATE(datetime)");
+                        //ParsePosition pos = new ParsePosition(0);
+                        //Date nD = new SimpleDateFormat("yyyy-MM-dd").parse(D,pos);
+                        //Date sD = new SimpleDateFormat("yyyy-MM-dd").parse(et_date.getText().toString(),pos);
                         String T = record.getString("TIME(datetime)");
                         rec.add(new Records(A, D, T));
 
-
-                        //JSONObject info = records.getJSONObject(i);
-                        //addr.add(info.getString("address"));
                     }
                     RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
                     listView.setAdapter(recordAdapter);
