@@ -72,12 +72,20 @@ public class OrgHomeActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.checkVaccineOrg:
+                    Intent vappointment = new Intent(OrgHomeActivity.this, AppointmentActivity.class);
+                    startActivity(vappointment);
                     break;
                 case R.id.checkTestOrg:
+                    Intent tappointment = new Intent(OrgHomeActivity.this, TestAppointment.class);
+                    startActivity(tappointment);
                     break;
                 case R.id.generateproofOrg:
+                    Intent vaccinecert = new Intent(OrgHomeActivity.this, VaccineCert.class);
+                    startActivity(vaccinecert);
                     break;
                 case R.id.uploadResultOrg:
+                    Intent cvresult = new Intent(OrgHomeActivity.this, CovidResult.class);
+                    startActivity(cvresult);
                     break;
                 case R.id.activeStatusOrg:
                     Intent asIntent = new Intent(OrgHomeActivity.this, ActiveStatus.class);
