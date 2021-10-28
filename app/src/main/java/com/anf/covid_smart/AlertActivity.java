@@ -90,10 +90,9 @@ public class AlertActivity extends AppCompatActivity {
                         }
                         finish();
                         return true;
-                    case R.id.nav_alert:
-                        return true;
                     case R.id.nav_profile:
                         Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(profile);
                         finish();
                         return true;

@@ -11,16 +11,14 @@ import android.widget.CalendarView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class Vaccination extends AppCompatActivity {
+public class CovidTest extends AppCompatActivity {
 
-    CalendarView cv;
+    CalendarView cvTest;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_vaccination);
-
-
-        cv = findViewById(R.id.calendarVaccine);
+        setContentView(R.layout.activity_covid_test);
+        cvTest = findViewById(R.id.calendarCVTest);
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
         btmNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -57,7 +55,7 @@ public class Vaccination extends AppCompatActivity {
             }
         });
 
-        cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+        cvTest.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String date = year + "/" + month + "/" + dayOfMonth;

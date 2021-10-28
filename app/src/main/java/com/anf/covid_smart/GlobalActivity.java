@@ -54,11 +54,17 @@ public class GlobalActivity extends AppCompatActivity {
                         Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
                         homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(homeintent);
+                        finish();
                         return true;
                     case R.id.nav_alert:
+                        Intent alertAct = new Intent(getApplicationContext(), AlertActivity.class);
+                        alertAct.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(alertAct);
+                        finish();
                         return true;
                     case R.id.nav_profile:
                         Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(profile);
                         finish();
                         return true;

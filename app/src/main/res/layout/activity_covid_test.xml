@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Vaccination">
+    tools:context=".CovidTest">
 
     <TextView
-        android:id="@+id/headerVaccination"
+        android:id="@+id/headerCVTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:text="Book for Vaccination"
+        android:text="Book for COVID Test"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -33,12 +33,12 @@
         app:menu="@menu/menu_navigation" />
 
     <CalendarView
-        android:id="@+id/calendarVaccine"
+        android:id="@+id/calendarCVTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="19dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
+        app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

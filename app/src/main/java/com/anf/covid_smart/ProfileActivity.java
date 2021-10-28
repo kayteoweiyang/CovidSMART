@@ -70,6 +70,8 @@ public class ProfileActivity extends AppCompatActivity {
                         Intent logout = new Intent(getApplicationContext(), MainActivity.class);
                         logout.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(logout);
+                        finish();
+                        return true;
                 }
                 return false;
             }

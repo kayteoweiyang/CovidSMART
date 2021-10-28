@@ -24,15 +24,21 @@ public class StatusResult extends AppCompatActivity {
                 switch(menuItem.getItemId()){
 
                     case R.id.nav_home:
-                        startActivity(new Intent(getApplicationContext(),HomeActivity.class));
-                        overridePendingTransition(0,0);
+                        Intent homeintent = new Intent(getApplicationContext(), HomeActivity.class);
+                        homeintent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(homeintent);
                         finish();
                         return true;
                     case R.id.nav_alert:
+                        Intent alertAct = new Intent(getApplicationContext(), AlertActivity.class);
+                        alertAct.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(alertAct);
+                        finish();
                         return true;
                     case R.id.nav_profile:
-                        startActivity(new Intent(getApplicationContext(),ProfileActivity.class));
-                        overridePendingTransition(0,0);
+                        Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(profile);
                         finish();
                         return true;
                     case R.id.nav_logout:

@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -15,11 +16,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class HomeActivity extends AppCompatActivity{
 
     Button registerbtn, bookingbtn, checkinbtn, checkoutbtn, nearmebtn, globalbtn;
+    ImageView vaccine, test;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        vaccine = findViewById(R.id.vaccineHome);
+        test = findViewById(R.id.testHome);
 
         registerbtn = findViewById(R.id.registervaccineHome);
         bookingbtn = findViewById(R.id.booktestingHome);
@@ -31,6 +36,8 @@ public class HomeActivity extends AppCompatActivity{
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
 
+        vaccine.setOnClickListener(buttonsOnClickListener);
+        test.setOnClickListener(buttonsOnClickListener);
         registerbtn.setOnClickListener(buttonsOnClickListener);
         bookingbtn.setOnClickListener(buttonsOnClickListener);
         checkinbtn.setOnClickListener(buttonsOnClickListener);
@@ -44,12 +51,16 @@ public class HomeActivity extends AppCompatActivity{
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
                 switch(menuItem.getItemId()){
                     case R.id.nav_alert:
-                        Intent alertAct = new Intent(HomeActivity.this, AlertActivity.class);
+                        Intent alertAct = new Intent(getApplicationContext(), AlertActivity.class);
+                        alertAct.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(alertAct);
+                        finish();
                         return true;
                     case R.id.nav_profile:
-                        Intent profileAct = new Intent(HomeActivity.this, ProfileActivity.class);
-                        startActivity(profileAct);
+                        Intent profile = new Intent(getApplicationContext(), ProfileActivity.class);
+                        profile.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(profile);
+                        finish();
                         return true;
                     case R.id.nav_logout:
                         Intent logout = new Intent(getApplicationContext(), Logout.class);
@@ -71,7 +82,8 @@ public class HomeActivity extends AppCompatActivity{
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.registervaccineHome:
-                    //Toast.makeText(HomeActivity.this, "Register Vaccine", Toast.LENGTH_LONG).show();
+                    Intent vaccineIntent = new Intent(HomeActivity.this, Vaccination.class);
+                    startActivity(vaccineIntent);
                     break;
                 case R.id.booktestingHome:
                     //Toast.makeText(HomeActivity.this, "Booking COVID Test", Toast.LENGTH_LONG).show();
@@ -92,6 +104,10 @@ public class HomeActivity extends AppCompatActivity{
                     Intent globalIntent = new Intent(HomeActivity.this, GlobalActivity.class);
                     startActivity(globalIntent);
                     break;
+                case R.id.vaccineHome:
+                case R.id.testHome:
+                    Intent statusIntent = new Intent(HomeActivity.this, StatusResult.class);
+                    startActivity(statusIntent);
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());
             }

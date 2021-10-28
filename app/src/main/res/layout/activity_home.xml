@@ -14,8 +14,8 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/aldrich"
         android:text="Register For Vaccination"
-        app:layout_constraintStart_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintStart_toStartOf="@+id/vaccineHome"
+        app:layout_constraintTop_toBottomOf="@+id/vaccineHome" />
 
     <Button
         android:id="@+id/checkoutHome"
@@ -73,10 +73,10 @@
         android:layout_marginTop="16dp"
         android:fontFamily="@font/aldrich"
         android:text="Book for COVID Test"
-        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintEnd_toEndOf="@+id/testHome"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/registervaccineHome"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
+        app:layout_constraintTop_toBottomOf="@+id/testHome" />
 
     <TextView
         android:id="@+id/headerHome1"
@@ -138,7 +138,7 @@
         app:menu="@menu/menu_navigation" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/vaccineHome"
         android:layout_width="150dp"
         android:layout_height="127dp"
         android:layout_marginTop="28dp"
@@ -147,13 +147,13 @@
         app:srcCompat="@drawable/ic_vaccine_status_not" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/testHome"
         android:layout_width="150dp"
         android:layout_height="127dp"
         android:layout_marginTop="28dp"
         app:layout_constraintEnd_toEndOf="@+id/headerHome1"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/vaccineHome"
         app:layout_constraintTop_toBottomOf="@+id/headerHome1"
         app:srcCompat="@drawable/ic_vaccine_status_not" />
 
