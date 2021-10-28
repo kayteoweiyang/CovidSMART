@@ -15,6 +15,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class Vaccination extends AppCompatActivity {
 
+    String selectedDate;
     CalendarView cv;
     Button btnregister;
     @Override
@@ -65,8 +66,8 @@ public class Vaccination extends AppCompatActivity {
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                String date = year + "/" + month + "/" + dayOfMonth;
-                Log.i("Date", date);
+                selectedDate = year + "-" + month + "-" + dayOfMonth;
+                Log.i("Date", selectedDate);
             }
         });
     }
@@ -76,6 +77,8 @@ public class Vaccination extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.bookVaccine:
                     Intent confirmationIntent = new Intent(Vaccination.this, ConfirmBooking.class);
+                    confirmationIntent.putExtra("date", selectedDate);
+                    confirmationIntent.putExtra("type", "Vaccination");
                     startActivity(confirmationIntent);
                     break;
                 default:
