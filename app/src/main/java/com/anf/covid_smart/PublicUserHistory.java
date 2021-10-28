@@ -142,13 +142,19 @@ public class PublicUserHistory extends AppCompatActivity {
                         JSONObject record = records.getJSONObject(i);
                         String A = record.getString("address");
                         String D = record.getString("DATE(datetime)");
-                        //ParsePosition pos = new ParsePosition(0);
-                        //Date nD = new SimpleDateFormat("yyyy-MM-dd").parse(D,pos);
-                        //Date sD = new SimpleDateFormat("yyyy-MM-dd").parse(et_date.getText().toString(),pos);
+                        ParsePosition pos = new ParsePosition(0);
+                        Date nD = new SimpleDateFormat("yyyy-MM-dd").parse(D,pos);
+                        Date sD = new SimpleDateFormat("yyyy-MM-dd").parse(et_date.getText().toString(),pos);
                         String T = record.getString("TIME(datetime)");
-                        rec.add(new Records(A, D, T));
-
+                        if(nD.after(sD)) {
+                            rec.add(new Records(A, D, T));
+                        }
+                        else if (nD.equals(sD))
+                        {
+                            rec.add(new Records(A, D, T));
+                        }
                     }
+
                     RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
                     listView.setAdapter(recordAdapter);
                 }
