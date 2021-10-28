@@ -1,10 +1,12 @@
 package com.anf.covid_smart;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -27,9 +29,12 @@ import org.json.JSONObject;
 
 import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 public class PublicUserHistory extends AppCompatActivity {
 
@@ -58,7 +63,7 @@ public class PublicUserHistory extends AppCompatActivity {
         btn_calendar = findViewById(R.id.calendarPUH);
         listView = findViewById(R.id.search_list);
 
-
+        et_date.setOnClickListener(buttonsOnClickListener);
         btn_calendar.setOnClickListener(buttonsOnClickListener);
         btn_search.setOnClickListener(buttonsOnClickListener);
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
@@ -104,8 +109,8 @@ public class PublicUserHistory extends AppCompatActivity {
                         Toast.makeText(PublicUserHistory.this, "Please key in a valid NRIC", Toast.LENGTH_LONG).show();
                     }
                     break;
+                case R.id.datePUH:
                 case R.id.calendarPUH:
-
                     DatePickerDialog datePickerDialog = new DatePickerDialog(PublicUserHistory.this, new DatePickerDialog.OnDateSetListener() {
                         @Override
                         public void onDateSet(DatePicker view, int year, int month, int day) {
@@ -131,6 +136,7 @@ public class PublicUserHistory extends AppCompatActivity {
         apiService.getMethodwData("auth", "/admin/checkinrecords.php", params);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     private void responseSuccess(JSONObject response) {
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
@@ -143,20 +149,28 @@ public class PublicUserHistory extends AppCompatActivity {
                         String A = record.getString("address");
                         String D = record.getString("DATE(datetime)");
                         ParsePosition pos = new ParsePosition(0);
-                        Date nD = new SimpleDateFormat("yyyy-MM-dd").parse(D,pos);
-                        Date sD = new SimpleDateFormat("yyyy-MM-dd").parse(et_date.getText().toString(),pos);
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
                         String T = record.getString("TIME(datetime)");
-                        if(nD.after(sD)) {
-                            rec.add(new Records(A, D, T));
+                        if(!et_date.getText().toString().equals("")) {
+                            LocalDate nD = LocalDate.parse(D, formatter);
+                            LocalDate sD = LocalDate.parse(et_date.getText().toString(), formatter);
+                            if(nD.isAfter(sD)) {
+                                rec.add(new Records(A, D, T));
+                            }
+                            else if (nD.isEqual(sD))
+                            {
+                                rec.add(new Records(A, D, T));
+                            }
                         }
-                        else if (nD.equals(sD))
+                        else if(et_date.getText().toString().equals(""))
                         {
                             rec.add(new Records(A, D, T));
                         }
                     }
-
-                    RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
-                    listView.setAdapter(recordAdapter);
+                    if(rec.size() > 0) {
+                        RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
+                        listView.setAdapter(recordAdapter);
+                    }
                 }
                 else {
                     Toast.makeText(PublicUserHistory.this, "No result found.", Toast.LENGTH_LONG).show();
@@ -172,6 +186,7 @@ public class PublicUserHistory extends AppCompatActivity {
     // Callback method for api calls. Response will be inside here.
     void initAPICallback(){
         mResponseCallback = new IResponse() {
+            @RequiresApi(api = Build.VERSION_CODES.O)
             @Override
             public void notifySuccess(String tag, JSONObject response) {
                 switch (tag) {
