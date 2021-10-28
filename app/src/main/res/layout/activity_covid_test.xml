@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".CovidTest">
 
+    <Button
+        android:id="@+id/bookCVTest"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="112dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Book"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarCVTest" />
+
     <TextView
         android:id="@+id/headerCVTest"
         android:layout_width="wrap_content"

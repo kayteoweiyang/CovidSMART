@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".Vaccination">
 
+    <Button
+        android:id="@+id/bookVaccine"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="114dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Book"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarVaccine" />
+
     <TextView
         android:id="@+id/headerVaccination"
         android:layout_width="wrap_content"

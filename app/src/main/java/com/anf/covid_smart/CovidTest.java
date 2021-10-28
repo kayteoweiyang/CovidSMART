@@ -7,6 +7,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -14,10 +16,15 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class CovidTest extends AppCompatActivity {
 
     CalendarView cvTest;
+    Button btnregister;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_covid_test);
+
+        btnregister = findViewById(R.id.bookCVTest);
+        btnregister.setOnClickListener(buttonsOnClickListener);
+
         cvTest = findViewById(R.id.calendarCVTest);
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -63,4 +70,17 @@ public class CovidTest extends AppCompatActivity {
             }
         });
     }
+    private View.OnClickListener buttonsOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.bookVaccine:
+                    Intent confirmationIntent = new Intent(CovidTest.this, ConfirmBooking.class);
+                    startActivity(confirmationIntent);
+                    break;
+                default:
+                    throw new IllegalStateException("Unexpected value: " + v.getId());
+            }
+        }
+    };
 }

@@ -15,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".CovidTest"></activity>
+        <activity android:name=".ConfirmBooking"></activity>
+        <activity android:name=".CovidTest" />
         <activity android:name=".ActiveStatus" />
         <activity android:name=".PublicUserHistory" />
         <activity android:name=".AlertActivityOrg" />
