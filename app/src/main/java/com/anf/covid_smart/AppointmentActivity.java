@@ -85,10 +85,12 @@ public class AppointmentActivity extends AppCompatActivity {
         apiService = new APIService(mResponseCallback, this);
 
         if(selectedtype.equalsIgnoreCase("Vaccination")) {
+            Log.i("Type", "Vaccination");
             apiService.getMethod("auth", "/admin/appointment/vaccination.php");
         }
         else
         {
+            Log.i("Type", "covidTest");
             apiService.getMethod("auth", "/admin/appointment/covidtest.php");
         }
     }

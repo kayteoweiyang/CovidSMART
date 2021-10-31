@@ -144,7 +144,7 @@ public class CovidTest extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()) {
-                case R.id.bookVaccine:
+                case R.id.bookCVTest:
                     Intent confirmationIntent = new Intent(CovidTest.this, ConfirmBooking.class);
                     confirmationIntent.putExtra("date", selectedDate);
                     confirmationIntent.putExtra("type", "Covidtest");
