@@ -6,28 +6,82 @@
     android:layout_height="match_parent"
     tools:context=".StatusResult">
 
+    <Button
+        android:id="@+id/booktestingStatus"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="544dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Book for COVID Test"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ImageView
-        android:id="@+id/imgTestResult"
+        android:id="@+id/imgResultStatus"
         android:layout_width="78dp"
         android:layout_height="72dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="28dp"
+        android:foregroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toEndOf="@+id/imgResultPic"
+        app:layout_constraintTop_toBottomOf="@+id/headerResult"
+        app:srcCompat="@drawable/ic_vaccine_status_not"
+        app:tint="@color/black" />
+
+    <Button
+        android:id="@+id/registervaccineStatus"
+        android:layout_width="150dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="244dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Register For Vaccination"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.892"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imgVaccineStatus"
+        android:layout_width="78dp"
+        android:layout_height="72dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="28dp"
+        android:foregroundTint="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.11"
+        app:layout_constraintStart_toEndOf="@+id/imgVaccinePic"
+        app:layout_constraintTop_toBottomOf="@+id/headerStatus"
+        app:srcCompat="@drawable/ic_vaccine_status_not"
+        app:tint="@color/black" />
+
+    <ImageView
+        android:id="@+id/imgResultPic"
+        android:layout_width="78dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="125dp"
         android:foregroundTint="#FFFFFF"
-        app:tint="@color/grey"
-        app:layout_constraintEnd_toEndOf="@+id/headerResult"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/headerResult"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.115"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerResult"
-        app:srcCompat="@drawable/ic_test" />
+        app:srcCompat="@drawable/ic_test"
+        app:tint="@color/black" />
 
     <TextView
         android:id="@+id/headerStatus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:text="Vaccination Status"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
+        android:text="Vaccination Status"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -41,9 +95,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Overall Test Result"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
+        android:text="Overall Test Result"
         android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
@@ -66,17 +120,18 @@
         app:menu="@menu/menu_navigation" />
 
     <ImageView
-        android:id="@+id/imgVaccineStatus"
+        android:id="@+id/imgVaccinePic"
         android:layout_width="78dp"
         android:layout_height="72dp"
-        android:layout_marginTop="22dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="125dp"
         android:foregroundTint="#FFFFFF"
-        app:tint="@color/grey"
-        app:layout_constraintEnd_toEndOf="@+id/headerStatus"
-        app:layout_constraintStart_toStartOf="@+id/headerStatus"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerStatus"
-        app:srcCompat="@drawable/ic_vaccines" />
+        app:srcCompat="@drawable/ic_vaccines"
+        app:tint="@color/black" />
 
     <View
         android:id="@+id/divider"

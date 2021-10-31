@@ -23,9 +23,10 @@ import org.json.JSONObject;
 public class ProfileActivity extends AppCompatActivity {
 
     public static final String MY_PREFS_NAME = "AUTH_TOKEN";
-
+    public static String authToken = "";
     IResponse mResponseCallback = null;
     APIService apiService;
+
     TextView fname, lname, addr, email, mobile, ic;
     Button btnupdate;
 
@@ -48,7 +49,7 @@ public class ProfileActivity extends AppCompatActivity {
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_profile);
-        setProfileInformation();
+        getProfileInformation();
         btmNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -91,7 +92,7 @@ public class ProfileActivity extends AppCompatActivity {
             }
         }
     };
-    private void setProfileInformation() {
+    private void getProfileInformation() {
         // Init a new api service instance
         apiService = new APIService(mResponseCallback, this);
 
@@ -146,7 +147,6 @@ public class ProfileActivity extends AppCompatActivity {
         }
 
         try {
-            Log.i("message", response.getString("message"));
             if (response.getString("message").equalsIgnoreCase("Profile updated successfully")) {
                 Toast.makeText(ProfileActivity.this, response.getString("message"), Toast.LENGTH_LONG).show();
             }

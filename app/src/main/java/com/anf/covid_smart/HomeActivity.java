@@ -5,15 +5,27 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.android.volley.VolleyError;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class HomeActivity extends AppCompatActivity{
+
+    public static final String MY_PREFS_NAME = "AUTH_TOKEN";
+    public static String authToken = "";
+    IResponse mResponseCallback = null;
+    APIService apiService;
+
+    String u_vaccination, u_covid;
 
     Button registerbtn, bookingbtn, checkinbtn, checkoutbtn, nearmebtn, globalbtn;
     ImageView vaccine, test;
@@ -22,6 +34,8 @@ public class HomeActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        initAPICallback();
 
         vaccine = findViewById(R.id.vaccineHome);
         test = findViewById(R.id.testHome);
@@ -45,6 +59,7 @@ public class HomeActivity extends AppCompatActivity{
         nearmebtn.setOnClickListener(buttonsOnClickListener);
         globalbtn.setOnClickListener(buttonsOnClickListener);
 
+        getProfileInformation();
 
         btmNavView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -108,11 +123,61 @@ public class HomeActivity extends AppCompatActivity{
                 case R.id.vaccineHome:
                 case R.id.testHome:
                     Intent statusIntent = new Intent(HomeActivity.this, StatusResult.class);
+                    statusIntent.putExtra("vaccine", u_vaccination);
+                    statusIntent.putExtra("cvresult", u_covid);
                     startActivity(statusIntent);
+                    break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + v.getId());
             }
         }
     };
+    private void getProfileInformation() {
+        // Init a new api service instance
+        apiService = new APIService(mResponseCallback, this);
+
+        // Tag is to differentiate the response inside the callback method.
+        apiService.getMethod("auth", "/user/profile.php");
+    }
+    private void responseSuccess(JSONObject response) {
+        try {
+            Boolean isSuccessful = response.getBoolean(("success"));
+            if (isSuccessful) {
+                JSONObject userinfo = response.getJSONObject("user");
+                u_vaccination = userinfo.getString("vaccination_status");
+                u_covid = userinfo.getString("covid_status");
+                if(u_vaccination.equals("1"))
+                {
+                    vaccine.setImageResource(R.drawable.ic_done);
+                }
+                else
+                {
+                    vaccine.setImageResource(R.drawable.ic_vaccine_status_not);
+                }
+            }
+            else {
+                Toast.makeText(HomeActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+    // Callback method for api calls. Response will be inside here.
+    void initAPICallback(){
+        mResponseCallback = new IResponse() {
+            @Override
+            public void notifySuccess(String tag, JSONObject response) {
+                switch (tag) {
+                    case "auth":
+                        responseSuccess(response);
+                }
+            }
+
+            @Override
+            public void notifyError(String tag, VolleyError error) {
+                Toast.makeText(HomeActivity.this, "Something went wrong, please try again!", Toast.LENGTH_LONG).show();
+            }
+        };
+    }
 
 }
