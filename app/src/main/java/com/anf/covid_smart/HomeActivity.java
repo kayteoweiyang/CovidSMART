@@ -86,7 +86,8 @@ public class HomeActivity extends AppCompatActivity{
                     startActivity(vaccineIntent);
                     break;
                 case R.id.booktestingHome:
-                    //Toast.makeText(HomeActivity.this, "Booking COVID Test", Toast.LENGTH_LONG).show();
+                    Intent testIntent = new Intent(HomeActivity.this, CovidTest.class);
+                    startActivity(testIntent);
                     break;
                 case R.id.checkinHome:
                     Intent checkinIntent = new Intent(HomeActivity.this, CheckIn.class);

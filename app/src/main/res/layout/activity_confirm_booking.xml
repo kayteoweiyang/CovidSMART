@@ -6,15 +6,59 @@
     android:layout_height="match_parent"
     tools:context=".ConfirmBooking">
 
+    <TextView
+        android:id="@+id/LocConfirm"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="316dp"
+        android:fontFamily="@font/aldrich"
+        android:shadowColor="@color/black"
+        android:text="Location : "
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerConfirm" />
+
+    <TextView
+        android:id="@+id/txtLocConfirm"
+        android:layout_width="180dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="26dp"
+        android:layout_marginTop="316dp"
+        android:fontFamily="@font/aldrich"
+        android:hint="Location"
+        android:shadowColor="@color/black"
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/typeConfirm"
+        app:layout_constraintTop_toBottomOf="@+id/headerConfirm" />
+
     <Button
         android:id="@+id/backConfirm"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="472dp"
+        android:layout_marginTop="500dp"
         android:fontFamily="@font/aldrich"
         android:text="Back"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerConfirm" />
+
+    <Button
+        android:id="@+id/bookConfirm"
+        android:layout_width="190dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="416dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Confirm and Back To Homepage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerConfirm" />
 
@@ -111,18 +155,6 @@
         android:textAlignment="textStart"
         android:textColor="@color/black"
         android:textSize="24sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerConfirm" />
-
-    <Button
-        android:id="@+id/bookConfirm"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="388dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Book"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerConfirm" />
 

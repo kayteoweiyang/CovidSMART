@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -28,6 +29,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -37,17 +39,35 @@ public class Vaccination extends AppCompatActivity {
     IResponse mResponseCallback = null;
     APIService apiService;
 
-    List<String> times;
-
+    ArrayList<String> times = new ArrayList<String>(12);
     String selectedDate;
+    String selectedtime;
+    String selectedloc;
+
+    Boolean firstnode = false;
+
     CalendarView cv;
     Button btnregister;
     Spinner spinner;
+    Spinner spinnerloc;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vaccination);
+
+        times.add("10:00:00");
+        times.add("10:30:00");
+        times.add("11:00:00");
+        times.add("11:30:00");
+        times.add("13:00:00");
+        times.add("13:30:00");
+        times.add("14:00:00");
+        times.add("14:30:00");
+        times.add("15:00:00");
+        times.add("15:30:00");
+        times.add("16:00:00");
+        times.add("16:30:00");
 
         btnregister = findViewById(R.id.bookVaccine);
         btnregister.setOnClickListener(buttonsOnClickListener);
@@ -56,9 +76,30 @@ public class Vaccination extends AppCompatActivity {
 
         cv = findViewById(R.id.calendarVaccine);
         cv.setMinDate((new Date().getTime() + 1));
+        cv.setEnabled(false);
 
-        times = Arrays.asList("10:00:00","10:30:00","11:00:00","11:30:00","13:00:00","13:30:00","14:00:00","14:30:00","15:00:00", "15:30:00","16:00:00","16:30:00", "17:00:00");
+        spinnerloc = findViewById(R.id.locVaccination);
         spinner = findViewById(R.id.timeVaccination);
+        getClinics();
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedtime = spinner.getSelectedItem().toString();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
+        spinnerloc.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                selectedloc = spinnerloc.getSelectedItem().toString();
+                cv.setEnabled(true);
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+            }
+        });
 
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
@@ -99,7 +140,7 @@ public class Vaccination extends AppCompatActivity {
         cv.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
-                selectedDate = year + "-" + month + "-" + dayOfMonth;
+                selectedDate = year + "-" + String.format("%02d",month+1) + "-" + String.format("%02d",dayOfMonth);
                 Log.i("Date", selectedDate);
                 checkTime();
             }
@@ -113,6 +154,8 @@ public class Vaccination extends AppCompatActivity {
                     Intent confirmationIntent = new Intent(Vaccination.this, ConfirmBooking.class);
                     confirmationIntent.putExtra("date", selectedDate);
                     confirmationIntent.putExtra("type", "Vaccination");
+                    confirmationIntent.putExtra("time", selectedtime);
+                    confirmationIntent.putExtra("location", selectedloc);
                     startActivity(confirmationIntent);
                     break;
                 default:
@@ -120,6 +163,11 @@ public class Vaccination extends AppCompatActivity {
             }
         }
     };
+
+    private void getClinics() {
+        apiService = new APIService(mResponseCallback, this);
+        apiService.getMethod("auth", "/appointment/clinics.php");
+    }
 
     private void checkTime() {
         // Init a new api service instance
@@ -132,26 +180,46 @@ public class Vaccination extends AppCompatActivity {
     private void responseSuccess(JSONObject response) {
         try {
             Boolean isSuccessful = response.getBoolean(("success"));
-            if (isSuccessful) {
-                ArrayList<String> ua = new ArrayList<>();
+            if (isSuccessful && firstnode == true) {
+                ArrayList<String> new_time = new ArrayList<String>(12);
+                for(int k = 0; k < times.size(); k++)
+                {
+                    new_time.add(times.get(k));
+                }
                 JSONArray unavail = response.getJSONArray("unavailableDates");
                 if(unavail.length() > 0)
                 {
                     for(int i = 0; i < unavail.length(); i++)
                     {
                         JSONObject datetime = unavail.getJSONObject(i);
-                        String date = datetime.getString("datetime").substring(0,9);
-                        String time = datetime.getString("datetime").substring(11,18);
-                        Log.i("Date-1", date);
-                        Log.i("Time-1", time);
+                        String date = datetime.getString("datetime").substring(0,10);
+                        String time = datetime.getString("datetime").substring(11,19);
+                        if(selectedDate.equalsIgnoreCase(date))
+                        {
+                            int index = new_time.indexOf(time);
+                            new_time.remove(index);
+                        }
                     }
                 }
 
-                ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.user_type_selected, times);
+                ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.user_type_selected, new_time);
                 adapter.setDropDownViewResource(R.layout.user_type_dropdown);
                 spinner.setAdapter(adapter);
-
-            } else {
+            }
+            else if(isSuccessful && firstnode == false)
+            {
+                firstnode = true;
+                ArrayList<String> clinic_list = new ArrayList<String>();
+                JSONArray clinics = response.getJSONArray("clinics");
+                for(int i = 0; i < clinics.length(); i++) {
+                    JSONObject clinic = clinics.getJSONObject(i);
+                    clinic_list.add(clinic.getString("name"));
+                }
+                ArrayAdapter adapter_loc = new ArrayAdapter(getApplicationContext(), R.layout.user_type_selected, clinic_list);
+                adapter_loc.setDropDownViewResource(R.layout.user_type_dropdown);
+                spinnerloc.setAdapter(adapter_loc);
+            }
+            else {
                 Toast.makeText(Vaccination.this, response.getString(("message")), Toast.LENGTH_LONG).show();
             }
         } catch (JSONException e) {

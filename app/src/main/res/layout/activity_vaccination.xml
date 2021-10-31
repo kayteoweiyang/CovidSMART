@@ -10,12 +10,12 @@
         android:id="@+id/bookVaccine"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="114dp"
+        android:layout_marginTop="500dp"
         android:fontFamily="@font/aldrich"
         android:text="Book"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarVaccine" />
+        app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
 
     <TextView
         android:id="@+id/headerVaccination"
@@ -47,19 +47,31 @@
         android:id="@+id/calendarVaccine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="95dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
 
     <Spinner
         android:id="@+id/timeVaccination"
-        android:layout_width="222dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="37dp"
+        android:layout_width="147dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="450dp"
         android:fontFamily="@font/aldrich"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarVaccine" />
+        app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
+
+    <Spinner
+        android:id="@+id/locVaccination"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/aldrich"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

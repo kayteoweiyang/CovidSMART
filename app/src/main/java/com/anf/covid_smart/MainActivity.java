@@ -75,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> parentView) {
                 userInput.setHint("NRIC");
             }
-
         });
 
         registerBtn.setOnClickListener(buttonsOnClickListener);

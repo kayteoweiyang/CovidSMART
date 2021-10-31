@@ -10,12 +10,13 @@
         android:id="@+id/bookCVTest"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="500dp"
         android:fontFamily="@font/aldrich"
         android:text="Book"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarCVTest" />
+        app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
 
     <TextView
         android:id="@+id/headerCVTest"
@@ -47,19 +48,30 @@
         android:id="@+id/calendarCVTest"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="19dp"
+        android:layout_marginTop="95dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
 
     <Spinner
         android:id="@+id/timeCVTest"
-        android:layout_width="222dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="37dp"
+        android:layout_width="147dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="450dp"
         android:fontFamily="@font/aldrich"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarCVTest" />
+        app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
+
+    <Spinner
+        android:id="@+id/locCVTest"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/aldrich"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
