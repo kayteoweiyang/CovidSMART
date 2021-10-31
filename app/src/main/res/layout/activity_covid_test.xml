@@ -52,4 +52,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
 
+    <Spinner
+        android:id="@+id/timeCVTest"
+        android:layout_width="222dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="37dp"
+        android:fontFamily="@font/aldrich"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calendarCVTest" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

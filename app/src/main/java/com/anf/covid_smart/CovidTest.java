@@ -10,13 +10,23 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.Spinner;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class CovidTest extends AppCompatActivity {
+import java.util.List;
 
+public class CovidTest extends AppCompatActivity {
+    public static final String MY_PREFS_NAME = "AUTH_TOKEN";
+    public static String authToken = "";
+    IResponse mResponseCallback = null;
+    APIService apiService;
+
+    List<String> times;
+    String selectedDate;
     CalendarView cvTest;
     Button btnregister;
+    Spinner spinner;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

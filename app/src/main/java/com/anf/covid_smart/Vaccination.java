@@ -126,7 +126,7 @@ public class Vaccination extends AppCompatActivity {
         apiService = new APIService(mResponseCallback, this);
 
         // Tag is to differentiate the response inside the callback method.
-        apiService.getMethod("auth", "/appointment/covidtest/unavailabledates.php");
+        apiService.getMethod("auth", "/appointment/vaccination/unavailabledates.php");
     }
 
     private void responseSuccess(JSONObject response) {
