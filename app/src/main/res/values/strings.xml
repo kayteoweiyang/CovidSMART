@@ -10,6 +10,10 @@
         <item>Public User</item>
         <item>Healthcare User</item>
     </string-array>
+    <string-array name ="cv_result">
+        <item>Positive</item>
+        <item>Negative</item>
+    </string-array>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

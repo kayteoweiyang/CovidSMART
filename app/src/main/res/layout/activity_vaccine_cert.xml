@@ -19,4 +19,81 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation_org" />
 
+    <TextView
+        android:id="@+id/headerCert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Generate Proof of Vaccination"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:text="Please generate patient's proof of vaccination"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCert" />
+
+    <TextView
+        android:id="@+id/titleCert"
+        android:layout_width="138dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="104dp"
+        android:fontFamily="@font/aldrich"
+        android:shadowColor="@color/black"
+        android:text="NRIC : "
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCert" />
+
+    <TextView
+        android:id="@+id/icCert"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="96dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        app:layout_constraintStart_toEndOf="@+id/titleCert"
+        app:layout_constraintTop_toBottomOf="@+id/headerCert" />
+
+    <CheckBox
+        android:id="@+id/cbConfirmCert"
+        android:layout_width="333dp"
+        android:layout_height="33dp"
+        android:layout_marginTop="180dp"
+        android:text="I, confirm that the patient has completed his vaccination."
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCert" />
+
+    <Button
+        android:id="@+id/generatebtnCert"
+        android:layout_width="208dp"
+        android:layout_height="52dp"
+        android:layout_marginTop="284dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Generate"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/headerCert" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -51,11 +51,8 @@ public class MainActivity extends AppCompatActivity {
 
         final List<String> types = Arrays.asList("Public User", "Healthcare User");
         spinner = findViewById(R.id.usertypeMain);
-        // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter adapter = new ArrayAdapter(getApplicationContext(), R.layout.user_type_selected, types);
-        // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(R.layout.user_type_dropdown);
-        // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {

@@ -11,6 +11,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class VaccineCert extends AppCompatActivity {
 
+    public static final String MY_PREFS_NAME = "AUTH_TOKEN";
+    public static String authToken = "";
+    IResponse mResponseCallback = null;
+    APIService apiService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
