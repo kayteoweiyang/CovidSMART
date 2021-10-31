@@ -37,8 +37,6 @@ public class GlobalActivityOrg extends AppCompatActivity {
         totalDeathsOrg = findViewById(R.id.totalDeathsOrg);
         listview = findViewById(R.id.countries_list_org);
 
-
-
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);
 

@@ -19,4 +19,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation_org" />
 
+    <TextView
+        android:id="@+id/headerTestAppt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="Covid Test Appointment"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

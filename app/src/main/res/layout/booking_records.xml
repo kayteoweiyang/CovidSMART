@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="5dp">
+
+        <TextView
+            android:id="@+id/b_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:text="Name : "
+            android:textSize="16dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/b_name_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/b_name"
+            android:text=" My name is "
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/b_nric"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/b_name"
+            android:layout_marginLeft="10dp"
+            android:text="NRIC : "
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/b_nric_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/b_name"
+            android:layout_toRightOf="@+id/b_nric"
+            android:text=" s9999992e "
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/b_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="210dp"
+            android:text="Date : "
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/b_date_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/b_date"
+            android:text="xxxx-xx-xx"
+            android:textSize="16dp"/>
+
+        <TextView
+            android:id="@+id/b_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="210dp"
+            android:layout_below="@id/b_date"
+            android:text="Time : "
+            android:textSize="16dp"
+            android:textStyle="bold"/>
+
+        <TextView
+            android:id="@+id/b_time_txt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/b_date"
+            android:layout_toRightOf="@id/b_time"
+            android:text="00:00:00"
+            android:textSize="16dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
