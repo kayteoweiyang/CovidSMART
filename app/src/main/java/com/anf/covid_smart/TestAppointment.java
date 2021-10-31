@@ -28,7 +28,7 @@ public class TestAppointment extends AppCompatActivity {
                         home.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(home);
                         finish();
-                        return true;
+                        return true; 
                     case R.id.nav_alert:
                         Intent alert = new Intent(getApplicationContext(), AlertActivityOrg.class);
                         alert.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
