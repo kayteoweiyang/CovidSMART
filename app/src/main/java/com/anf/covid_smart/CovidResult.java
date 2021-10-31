@@ -120,7 +120,13 @@ public class CovidResult extends AppCompatActivity {
         // Parameters need to be in JSON format
         JSONObject postData = new JSONObject();
         try {
-            postData.put("covidStatus", "1");
+            if(selectedresult.equalsIgnoreCase("positive")) {
+                postData.put("covidStatus", "1");
+            }
+            else
+            {
+                postData.put("covidStatus", "0");
+            }
             postData.put("nric", tvNRIC.getText());
 
         } catch (JSONException e) {

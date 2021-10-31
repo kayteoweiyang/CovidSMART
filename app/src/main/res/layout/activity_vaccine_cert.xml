@@ -58,7 +58,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/headerCert" />
 
-    <TextView
+    <EditText
         android:id="@+id/icCert"
         android:layout_width="210dp"
         android:layout_height="40dp"
