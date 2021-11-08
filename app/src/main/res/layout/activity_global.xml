@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".GlobalActivity">
 
+    <ImageView
+        android:id="@+id/imageView10"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="414dp"
@@ -20,51 +31,24 @@
         app:menu="@menu/menu_navigation" />
 
     <TextView
-        android:id="@+id/headerGlobal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Total cases globally"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/headerGlobal3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="80dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Cases in Different Countries"
-        android:textColor="#000000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerGlobal" />
-
-    <TextView
         android:id="@+id/subheader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="56dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/aldrich"
-        android:text="Total Cases"
-        android:textSize="20sp"
+        android:text="Total Cases Globally"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerGlobal" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toStartOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10" />
 
     <TextView
         android:id="@+id/totalCasesTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="10dp"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="@+id/subheader"
         app:layout_constraintStart_toStartOf="@+id/subheader"
@@ -74,14 +58,15 @@
         android:id="@+id/subheader2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="56dp"
+        android:layout_marginTop="48dp"
         android:fontFamily="@font/aldrich"
-        android:text=" Total Deaths"
-        android:textSize="20sp"
+        android:text=" Total Deaths Globally"
+        android:textColor="@color/black"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerGlobal" />
+        app:layout_constraintEnd_toEndOf="@+id/subheader"
+        app:layout_constraintStart_toStartOf="@+id/subheader"
+        app:layout_constraintTop_toBottomOf="@+id/subheader" />
 
     <TextView
         android:id="@+id/totalDeathsTxt"
@@ -95,14 +80,12 @@
 
     <ListView
         android:id="@+id/countries_list"
-        android:layout_width="408dp"
-        android:layout_height="440dp"
-        android:layout_marginStart="18dp"
-        android:layout_marginBottom="24dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="@+id/headerGlobal3"
-        app:layout_constraintHorizontal_bias="0.614"
-        app:layout_constraintStart_toStartOf="@+id/headerGlobal3"
+        android:layout_width="373dp"
+        android:layout_height="384dp"
+        android:layout_marginTop="168dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView10"
+        app:layout_constraintStart_toStartOf="@+id/imageView10"
+        app:layout_constraintTop_toBottomOf="@+id/imageView10"
         tools:listitem="@layout/countries_case" />
 
 

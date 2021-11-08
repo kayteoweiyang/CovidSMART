@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".OrgHomeActivity">
 
+    <View
+        android:id="@+id/divider4"
+        android:layout_width="350dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="343dp"
+        android:background="?android:attr/listDivider"
+        app:layout_constraintEnd_toEndOf="@+id/imageView17"
+        app:layout_constraintStart_toStartOf="@+id/imageView17"
+        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+
+    <ImageView
+        android:id="@+id/imageView17"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
+
     <Button
         android:id="@+id/checkTestOrg"
         android:layout_width="328dp"
@@ -69,25 +90,26 @@
         android:id="@+id/headerOrg"
         android:layout_width="327dp"
         android:layout_height="38dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
         android:text="User Management"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView17"
+        app:layout_constraintStart_toStartOf="@+id/imageView17"
+        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
     <TextView
         android:id="@+id/header2Org"
         android:layout_width="327dp"
         android:layout_height="38dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
         android:text="Alerts and Reports"
+        android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -102,7 +124,7 @@
         android:layout_marginStart="27dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/aldrich"
-        android:text="Active Status International"
+        android:text="International"
         app:layout_constraintEnd_toEndOf="@+id/header2Org"
         app:layout_constraintStart_toEndOf="@+id/activeStatusOrg"
         app:layout_constraintTop_toBottomOf="@+id/header2Org" />

@@ -6,11 +6,24 @@
     android:layout_height="match_parent"
     tools:context=".ProfileActivity">
 
+    <ImageView
+        android:id="@+id/imageView14"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
+
+
     <EditText
-        android:id="@+id/addressProfile"
+        android:id="@+id/fnameProfile"
         android:layout_width="210dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="20dp"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
@@ -19,32 +32,65 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/headerProfile"
+        app:layout_constraintTop_toBottomOf="@+id/headerProfile" />
+
+    <TextView
+        android:id="@+id/title4Profile"
+        android:layout_width="105dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="34dp"
+        android:fontFamily="@font/aldrich"
+        android:shadowColor="@color/black"
+        android:text="NRIC : "
+        android:textAlignment="textStart"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/icProfile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/title3Profile"
+        app:layout_constraintTop_toBottomOf="@+id/title3Profile" />
+
+    <EditText
+        android:id="@+id/addressProfile"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/emailProfile"
         app:layout_constraintTop_toBottomOf="@+id/emailProfile" />
 
-
     <TextView
-        android:id="@+id/title8Profile"
-        android:layout_width="138dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
+        android:id="@+id/icProfile"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="12dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
         android:fontFamily="@font/aldrich"
-        android:shadowColor="@color/black"
-        android:text="Address : "
-        android:textAlignment="textStart"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/addressProfile"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/title7Profile"
-        app:layout_constraintTop_toBottomOf="@+id/title7Profile" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/lnameProfile"
+        app:layout_constraintTop_toBottomOf="@+id/lnameProfile" />
 
     <EditText
         android:id="@+id/emailProfile"
         android:layout_width="210dp"
         android:layout_height="40dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="12dp"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
@@ -53,110 +99,62 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/mobileProfile"
         app:layout_constraintTop_toBottomOf="@+id/mobileProfile" />
 
     <TextView
-        android:id="@+id/title7Profile"
-        android:layout_width="138dp"
-        android:layout_height="0dp"
+        android:id="@+id/title2Profile"
+        android:layout_width="105dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="28dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="20dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
-        android:text="Email : "
+        android:text="First Name : "
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/emailProfile"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/title6Profile"
-        app:layout_constraintTop_toBottomOf="@+id/title6Profile" />
-
-    <EditText
-        android:id="@+id/mobileProfile"
-        android:layout_width="210dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:fontFamily="@font/aldrich"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/icProfile"
-        app:layout_constraintTop_toBottomOf="@+id/icProfile" />
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/headerProfile"
+        app:layout_constraintTop_toBottomOf="@+id/headerProfile" />
 
     <TextView
         android:id="@+id/title6Profile"
-        android:layout_width="138dp"
+        android:layout_width="105dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
         android:text="Mobile : "
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/mobileProfile"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/title4Profile"
         app:layout_constraintTop_toBottomOf="@+id/title4Profile" />
 
-
     <TextView
-        android:id="@+id/icProfile"
-        android:layout_width="210dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:fontFamily="@font/aldrich"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/lnameProfile"
-        app:layout_constraintTop_toBottomOf="@+id/lnameProfile" />
-
-    <TextView
-        android:id="@+id/title4Profile"
-        android:layout_width="138dp"
+        android:id="@+id/title8Profile"
+        android:layout_width="105dp"
         android:layout_height="0dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="19dp"
+        android:layout_marginTop="30dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
-        android:text="NRIC : "
+        android:text="Address : "
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/icProfile"
-        app:layout_constraintStart_toStartOf="@+id/title3Profile"
-        app:layout_constraintTop_toBottomOf="@+id/title3Profile" />
-
-    <EditText
-        android:id="@+id/lnameProfile"
-        android:layout_width="210dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:drawablePadding="10dp"
-        android:ems="10"
-        android:fontFamily="@font/aldrich"
-        android:paddingLeft="20dp"
-        android:paddingTop="10dp"
-        android:paddingRight="10dp"
-        android:paddingBottom="10dp"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/fnameProfile"
-        app:layout_constraintTop_toBottomOf="@+id/fnameProfile" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/addressProfile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/title7Profile"
+        app:layout_constraintTop_toBottomOf="@+id/title7Profile" />
 
     <TextView
         android:id="@+id/title3Profile"
-        android:layout_width="138dp"
+        android:layout_width="105dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="19dp"
@@ -165,16 +163,17 @@
         android:text="Last Name : "
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="18sp"
+        android:textSize="14sp"
         app:layout_constraintEnd_toStartOf="@+id/lnameProfile"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/title2Profile"
         app:layout_constraintTop_toBottomOf="@+id/title2Profile" />
 
     <EditText
-        android:id="@+id/fnameProfile"
+        android:id="@+id/mobileProfile"
         android:layout_width="210dp"
         android:layout_height="40dp"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="8dp"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
@@ -183,30 +182,49 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="@+id/headerProfile"
-        app:layout_constraintTop_toBottomOf="@+id/headerProfile" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/icProfile"
+        app:layout_constraintTop_toBottomOf="@+id/icProfile" />
 
     <TextView
-        android:id="@+id/title2Profile"
-        android:layout_width="138dp"
+        android:id="@+id/title7Profile"
+        android:layout_width="105dp"
         android:layout_height="0dp"
-        android:layout_marginTop="87dp"
+        android:layout_marginTop="30dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
-        android:text="First Name : "
+        android:text="Email : "
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toStartOf="@+id/fnameProfile"
-        app:layout_constraintStart_toStartOf="@+id/headerProfile"
-        app:layout_constraintTop_toBottomOf="@+id/headerProfile" />
+        android:textSize="14sp"
+        app:layout_constraintEnd_toStartOf="@+id/emailProfile"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/title6Profile"
+        app:layout_constraintTop_toBottomOf="@+id/title6Profile" />
+
+    <EditText
+        android:id="@+id/lnameProfile"
+        android:layout_width="210dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:drawablePadding="10dp"
+        android:ems="10"
+        android:fontFamily="@font/aldrich"
+        android:paddingLeft="20dp"
+        android:paddingTop="10dp"
+        android:paddingRight="10dp"
+        android:paddingBottom="10dp"
+        android:textColor="@color/black"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/fnameProfile"
+        app:layout_constraintTop_toBottomOf="@+id/fnameProfile" />
 
     <Button
         android:id="@+id/updatebtnProfile"
         android:layout_width="208dp"
         android:layout_height="52dp"
-        android:layout_marginTop="469dp"
+        android:layout_marginTop="324dp"
         android:fontFamily="@font/aldrich"
         android:text="UPDATE"
         app:layout_constraintEnd_toEndOf="@+id/headerProfile"
@@ -217,17 +235,16 @@
         android:id="@+id/headerProfile"
         android:layout_width="367dp"
         android:layout_height="38dp"
-        android:layout_marginTop="84dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
         android:text="Profile"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.535"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView14"
+        app:layout_constraintStart_toStartOf="@+id/imageView14"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"

@@ -6,29 +6,63 @@
     android:layout_height="match_parent"
     tools:context=".StatusResult">
 
+    <TextView
+        android:id="@+id/txtResult"
+        android:layout_width="147dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Vaccination Status"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/headerResult"
+        app:layout_constraintTop_toBottomOf="@+id/imgResultStatus" />
+
+    <TextView
+        android:id="@+id/txtStatus"
+        android:layout_width="147dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="20dp"
+        android:fontFamily="@font/aldrich"
+        android:text="Vaccination Status"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/headerStatus"
+        app:layout_constraintTop_toBottomOf="@+id/imgVaccineStatus" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
+
     <Button
         android:id="@+id/booktestingStatus"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="544dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="40dp"
         android:fontFamily="@font/aldrich"
         android:text="Book for COVID Test"
         android:visibility="invisible"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.892"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/txtResult"
+        app:layout_constraintTop_toBottomOf="@+id/imgResultStatus" />
 
     <ImageView
         android:id="@+id/imgResultStatus"
         android:layout_width="78dp"
         android:layout_height="72dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:foregroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toEndOf="@+id/imgResultPic"
+        app:layout_constraintEnd_toEndOf="@+id/headerResult"
+        app:layout_constraintStart_toStartOf="@+id/headerResult"
         app:layout_constraintTop_toBottomOf="@+id/headerResult"
         app:srcCompat="@drawable/ic_vaccine_status_not"
         app:tint="@color/black" />
@@ -37,73 +71,58 @@
         android:id="@+id/registervaccineStatus"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="244dp"
+        android:layout_marginTop="32dp"
         android:fontFamily="@font/aldrich"
         android:text="Register For Vaccination"
         android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.892"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.391"
+        app:layout_constraintStart_toEndOf="@+id/txtStatus"
+        app:layout_constraintTop_toBottomOf="@+id/imgVaccineStatus" />
 
     <ImageView
         android:id="@+id/imgVaccineStatus"
         android:layout_width="78dp"
         android:layout_height="72dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="15dp"
         android:foregroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toEndOf="@+id/imgVaccinePic"
+        app:layout_constraintEnd_toEndOf="@+id/headerStatus"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="@+id/headerStatus"
         app:layout_constraintTop_toBottomOf="@+id/headerStatus"
         app:srcCompat="@drawable/ic_vaccine_status_not"
         app:tint="@color/black" />
 
-    <ImageView
-        android:id="@+id/imgResultPic"
-        android:layout_width="78dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="125dp"
-        android:foregroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.115"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerResult"
-        app:srcCompat="@drawable/ic_test"
-        app:tint="@color/black" />
-
     <TextView
         android:id="@+id/headerStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_width="321dp"
+        android:layout_height="28dp"
+        android:layout_marginTop="100dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
         android:text="Vaccination Status"
+        android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/headerResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="328dp"
+        android:layout_height="34dp"
         android:layout_marginTop="28dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
         android:text="Overall Test Result"
+        android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.139"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/divider" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -119,28 +138,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
 
-    <ImageView
-        android:id="@+id/imgVaccinePic"
-        android:layout_width="78dp"
-        android:layout_height="72dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="125dp"
-        android:foregroundTint="#FFFFFF"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.12"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerStatus"
-        app:srcCompat="@drawable/ic_vaccines"
-        app:tint="@color/black" />
-
     <View
         android:id="@+id/divider"
-        android:layout_width="404dp"
+        android:layout_width="350dp"
         android:layout_height="1dp"
+        android:layout_marginTop="254dp"
         android:background="?android:attr/listDivider"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView4"
+        app:layout_constraintStart_toStartOf="@+id/imageView4"
+        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

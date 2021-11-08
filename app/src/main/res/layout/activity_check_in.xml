@@ -7,28 +7,38 @@
     tools:context=".CheckIn">
 
 
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
+
     <TextView
         android:id="@+id/header2CI"
         android:layout_width="327dp"
         android:layout_height="38dp"
-        android:layout_marginTop="120dp"
+        android:layout_marginTop="15dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
-        android:text="One Button Check In :"
+        android:text="One Click Check In"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView8"
+        app:layout_constraintStart_toStartOf="@+id/imageView8"
+        app:layout_constraintTop_toBottomOf="@+id/imageView8" />
 
     <com.skyfishjy.library.RippleBackground
         android:id="@+id/ripple"
         android:layout_width="315dp"
         android:layout_height="234dp"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="@+id/header2CI"
-        app:layout_constraintHorizontal_bias="0.489"
         app:layout_constraintStart_toStartOf="@+id/header2CI"
         app:layout_constraintTop_toBottomOf="@+id/header2CI"
         app:rb_color="#009900"
@@ -38,11 +48,11 @@
         app:rb_scale="3">
 
         <ImageView
-            android:layout_marginTop="40sp"
             android:id="@+id/checkInImage"
             android:layout_width="106dp"
             android:layout_height="105dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginTop="40sp"
             android:layout_marginEnd="91dp"
             android:background="@drawable/ic_location"
             android:backgroundTint="@color/white"
@@ -68,8 +78,9 @@
         android:layout_width="191dp"
         android:layout_height="62dp"
         android:layout_marginTop="36dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@+id/ripple"
+        app:layout_constraintStart_toStartOf="@+id/ripple"
         app:layout_constraintTop_toBottomOf="@+id/ripple" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

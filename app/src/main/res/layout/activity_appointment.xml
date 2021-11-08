@@ -6,6 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".AppointmentActivity">
 
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="414dp"
@@ -23,37 +34,34 @@
         android:id="@+id/headerAppt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="15dp"
         android:text="Vaccination Appointment"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView18"
+        app:layout_constraintStart_toStartOf="@+id/imageView18"
+        app:layout_constraintTop_toBottomOf="@+id/imageView18" />
 
     <ListView
         android:id="@+id/appointments_org"
-        android:layout_width="408dp"
-        android:layout_height="440dp"
-        android:layout_marginTop="80dp"
-        android:layout_marginBottom="44dp"
-        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerAppt"
-        app:layout_constraintVertical_bias="0.043"
+        android:layout_width="378dp"
+        android:layout_height="442dp"
+        android:layout_marginTop="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textView2"
+        app:layout_constraintStart_toStartOf="@+id/textView2"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:listitem="@layout/booking_records" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="26dp"
-        android:text="Please refer below to the scheduled bookings"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="15dp"
+        android:text="Please refer below for the upcoming appointments"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/headerAppt"
+        app:layout_constraintStart_toStartOf="@+id/headerAppt"
         app:layout_constraintTop_toBottomOf="@+id/headerAppt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

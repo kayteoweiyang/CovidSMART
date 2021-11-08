@@ -12,7 +12,7 @@
             android:id="@+id/c_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:text="Hello"
             android:textSize="20dp"
             android:textStyle="bold" />
@@ -22,9 +22,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/c_name"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:text="Active Cases : "
-            android:textSize="12dp"/>
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/c_active_num"
@@ -40,9 +40,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/c_active_title"
-            android:layout_marginLeft="10dp"
+            android:layout_marginLeft="20dp"
             android:text="New Cases : "
-            android:textSize="12dp"/>
+            android:textSize="12dp" />
 
         <TextView
             android:id="@+id/c_new_num"

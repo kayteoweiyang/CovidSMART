@@ -12,7 +12,7 @@
         android:layout_height="52dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/aldrich"
-        android:text="Login"
+        android:text="Click to Login"
         app:layout_constraintEnd_toEndOf="@+id/text2Logout"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/text2Logout"
@@ -25,7 +25,7 @@
         android:layout_marginTop="14dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
-        android:text="Click to Login"
+        android:text="Goodbye"
         android:textColor="@color/black"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="@+id/textLogout"
@@ -55,6 +55,6 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_coronavirus" />
+        app:srcCompat="@drawable/logo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -6,29 +6,67 @@
     android:layout_height="match_parent"
     tools:context=".Vaccination">
 
+    <TextView
+        android:id="@+id/headerVaccination3"
+        android:layout_width="125dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="424dp"
+        android:text="Select TimeSlot:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/headerVaccination"
+        app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
+
+    <TextView
+        android:id="@+id/headerVaccination2"
+        android:layout_width="125dp"
+        android:layout_height="31dp"
+        android:layout_marginTop="29dp"
+        android:text="Select Location:"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/headerVaccination"
+        app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
+
     <Button
         android:id="@+id/bookVaccine"
         android:layout_width="150dp"
         android:layout_height="60dp"
-        android:layout_marginTop="500dp"
+        android:layout_marginTop="68dp"
         android:fontFamily="@font/aldrich"
         android:text="Book"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
+        app:layout_constraintEnd_toEndOf="@+id/calendarVaccine"
+        app:layout_constraintStart_toStartOf="@+id/calendarVaccine"
+        app:layout_constraintTop_toBottomOf="@+id/calendarVaccine" />
 
     <TextView
         android:id="@+id/headerVaccination"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_width="342dp"
+        android:layout_height="29dp"
+        android:layout_marginTop="15dp"
         android:text="Book for Vaccination"
+        android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView5"
+        app:layout_constraintStart_toStartOf="@+id/imageView5"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -45,33 +83,30 @@
 
     <CalendarView
         android:id="@+id/calendarVaccine"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="95dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.491"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_width="340dp"
+        android:layout_height="320dp"
+        android:layout_marginTop="80dp"
+        app:layout_constraintEnd_toEndOf="@+id/headerVaccination"
+        app:layout_constraintStart_toStartOf="@+id/headerVaccination"
         app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
 
     <Spinner
         android:id="@+id/timeVaccination"
         android:layout_width="147dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="450dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="68dp"
         android:fontFamily="@font/aldrich"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
+        app:layout_constraintEnd_toEndOf="@+id/locVaccination"
+        app:layout_constraintTop_toBottomOf="@+id/calendarVaccine" />
 
     <Spinner
         android:id="@+id/locVaccination"
-        android:layout_width="250dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="30dp"
+        android:layout_width="214dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="25dp"
         android:fontFamily="@font/aldrich"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.507"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/headerVaccination"
         app:layout_constraintTop_toBottomOf="@+id/headerVaccination" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

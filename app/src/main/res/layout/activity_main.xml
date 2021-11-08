@@ -20,7 +20,7 @@
     <EditText
         android:id="@+id/nricUenMain"
         android:layout_width="236dp"
-        android:layout_height="43dp"
+        android:layout_height="42dp"
         android:layout_marginTop="16dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
@@ -34,7 +34,7 @@
     <EditText
         android:id="@+id/passwordMain"
         android:layout_width="236dp"
-        android:layout_height="46dp"
+        android:layout_height="42dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
@@ -71,8 +71,8 @@
 
     <Spinner
         android:id="@+id/usertypeMain"
-        android:layout_width="222dp"
-        android:layout_height="38dp"
+        android:layout_width="200dp"
+        android:layout_height="39dp"
         android:layout_marginTop="12dp"
         android:fontFamily="@font/aldrich"
         app:layout_constraintEnd_toEndOf="@+id/passwordMain"

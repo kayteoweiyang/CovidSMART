@@ -6,64 +6,72 @@
     android:layout_height="match_parent"
     tools:context=".CovidResult">
 
+    <ImageView
+        android:id="@+id/imageView19"
+        android:layout_width="349dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="36dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
+
     <Button
         android:id="@+id/updatebtnCVR"
         android:layout_width="208dp"
         android:layout_height="52dp"
-        android:layout_marginTop="284dp"
+        android:layout_marginTop="188dp"
         android:fontFamily="@font/aldrich"
         android:text="UPDATE"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/headerCVResult"
+        app:layout_constraintStart_toStartOf="@+id/headerCVResult"
         app:layout_constraintTop_toBottomOf="@+id/headerCVResult" />
 
     <Spinner
         android:id="@+id/resultCVR"
         android:layout_width="150dp"
         android:layout_height="38dp"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="92dp"
         android:fontFamily="@font/aldrich"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.05"
-        app:layout_constraintStart_toEndOf="@+id/title4Profile3"
+        app:layout_constraintEnd_toEndOf="@+id/headerCVResult"
         app:layout_constraintTop_toBottomOf="@+id/icCVR" />
 
     <TextView
         android:id="@+id/title4Profile3"
-        android:layout_width="138dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="180dp"
+        android:layout_width="88dp"
+        android:layout_height="23dp"
+        android:layout_marginTop="140dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
         android:text="RESULT : "
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/headerCVResult"
         app:layout_constraintTop_toBottomOf="@+id/headerCVResult" />
 
     <TextView
         android:id="@+id/title4Profile2"
-        android:layout_width="138dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="44dp"
-        android:layout_marginTop="104dp"
+        android:layout_width="88dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="76dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
         android:text="NRIC : "
         android:textAlignment="textStart"
         android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/headerCVResult"
         app:layout_constraintTop_toBottomOf="@+id/headerCVResult" />
 
     <EditText
         android:id="@+id/icCVR"
         android:layout_width="210dp"
         android:layout_height="40dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="96dp"
+        android:layout_marginTop="68dp"
+        android:layout_marginEnd="32dp"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
@@ -72,7 +80,7 @@
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
-        app:layout_constraintStart_toEndOf="@+id/title4Profile2"
+        app:layout_constraintEnd_toEndOf="@+id/headerCVResult"
         app:layout_constraintTop_toBottomOf="@+id/headerCVResult" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -90,26 +98,28 @@
 
     <TextView
         android:id="@+id/headerCVResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_width="338dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="15dp"
         android:text="Update Patient Test Result"
+        android:textAlignment="center"
         android:textColor="#000000"
-        android:textSize="24sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/imageView19"
+        app:layout_constraintStart_toStartOf="@+id/imageView19"
+        app:layout_constraintTop_toBottomOf="@+id/imageView19" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:text="Please update the patient's test result."
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="24dp"
+        android:text="Please update the patient's COVID result."
+        android:textColor="@color/red"
+        app:layout_constraintEnd_toEndOf="@+id/headerCVResult"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="@+id/headerCVResult"
         app:layout_constraintTop_toBottomOf="@+id/headerCVResult" />
 
 
