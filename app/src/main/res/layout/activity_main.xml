@@ -10,12 +10,12 @@
         android:id="@+id/imgMain"
         android:layout_width="202dp"
         android:layout_height="226dp"
-        android:layout_marginTop="68dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="23dp"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_coronavirus" />
+        app:layout_constraintStart_toStartOf="@+id/imageView"
+        app:layout_constraintTop_toBottomOf="@+id/imageView"
+        app:srcCompat="@drawable/logo" />
 
     <EditText
         android:id="@+id/nricUenMain"
@@ -26,6 +26,7 @@
         android:fontFamily="@font/aldrich"
         android:hint="NRIC"
         android:inputType="textPersonName"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/imgMain"
         app:layout_constraintStart_toStartOf="@+id/imgMain"
         app:layout_constraintTop_toBottomOf="@+id/imgMain" />
@@ -39,6 +40,7 @@
         android:fontFamily="@font/aldrich"
         android:hint="Password"
         android:inputType="textPassword"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/nricUenMain"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/nricUenMain"
@@ -76,5 +78,16 @@
         app:layout_constraintEnd_toEndOf="@+id/passwordMain"
         app:layout_constraintStart_toStartOf="@+id/passwordMain"
         app:layout_constraintTop_toBottomOf="@+id/passwordMain" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="364dp"
+        android:layout_height="61dp"
+        android:layout_marginTop="28dp"
+        android:background="#FF9696"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/titile" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
