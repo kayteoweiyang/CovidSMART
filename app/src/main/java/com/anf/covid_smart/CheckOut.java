@@ -36,7 +36,6 @@ public class CheckOut extends AppCompatActivity {
         final RippleBackground rippleBackground = findViewById(R.id.ripple1);
         checkoutImg.setColorFilter(Color.argb(0, 0,0,0));
 
-
         rippleBackground.startRippleAnimation();
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
         btmNavView.setSelectedItemId(R.id.nav_home);

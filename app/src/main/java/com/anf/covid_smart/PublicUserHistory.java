@@ -102,11 +102,11 @@ public class PublicUserHistory extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.searchPUH:
                     if(et_nric.getText().length() == 9) {
-                        Toast.makeText(PublicUserHistory.this, "Searching...", Toast.LENGTH_LONG).show();
+                        Toast.makeText(PublicUserHistory.this, "Searching...", Toast.LENGTH_SHORT).show();
                         getUserInfo();
                     }
                     else {
-                        Toast.makeText(PublicUserHistory.this, "Please key in a valid NRIC", Toast.LENGTH_LONG).show();
+                        Toast.makeText(PublicUserHistory.this, "Please key in a valid NRIC", Toast.LENGTH_SHORT).show();
                     }
                     break;
                 case R.id.datePUH:
@@ -142,37 +142,36 @@ public class PublicUserHistory extends AppCompatActivity {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
                 ArrayList<Records> rec = new ArrayList<>();
-                JSONArray records = response.getJSONArray("records");
-                if(records.length() > 0) {
-                    for (int i = 0; i < records.length(); i++) {
-                        JSONObject record = records.getJSONObject(i);
-                        String A = record.getString("address");
-                        String D = record.getString("DATE(datetime)");
-                        ParsePosition pos = new ParsePosition(0);
-                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
-                        String T = record.getString("TIME(datetime)");
-                        if(!et_date.getText().toString().equals("")) {
-                            LocalDate nD = LocalDate.parse(D, formatter);
-                            LocalDate sD = LocalDate.parse(et_date.getText().toString(), formatter);
-                            if(nD.isAfter(sD)) {
-                                rec.add(new Records(A, D, T));
-                            }
-                            else if (nD.isEqual(sD))
-                            {
+                try {
+                    JSONArray records = response.getJSONArray("records");
+                    if (records.length() > 0) {
+                        for (int i = 0; i < records.length(); i++) {
+                            JSONObject record = records.getJSONObject(i);
+                            String A = record.getString("address");
+                            String D = record.getString("DATE(datetime)");
+                            ParsePosition pos = new ParsePosition(0);
+                            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH);
+                            String T = record.getString("TIME(datetime)");
+                            if (!et_date.getText().toString().equals("")) {
+                                LocalDate nD = LocalDate.parse(D, formatter);
+                                LocalDate sD = LocalDate.parse(et_date.getText().toString(), formatter);
+                                if (nD.isAfter(sD)) {
+                                    rec.add(new Records(A, D, T));
+                                } else if (nD.isEqual(sD)) {
+                                    rec.add(new Records(A, D, T));
+                                }
+                            } else if (et_date.getText().toString().equals("")) {
                                 rec.add(new Records(A, D, T));
                             }
                         }
-                        else if(et_date.getText().toString().equals(""))
-                        {
-                            rec.add(new Records(A, D, T));
+                        if (rec.size() > 0) {
+                            RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
+                            listView.setAdapter(recordAdapter);
                         }
-                    }
-                    if(rec.size() > 0) {
-                        RecordAdapter recordAdapter = new RecordAdapter(PublicUserHistory.this, R.layout.records_case, rec);
-                        listView.setAdapter(recordAdapter);
                     }
                 }
-                else {
+                catch(JSONException e)
+                {
                     Toast.makeText(PublicUserHistory.this, "No result found.", Toast.LENGTH_LONG).show();
                 }
             }

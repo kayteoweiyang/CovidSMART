@@ -6,63 +6,74 @@
     android:layout_height="match_parent"
     tools:context=".NearMe">
 
-    <ImageView
-        android:id="@+id/imageView15"
-        android:layout_width="349dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="36dp"
-        android:background="#FF9696"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/titile" />
-
-    <ImageView
-        android:id="@+id/refreshNearme"
-        android:layout_width="67dp"
-        android:layout_height="61dp"
-        android:layout_marginTop="24dp"
-        app:layout_constraintEnd_toEndOf="@+id/headerStatus"
-        app:layout_constraintHorizontal_bias="0.502"
-        app:layout_constraintStart_toStartOf="@+id/headerStatus"
-        app:layout_constraintTop_toBottomOf="@+id/headerStatus"
-        app:srcCompat="@drawable/ic_refresh" />
-
-    <TextView
-        android:id="@+id/headerStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Active Cases Near Me"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView15"
-        app:layout_constraintStart_toStartOf="@+id/imageView15"
-        app:layout_constraintTop_toBottomOf="@+id/imageView15" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="414dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:background="@color/white"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
 
-    <ListView
-        android:id="@+id/location_list"
-        android:layout_width="373dp"
-        android:layout_height="384dp"
-        android:layout_marginTop="25dp"
-        app:layout_constraintEnd_toEndOf="@+id/refreshNearme"
-        app:layout_constraintStart_toStartOf="@+id/refreshNearme"
-        app:layout_constraintTop_toBottomOf="@+id/refreshNearme"
-        tools:listitem="@layout/records_case" />
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView15"
+            android:layout_width="349dp"
+            android:layout_height="45dp"
+            android:layout_marginTop="36dp"
+            android:background="#FF9696"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/titile" />
+
+        <ImageView
+            android:id="@+id/refreshNearme"
+            android:layout_width="67dp"
+            android:layout_height="61dp"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="@+id/headerStatus"
+            app:layout_constraintHorizontal_bias="0.502"
+            app:layout_constraintStart_toStartOf="@+id/headerStatus"
+            app:layout_constraintTop_toBottomOf="@+id/headerStatus"
+            app:srcCompat="@drawable/ic_refresh" />
+
+        <TextView
+            android:id="@+id/headerStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:fontFamily="@font/aldrich"
+            android:text="Active Cases Near Me"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/imageView15"
+            app:layout_constraintStart_toStartOf="@+id/imageView15"
+            app:layout_constraintTop_toBottomOf="@+id/imageView15" />
+
+
+        <ListView
+            android:id="@+id/location_list"
+            android:layout_width="373dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/refreshNearme"
+            app:layout_constraintStart_toStartOf="@+id/refreshNearme"
+            app:layout_constraintTop_toBottomOf="@+id/refreshNearme"
+            tools:listitem="@layout/records_case" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

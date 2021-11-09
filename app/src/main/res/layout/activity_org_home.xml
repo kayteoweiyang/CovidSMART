@@ -6,149 +6,173 @@
     android:layout_height="match_parent"
     tools:context=".OrgHomeActivity">
 
-    <View
-        android:id="@+id/divider4"
-        android:layout_width="350dp"
-        android:layout_height="1dp"
-        android:layout_marginTop="343dp"
-        android:background="?android:attr/listDivider"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
-
-    <ImageView
-        android:id="@+id/imageView17"
-        android:layout_width="349dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="36dp"
-        android:background="#FF9696"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/titile" />
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="2dp">
 
-    <Button
-        android:id="@+id/checkTestOrg"
-        android:layout_width="328dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="13dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Check slot for COVID Test"
-        app:layout_constraintEnd_toEndOf="@+id/checkVaccineOrg"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/checkVaccineOrg"
-        app:layout_constraintTop_toBottomOf="@+id/checkVaccineOrg" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <View
+                android:id="@+id/divider4"
+                android:layout_width="350dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="343dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="@+id/imageView17"
+                app:layout_constraintStart_toStartOf="@+id/imageView17"
+                app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
-    <Button
-        android:id="@+id/generateproofOrg"
-        android:layout_width="328dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="14dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Generate Vaccination Cert"
-        app:layout_constraintEnd_toEndOf="@+id/checkTestOrg"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/checkTestOrg"
-        app:layout_constraintTop_toBottomOf="@+id/checkTestOrg" />
+            <View
+                android:id="@+id/divider6"
+                android:layout_width="350dp"
+                android:layout_height="1dp"
+                android:layout_marginTop="560dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="@+id/imageView17"
+                app:layout_constraintStart_toStartOf="@+id/imageView17"
+                app:layout_constraintTop_toBottomOf="@+id/imageView17" />
 
-    <Button
-        android:id="@+id/uploadResultOrg"
-        android:layout_width="328dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="14dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Update COVID Test Result"
-        app:layout_constraintEnd_toEndOf="@+id/generateproofOrg"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/generateproofOrg"
-        app:layout_constraintTop_toBottomOf="@+id/generateproofOrg" />
+            <ImageView
+                android:id="@+id/imageView17"
+                android:layout_width="349dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="36dp"
+                android:background="#FF9696"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/titile" />
 
-    <Button
-        android:id="@+id/visitHistoryOrg"
-        android:layout_width="328dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="96dp"
-        android:fontFamily="@font/aldrich"
-        android:text="User Visit History"
-        app:layout_constraintEnd_toEndOf="@+id/header2Org"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/header2Org"
-        app:layout_constraintTop_toBottomOf="@+id/header2Org" />
+            <Button
+                android:id="@+id/checkTestOrg"
+                android:layout_width="328dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="@font/aldrich"
+                android:text="Check slot for COVID Test"
+                app:layout_constraintEnd_toEndOf="@+id/checkVaccineOrg"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/checkVaccineOrg"
+                app:layout_constraintTop_toBottomOf="@+id/checkVaccineOrg" />
 
-    <Button
-        android:id="@+id/checkVaccineOrg"
-        android:layout_width="328dp"
-        android:layout_height="54dp"
-        android:layout_marginTop="13dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Check slot for vaccination"
-        app:layout_constraintEnd_toEndOf="@+id/headerOrg"
-        app:layout_constraintStart_toStartOf="@+id/headerOrg"
-        app:layout_constraintTop_toBottomOf="@+id/headerOrg" />
+            <Button
+                android:id="@+id/generateproofOrg"
+                android:layout_width="328dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/aldrich"
+                android:text="Generate Vaccination Cert"
+                app:layout_constraintEnd_toEndOf="@+id/checkTestOrg"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/checkTestOrg"
+                app:layout_constraintTop_toBottomOf="@+id/checkTestOrg" />
 
-    <TextView
-        android:id="@+id/headerOrg"
-        android:layout_width="327dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/aldrich"
-        android:shadowColor="@color/black"
-        android:text="User Management"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/imageView17"
-        app:layout_constraintStart_toStartOf="@+id/imageView17"
-        app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+            <Button
+                android:id="@+id/uploadResultOrg"
+                android:layout_width="328dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="14dp"
+                android:fontFamily="@font/aldrich"
+                android:text="Update COVID Test Result"
+                app:layout_constraintEnd_toEndOf="@+id/generateproofOrg"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/generateproofOrg"
+                app:layout_constraintTop_toBottomOf="@+id/generateproofOrg" />
 
-    <TextView
-        android:id="@+id/header2Org"
-        android:layout_width="327dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="40dp"
-        android:fontFamily="@font/aldrich"
-        android:shadowColor="@color/black"
-        android:text="Alerts and Reports"
-        android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.547"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/uploadResultOrg" />
+            <Button
+                android:id="@+id/visitHistoryOrg"
+                android:layout_width="328dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="96dp"
+                android:fontFamily="@font/aldrich"
+                android:text="User Visit History"
+                app:layout_constraintEnd_toEndOf="@+id/header2Org"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/header2Org"
+                app:layout_constraintTop_toBottomOf="@+id/header2Org" />
 
-    <Button
-        android:id="@+id/activeStatus2Org"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="27dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/aldrich"
-        android:text="International"
-        app:layout_constraintEnd_toEndOf="@+id/header2Org"
-        app:layout_constraintStart_toEndOf="@+id/activeStatusOrg"
-        app:layout_constraintTop_toBottomOf="@+id/header2Org" />
+            <Button
+                android:id="@+id/checkVaccineOrg"
+                android:layout_width="328dp"
+                android:layout_height="54dp"
+                android:layout_marginTop="13dp"
+                android:fontFamily="@font/aldrich"
+                android:text="Check slot for vaccination"
+                app:layout_constraintEnd_toEndOf="@+id/headerOrg"
+                app:layout_constraintStart_toStartOf="@+id/headerOrg"
+                app:layout_constraintTop_toBottomOf="@+id/headerOrg" />
 
-    <Button
-        android:id="@+id/activeStatusOrg"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="16dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Active Status"
-        app:layout_constraintStart_toStartOf="@+id/header2Org"
-        app:layout_constraintTop_toBottomOf="@+id/header2Org" />
+            <TextView
+                android:id="@+id/headerOrg"
+                android:layout_width="327dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="15dp"
+                android:fontFamily="@font/aldrich"
+                android:shadowColor="@color/black"
+                android:text="User Management"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@+id/imageView17"
+                app:layout_constraintStart_toStartOf="@+id/imageView17"
+                app:layout_constraintTop_toBottomOf="@+id/imageView17" />
+
+            <TextView
+                android:id="@+id/header2Org"
+                android:layout_width="327dp"
+                android:layout_height="38dp"
+                android:layout_marginTop="40dp"
+                android:fontFamily="@font/aldrich"
+                android:shadowColor="@color/black"
+                android:text="Alerts and Reports"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.547"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/uploadResultOrg" />
+
+            <Button
+                android:id="@+id/activeStatus2Org"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="27dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/aldrich"
+                android:text="International"
+                app:layout_constraintEnd_toEndOf="@+id/header2Org"
+                app:layout_constraintStart_toEndOf="@+id/activeStatusOrg"
+                app:layout_constraintTop_toBottomOf="@+id/header2Org" />
+
+            <Button
+                android:id="@+id/activeStatusOrg"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/aldrich"
+                android:text="Active Status"
+                app:layout_constraintStart_toStartOf="@+id/header2Org"
+                app:layout_constraintTop_toBottomOf="@+id/header2Org" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="414dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:background="@color/white"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation_org" />
 </androidx.constraintlayout.widget.ConstraintLayout>

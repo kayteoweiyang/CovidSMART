@@ -52,7 +52,7 @@
         android:layout_marginTop="15dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"
-        android:text="Check Out Latest Location"
+        android:text="Check Out Last Location"
         android:textAlignment="center"
         android:textColor="@color/black"
         android:textSize="18sp"
@@ -62,14 +62,13 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="414dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:background="@color/white"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
 

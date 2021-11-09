@@ -6,107 +6,124 @@
     android:layout_height="match_parent"
     tools:context=".CovidTest">
 
-    <TextView
-        android:id="@+id/headerVaccination5"
-        android:layout_width="125dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="424dp"
-        android:text="Select TimeSlot:"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/headerCVTest"
-        app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
-
-    <TextView
-        android:id="@+id/headerVaccination4"
-        android:layout_width="125dp"
-        android:layout_height="31dp"
-        android:layout_marginTop="29dp"
-        android:text="Select Location:"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/headerCVTest"
-        app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
-
-    <ImageView
-        android:id="@+id/imageView6"
-        android:layout_width="349dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="36dp"
-        android:background="#FF9696"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/titile" />
-
-    <Button
-        android:id="@+id/bookCVTest"
-        android:layout_width="150dp"
-        android:layout_height="60dp"
-        android:layout_marginTop="68dp"
-        android:fontFamily="@font/aldrich"
-        android:text="Book"
-        app:layout_constraintEnd_toEndOf="@+id/calendarCVTest"
-        app:layout_constraintStart_toStartOf="@+id/calendarCVTest"
-        app:layout_constraintTop_toBottomOf="@+id/calendarCVTest" />
-
-    <TextView
-        android:id="@+id/headerCVTest"
-        android:layout_width="342dp"
-        android:layout_height="32dp"
-        android:layout_marginTop="15dp"
-        android:text="Book for COVID Test"
-        android:textAlignment="center"
-        android:textColor="#000000"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="@+id/imageView6"
-        app:layout_constraintStart_toStartOf="@+id/imageView6"
-        app:layout_constraintTop_toBottomOf="@+id/imageView6" />
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="414dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:background="@color/white"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation" />
 
-    <CalendarView
-        android:id="@+id/calendarCVTest"
-        android:layout_width="340dp"
-        android:layout_height="320dp"
-        android:layout_marginTop="80dp"
-        app:layout_constraintEnd_toEndOf="@+id/headerCVTest"
-        app:layout_constraintStart_toStartOf="@+id/headerCVTest"
-        app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        tools:layout_editor_absoluteX="2dp">
 
-    <Spinner
-        android:id="@+id/timeCVTest"
-        android:layout_width="147dp"
-        android:layout_height="30dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginEnd="68dp"
-        android:fontFamily="@font/aldrich"
-        app:layout_constraintEnd_toEndOf="@+id/locCVTest"
-        app:layout_constraintTop_toBottomOf="@+id/calendarCVTest" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
-    <Spinner
-        android:id="@+id/locCVTest"
-        android:layout_width="214dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="25dp"
-        android:fontFamily="@font/aldrich"
-        app:layout_constraintEnd_toEndOf="@+id/headerCVTest"
-        app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
+            <TextView
+                android:id="@+id/headerVaccination5"
+                android:layout_width="125dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="424dp"
+                android:text="Select Time Slot:"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/headerCVTest"
+                app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
+
+            <TextView
+                android:id="@+id/headerVaccination4"
+                android:layout_width="125dp"
+                android:layout_height="31dp"
+                android:layout_marginTop="29dp"
+                android:text="Select Location:"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/headerCVTest"
+                app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
+
+            <ImageView
+                android:id="@+id/imageView6"
+                android:layout_width="349dp"
+                android:layout_height="45dp"
+                android:layout_marginTop="36dp"
+                android:background="#FF9696"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/titile" />
+
+            <Button
+                android:id="@+id/bookCVTest"
+                android:layout_width="150dp"
+                android:layout_height="60dp"
+                android:layout_marginTop="68dp"
+                android:fontFamily="@font/aldrich"
+                android:text="Book"
+                app:layout_constraintEnd_toEndOf="@+id/calendarCVTest"
+                app:layout_constraintStart_toStartOf="@+id/calendarCVTest"
+                app:layout_constraintTop_toBottomOf="@+id/calendarCVTest" />
+
+            <TextView
+                android:id="@+id/headerCVTest"
+                android:layout_width="342dp"
+                android:layout_height="32dp"
+                android:layout_marginTop="15dp"
+                android:text="Book for COVID Test"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="@+id/imageView6"
+                app:layout_constraintStart_toStartOf="@+id/imageView6"
+                app:layout_constraintTop_toBottomOf="@+id/imageView6" />
+
+
+
+            <CalendarView
+                android:id="@+id/calendarCVTest"
+                android:layout_width="340dp"
+                android:layout_height="320dp"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="@+id/headerCVTest"
+                app:layout_constraintStart_toStartOf="@+id/headerCVTest"
+                app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
+
+            <Spinner
+                android:id="@+id/timeCVTest"
+                android:layout_width="147dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="64dp"
+                android:fontFamily="@font/aldrich"
+                app:layout_constraintEnd_toEndOf="@+id/locCVTest"
+                app:layout_constraintTop_toBottomOf="@+id/calendarCVTest" />
+
+            <Spinner
+                android:id="@+id/locCVTest"
+                android:layout_width="214dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="25dp"
+                android:fontFamily="@font/aldrich"
+                app:layout_constraintEnd_toEndOf="@+id/headerCVTest"
+                app:layout_constraintTop_toBottomOf="@+id/headerCVTest" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

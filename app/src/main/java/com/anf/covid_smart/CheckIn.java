@@ -18,7 +18,6 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -38,12 +37,10 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
 
     IResponse mResponseCallback = null;
     APIService apiService;
+
     ImageView checkinImg;
     LocationManager locationManager;
-    EditText postal;
     TextView addressTV;
-    TextView latlongTV;
-    TextView resultTV;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +51,12 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
 
         checkinImg = findViewById(R.id.checkInImage);
         addressTV = findViewById(R.id.textView);
-        //latlongTV = findViewById(R.id.latlongCI);
-        //resultTV = findViewById(R.id.resultCI);
         checkinImg.setOnClickListener(buttonsOnClickListener);
 
         final RippleBackground rippleBackground = findViewById(R.id.ripple);
         checkinImg.setColorFilter(Color.argb(0, 0,0,0));
 
         rippleBackground.startRippleAnimation();
-
 
         checkMyPermission();
         BottomNavigationView btmNavView = findViewById(R.id.bottom_navigation);
@@ -109,7 +103,7 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
             switch (v.getId()) {
                 case R.id.checkInImage:
                     checkinImg.setColorFilter(null);
-                    Toast.makeText(CheckIn.this, "Get Current Location", Toast.LENGTH_LONG).show();
+                    Toast.makeText(CheckIn.this, "Checking in", Toast.LENGTH_SHORT).show();
                     getLocation();
                     break;
                 default:
@@ -127,20 +121,18 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
         }
     }
 
-    private void getaddress() {
-        String postalcode = postal.getText().toString();
-
-
-    }
     @SuppressLint("MissingPermission")
     private void getLocation() {
         try
         {
-            locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,5000,5, CheckIn.this);
+            locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
+            Location myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0, CheckIn.this);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,1000,0, CheckIn.this);
         }
         catch(Exception e)
         {
+            Toast.makeText(CheckIn.this, e.toString(), Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
@@ -152,12 +144,11 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
             String address = addresses.get(0).getAddressLine(0);
 
             checkinLocation(address, location.getLatitude(), location.getLongitude());
-            addressTV.setText("Check in successfully at " + address);
-            //latlongTV.setText("Latitude: "+location.getLatitude()+" , Longitude : "+location.getLongitude());
-            //resultTV.setText("Check in Successfully");
+            locationManager.removeUpdates(CheckIn.this);
 
         }catch (Exception e) {
             e.printStackTrace();
+            Toast.makeText(CheckIn.this, e.toString(), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -192,7 +183,6 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
             }
             @Override
             public void notifyError(String tag, VolleyError error) {
-                //Toast.makeText(RegisterActivity.this, "Something went wrong, please try again!", Toast.LENGTH_LONG).show();
                 Toast.makeText(CheckIn.this, error.toString(), Toast.LENGTH_LONG).show();
             }
         };
@@ -218,7 +208,6 @@ public class CheckIn extends AppCompatActivity implements LocationListener {
     public void onProviderEnabled(String provider) {
 
     }
-
     @Override
     public void onProviderDisabled(String provider) {
 

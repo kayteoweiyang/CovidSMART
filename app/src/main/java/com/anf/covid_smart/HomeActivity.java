@@ -154,6 +154,18 @@ public class HomeActivity extends AppCompatActivity{
                 {
                     vaccine.setImageResource(R.drawable.ic_vaccine_status_not);
                 }
+                if(u_covid.equals("0"))
+                {
+                    test.setImageResource(R.drawable.ic_vaccine_status_not);
+                }
+                else if(u_covid.equals("1"))
+                {
+                    test.setImageResource(R.drawable.ic_baseline_health_and_safety_24);
+                }
+                else
+                {
+                    test.setImageResource(R.drawable.ic_coronavirus);
+                }
             }
             else {
                 Toast.makeText(HomeActivity.this, response.getString(("message")), Toast.LENGTH_LONG).show();

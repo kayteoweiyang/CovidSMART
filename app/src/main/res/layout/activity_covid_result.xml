@@ -72,27 +72,30 @@
         android:layout_height="40dp"
         android:layout_marginTop="68dp"
         android:layout_marginEnd="32dp"
+        android:digits="0123456789qwertzuiopasdfghjklyxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM"
         android:drawablePadding="10dp"
         android:ems="10"
         android:fontFamily="@font/aldrich"
+        android:inputType="textPersonName|textCapCharacters"
+        android:maxLength="9"
         android:paddingLeft="20dp"
         android:paddingTop="10dp"
         android:paddingRight="10dp"
         android:paddingBottom="10dp"
         android:textColor="@color/black"
+        android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="@+id/headerCVResult"
         app:layout_constraintTop_toBottomOf="@+id/headerCVResult" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="414dp"
+        android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:layout_marginBottom="4dp"
         android:background="@color/white"
         app:itemTextColor="@drawable/selector"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_navigation_org" />
 

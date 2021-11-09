@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/LocConfirm"
-        android:layout_width="138dp"
+        android:layout_width="80dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/aldrich"
@@ -83,7 +83,7 @@
 
     <TextView
         android:id="@+id/TimeConfirm"
-        android:layout_width="138dp"
+        android:layout_width="80dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/aldrich"
@@ -111,7 +111,7 @@
 
     <TextView
         android:id="@+id/DateConfirm"
-        android:layout_width="138dp"
+        android:layout_width="80dp"
         android:layout_height="0dp"
         android:layout_marginTop="24dp"
         android:fontFamily="@font/aldrich"
@@ -139,9 +139,9 @@
 
     <TextView
         android:id="@+id/typeConfirm"
-        android:layout_width="138dp"
+        android:layout_width="80dp"
         android:layout_height="0dp"
-        android:layout_marginStart="12dp"
+        android:layout_marginStart="70dp"
         android:layout_marginTop="44dp"
         android:fontFamily="@font/aldrich"
         android:shadowColor="@color/black"

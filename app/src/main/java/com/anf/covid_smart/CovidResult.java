@@ -121,11 +121,11 @@ public class CovidResult extends AppCompatActivity {
         JSONObject postData = new JSONObject();
         try {
             if(selectedresult.equalsIgnoreCase("positive")) {
-                postData.put("covidStatus", "1");
+                postData.put("covidStatus", "2");
             }
             else
             {
-                postData.put("covidStatus", "0");
+                postData.put("covidStatus", "1");
             }
             postData.put("nric", tvNRIC.getText());
 

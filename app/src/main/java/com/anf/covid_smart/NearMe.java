@@ -98,7 +98,6 @@ public class NearMe extends AppCompatActivity implements LocationListener {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.refreshNearme:
-                    Toast.makeText(NearMe.this, String.valueOf(getAddr), Toast.LENGTH_LONG).show();
                     getLocationAffected();
                     break;
                 default:
@@ -120,7 +119,9 @@ public class NearMe extends AppCompatActivity implements LocationListener {
     private void getLocation() {
         try {
             locationManager = (LocationManager) getApplicationContext().getSystemService(LOCATION_SERVICE);
-            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 5000, 5, NearMe.this);
+            Location myLocation = locationManager.getLastKnownLocation(LocationManager.PASSIVE_PROVIDER);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,1000,0, NearMe.this);
+            locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,1000,0, NearMe.this);
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -135,9 +136,7 @@ public class NearMe extends AppCompatActivity implements LocationListener {
             getLat = location.getLatitude();
             getLong = location.getLongitude();
             getAddr = addresses.get(0).getAddressLine(0);
-            //addressTV.setText("Check in successfully at " + address);
-            //latlongTV.setText("Latitude: "+location.getLatitude()+" , Longitude : "+location.getLongitude());
-            //resultTV.setText("Check in Successfully");
+            //locationManager.removeUpdates(this);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -153,10 +152,6 @@ public class NearMe extends AppCompatActivity implements LocationListener {
 
         String params = String.format("lat=%s&lng=%s", getLat, getLong);
 
-        //double lt = 1.3399695429738987;
-        //double lg = 103.70668678294591;
-        //String params = String.format("lat=%s&lng=%s", lt, lg);
-
         // Tag is to differentiate the response inside the callback method.
         apiService.getMethodwData("auth", "/cases/nearby.php", params);
     }
@@ -166,17 +161,22 @@ public class NearMe extends AppCompatActivity implements LocationListener {
             Boolean isSuccessful = response.getBoolean(("success"));
             if (isSuccessful) {
                 ArrayList<String> addr = new ArrayList<String>();
-                JSONArray caseinfo = response.getJSONArray("nearbyCases");
-                Log.i("count", String.valueOf(caseinfo));
-                for (int i = 0; i < caseinfo.length(); i++) {
-                    JSONObject info = caseinfo.getJSONObject(i);
-                    addr.add(info.getString("address"));
+                try {
+                    JSONArray caseinfo = response.getJSONArray("nearbyCases");
+                    for (int i = 0; i < caseinfo.length(); i++) {
+                        JSONObject info = caseinfo.getJSONObject(i);
+                        addr.add(info.getString("address"));
+                    }
+                    ArrayAdapter<String> adapter = new ArrayAdapter<String>(NearMe.this, android.R.layout.simple_list_item_1, addr);
+                    listView.setAdapter(adapter);
                 }
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(NearMe.this, android.R.layout.simple_list_item_1, addr);
-                listView.setAdapter(adapter);
+                catch(JSONException e)
+                {
+                    Toast.makeText(NearMe.this, "No result found.", Toast.LENGTH_LONG).show();
+                }
             }
             else {
-                Toast.makeText(NearMe.this, response.getString(("message")), Toast.LENGTH_LONG).show();
+                Toast.makeText(NearMe.this, response.getString(("message")), Toast.LENGTH_SHORT).show();
             }
         } catch (JSONException e) {
             e.printStackTrace();
@@ -199,6 +199,16 @@ public class NearMe extends AppCompatActivity implements LocationListener {
                 Toast.makeText(NearMe.this, error.toString(), Toast.LENGTH_LONG).show();
             }
         };
+    }
+
+    @Override
+    public void onProviderEnabled(@NonNull String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(@NonNull String provider) {
+
     }
 
 }

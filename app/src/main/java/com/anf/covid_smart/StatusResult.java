@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -17,6 +18,7 @@ public class StatusResult extends AppCompatActivity {
     String cvresult, vaccine;
     ImageView imgVaccine, imgResult;
     Button btnVaccine, btnCovid;
+    TextView infoResult, infoStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,8 @@ public class StatusResult extends AppCompatActivity {
             cvresult = extras.getString("cvresult");
         }
 
+        infoResult = findViewById(R.id.txtResult);
+        infoStatus = findViewById(R.id.txtStatus);
         btnVaccine = findViewById(R.id.registervaccineStatus);
         btnCovid = findViewById(R.id.booktestingStatus);
         btnVaccine.setOnClickListener(buttonsOnClickListener);
@@ -100,20 +104,30 @@ public class StatusResult extends AppCompatActivity {
         if(vaccine.equals("1"))
         {
             imgVaccine.setImageResource(R.drawable.ic_done);
+            infoStatus.setText("Vaccinated");
         }
         else
         {
             imgVaccine.setImageResource(R.drawable.ic_vaccine_status_not);
+            infoStatus.setText("Not vaccinated, please book your free vaccination");
             btnVaccine.setVisibility(View.VISIBLE);
         }
-        if(cvresult.equals("1"))
-        {
-            imgResult.setImageResource(R.drawable.ic_done);
-        }
-        else
+        if(cvresult.equals("0"))
         {
             imgResult.setImageResource(R.drawable.ic_vaccine_status_not);
             btnCovid.setVisibility(View.VISIBLE);
+            infoResult.setText("No COVID-19 test taken");
+        }
+        else if(cvresult.equals("1"))
+        {
+            imgResult.setImageResource(R.drawable.ic_baseline_health_and_safety_24);
+            infoResult.setText("COVID-19 test result returns Negative");
+        }
+        else
+        {
+            imgResult.setImageResource(R.drawable.ic_coronavirus);
+            btnCovid.setVisibility(View.VISIBLE);
+            infoResult.setText("COVID-19 test result returns Positive. Please isolate yourself, we will contact you through SMS");
         }
 
     }
